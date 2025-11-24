@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import domain.Planta;
 
 public class PlantaDAO {
 	public static ArrayList<Planta> leerXMLplanta(File ficheroXML, ArrayList<Planta> arrayXMLplanta) {
+
 		try {
 			// contructor que te permite leer
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -120,23 +122,67 @@ public class PlantaDAO {
 		return stockActual;
 	}
 
-	public static void modificarStock(int codigoVenta, int stockActual) {
+	// ~~~~` 5.4
+	public static void modificarStock(int codigoVenta, int cantidadVenta) {
 		try {
 			// es fija la ruta esta y ya hacces comprobacciones
 			File ficheroDAT = new File("PLANTAS/plantas.dat");
 			// abro en lectura
-			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "w");
+			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "rw");
 			raf.seek(0);
 
-			while (raf.getFilePointer() < raf.length()) {// te lees todos aunque puedes saltar directamente de 8 a 8
+			while (raf.getFilePointer() + 12 <= raf.length()) {// te lees todos sin irte
+				long volver = raf.getFilePointer(); // donde te quedas en el registro
+
 				int codigoRAF = raf.readInt();
 				float precioRAF = raf.readFloat();
 				int stockRAF = raf.readInt();
 
-				raf.write(stockActual);
+				if (codigoRAF == codigoVenta) {
+					// NO VA, NULLPOINTER :raf.seek(raf.getFilePointer()-4); //vuelvete a stock, si
+					// pones de una raf.seek(4) no va
+					int nuevoStock = stockRAF - cantidadVenta;
+
+					// para irte al siguiente
+					raf.seek(volver + 8);
+					raf.writeInt(nuevoStock);
+					System.out.println("Stock actualizado");
+					break;
+				}
 
 			}
 			raf.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 8.1.1
+	public static void escribirPlantaDAT(Planta p) {
+		try {
+			File ficheroDAT = new File("PLANTAS/plantas.dat");
+			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "rw");
+
+			raf.seek(raf.length()); // irte al final
+
+			raf.writeInt(p.getCodigo());
+			raf.writeFloat(p.getPrecio());
+			raf.writeInt(p.getStock());
+
+			raf.close();
+			System.out.println("plantita ok");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void escribirPlantaBajaDAT(int codigo, int stock) {
+		try {
+			File fichero = new File("PLANTAS/plantasBaja.dat");
+			FileWriter fw = new FileWriter(fichero, true);
+			fw.write(codigo + ":" + stock + "\n");
+			fw.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

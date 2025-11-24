@@ -15,18 +15,28 @@ public class MenuVendedor {
 		int opc = 0;
 		System.out.println("¡¡¡ BIENVENID@ VENDEDOR/VENDEDORA !!! ~~");
 		do {
+			System.out.println("####################################");
 			System.out.println("## SELECCIONE LA TAREA A REALIZAR ##");
+			System.out.println("####################################");
 			System.out.println("1. Visualizar catalogo");
 			System.out.println("2. Generar Ventas");
 			System.out.println("3. Generar Devolucion");
 			System.out.println("4. Buscar por n ticket");
 			System.out.println("0. Salir");
-			opc = sc.nextInt();
+			// control scanner 1
+			String opcTexto = sc.nextLine().trim();
+			try {
+				opc = Integer.parseInt(opcTexto);
+			} catch (NumberFormatException e) {
+				opc = -1;
+			}
 
 			switch (opc) {
 			case 1:
-				System.out.println("~ CATALOGO DE PLANTAS:~");
+				System.out.println("\n~~ CATALOGO DE PLANTAS DISPONIBLES ~~");
+				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
+				System.out.println("---------------------------------------------------------------------------------------------------------------------------\n");
 				break;
 			case 2:
 				ArrayList<Planta> arrayCestaTemporal = new ArrayList<Planta>();
@@ -40,9 +50,9 @@ public class MenuVendedor {
 				while (seguirVentaBoolean) {
 
 					System.out.println("Introduzca e codigo de planta que desee comprar:");
-					int codigoVenta = sc.nextInt();
+					int codigoVenta = ControlErrores.controlErroresInt(sc);
 					System.out.println("Introduzca la cantidad de plantas que desee comprar:");
-					int cantidadVenta = sc.nextInt();
+					int cantidadVenta = ControlErrores.controlErroresInt(sc);
 
 					boolean ventaPosibleBoolean = false;
 					int intentos = 3;
@@ -51,9 +61,12 @@ public class MenuVendedor {
 						if (ControlErrores.validarCodigo(codigoVenta)) {
 
 							if (ControlErrores.validarCantidad(cantidadVenta)) {
-								GestorVendedorService.generarVentas(arrayCatalogoPlantas, arrayCestaTemporal,
-										codigoVenta, cantidadVenta, empleadoRegistrado);
-								ventaPosibleBoolean = true;
+								boolean ventaDone = GestorVendedorService.generarVentas(arrayCatalogoPlantas, arrayCestaTemporal,
+										codigoVenta, cantidadVenta, empleadoRegistrado, sc);
+								if (ventaDone) {
+								    seguirVentaBoolean = false; 
+								    ventaPosibleBoolean = true;
+								}
 							} else {
 								System.out.println("Error, tienes " + intentos
 										+ " intentos \n CUIDADO, EL PROGRAMA SE CERRARA SI TE PASA");
@@ -79,20 +92,21 @@ public class MenuVendedor {
 					}
 
 					if (intentos == 0) {
-						System.out.println("Se ha superado el numero de intentos");
+						System.err.println("Se ha superado el numero de intentos");
 					}
 
 				}
-
 				break;
 			case 3:
-
+				GestorVendedorService.generarDevolucion();
 				break;
 			case 4:
-
+				System.out.println("Introduzca el num de ticket a buscar:");
+				int numTicketBuscar = ControlErrores.controlErroresInt(sc);
+				GestorVendedorService.buscarTicketMostrar(numTicketBuscar);
 				break;
 			case 0:
-				System.err.println("Saliendo del menu de gestores...");
+				System.err.println("🌱 Saliendo del menu de vendedores...");
 				break;
 
 			default:

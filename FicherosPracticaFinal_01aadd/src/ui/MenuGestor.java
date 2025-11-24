@@ -5,10 +5,13 @@ import java.util.Scanner;
 
 import domain.Empleado;
 import domain.Planta;
+import service.GestorGestorService;
+import service.GestorVendedorService;
 
 public class MenuGestor {
 
-	public static void mostrarMenuGestor(Empleado empleadoRegistrado, ArrayList<Planta> arrayCatalogoPlantas, ArrayList<Empleado> arrayCatalogoEmpleados) {
+	public static void mostrarMenuGestor(Empleado empleadoRegistrado, ArrayList<Planta> arrayCatalogoPlantas,
+			ArrayList<Empleado> arrayCatalogoEmpleados) {
 		Scanner sc = new Scanner(System.in);
 		int opc = 0;
 		System.out.println("¡¡¡ BIENVENID@ GESTOR/GESTORA !!! ~~");
@@ -27,10 +30,14 @@ public class MenuGestor {
 
 			switch (opc) {
 			case 1:
-
+				GestorGestorService.altaPlanta(arrayCatalogoPlantas);
+				System.out.println("Nuevo catalogo Alta:");
+				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
 				break;
 			case 2:
-
+				GestorGestorService.bajaPlanta(arrayCatalogoPlantas);
+				System.out.println("Nuevo catalogo Baja:");
+				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
 				break;
 			case 3:
 
@@ -48,7 +55,7 @@ public class MenuGestor {
 
 				break;
 			case 0:
-				System.err.println("Saliendo del menu de gestores...");
+				System.err.println("🌱 Saliendo del menu de gestores...");
 				break;
 
 			default:

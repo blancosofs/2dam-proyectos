@@ -27,7 +27,7 @@ public class MainBea {
 
 	public static void EscribirFichero() {
 
-		try (RandomAccessFile raf = new RandomAccessFile("plantas.dat", "rw")) {
+		try (RandomAccessFile raf = new RandomAccessFile("PLANTAS/plantas.dat", "rw")) { //que si no va vacio!!!
 			for (int i = 1; i < 21; i++) {
 				raf.writeInt(i);
 				float numero = numeroAleatorioPrecio();
@@ -48,7 +48,6 @@ public class MainBea {
 
 		try (FileOutputStream FicheroEscritura = new FileOutputStream("EMPLEADOS/empleado.dat");
 				ObjectOutputStream escritura = new ObjectOutputStream(FicheroEscritura)) {
-
 			Empleado empleado1 = new Empleado(1452, "Teresa", "asb123", "vendedor");
 			Empleado empleado2 = new Empleado(0234, "Miguel Angel", "123qwe", "vendedor");
 			Empleado empleado3 = new Empleado(7532, "Natalia", "xs21qw4", "gestor");
@@ -101,7 +100,7 @@ public class MainBea {
 	public static ArrayList<Empleado> leerEmpleados() {
 		ArrayList<Empleado> listaEmpleados = null;
 
-		try (FileInputStream ficherolectura = new FileInputStream("empleado.dat");
+		try (FileInputStream ficherolectura = new FileInputStream("EMPLEADOS/empleado.dat");
 				ObjectInputStream lectura = new ObjectInputStream(ficherolectura)) {
 
 			// Leer el ArrayList de Empleado desde el archivo
