@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
     <entry loc="/Users/sofs/Library/Java/JavaVirtualMachines/openjdk-25.0.1/Contents/Home" stamp="1762605993342"/>
+    <entry loc="C:\Program Files\Java\jdk-23" stamp="1748856483804"/>
     <entry loc="/Library/Java/JavaVirtualMachines/jdk-24.jdk/Contents/Home" stamp="1757548684527"/>
+    <entry loc="C:\Program Files\Java\jre1.8.0_431" stamp="1730742894281"/>
+    <entry loc="C:\Users\DAM\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.8.v20250724-1412\jre" stamp="1757405981982"/>
     <entry loc="/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home" stamp="1757080297000"/>
+    <entry loc="C:\Program Files\Java\jdk-17.0.12" stamp="1732539188111"/>
+    <entry loc="C:\Users\DAM\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.8.v20250724-1412" stamp="1757405981992"/>
 </dirs>

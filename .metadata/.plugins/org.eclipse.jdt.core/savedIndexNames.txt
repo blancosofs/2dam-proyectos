@@ -1,5 +1,6 @@
-INDEX VERSION 1.134+/Users/sofs/Desktop/cfgs/2DAM/2DAM-proyectos/.metadata/.plugins/org.eclipse.jdt.core
-686787486.index
-85049335.index
+INDEX VERSION 1.134+C:\Users\DAM\Desktop\githubBlanco\2dam-proyectos\.metadata\.plugins\org.eclipse.jdt.core
+3516744152.index
+3527325345.index
+2256567042.index
 1865797976.index
-1757830401.index
+2777860694.index

@@ -13,7 +13,8 @@ public class JugueteriaBlanco {
 		/* verificacion y carga de datos */
 		String url = "jdbc:mysql://localhost:3306/jugueteria";
 		String usuario = "root";
-		String password = "sopita666"; // String password = "cfgs";
+		//String password = "sopita666"; 
+		String password = "cfgs";
 
 		try {
 			/* Cargar el drive de la BD y crear conexion */
@@ -36,6 +37,7 @@ public class JugueteriaBlanco {
 			} else {
 
 				Scanner sc = new Scanner(System.in);
+				System.out.println();
 				System.out.println("~~~ BIENVENIDOS A LA GESTION DE LA JUGUETERIA ~~~");
 				System.out.println("# Porfavor seleccione sobre que va a operar: #");
 				System.out.println("1. JUGUETES");

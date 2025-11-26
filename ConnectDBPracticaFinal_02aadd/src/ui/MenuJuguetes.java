@@ -6,6 +6,7 @@ public class MenuJuguetes {
 
 	public static void main(String[] args) {
 			Scanner sc = new Scanner(System.in);
+			System.out.println();
 			System.out.println("~~~ [JUGETES] OPERACIONES BASICAS  ~~~");
 			System.out.println("# Seleccione la tarea a realizar: #");
 			System.out.println("1. Registrar un nuevo juguete");
@@ -16,6 +17,7 @@ public class MenuJuguetes {
 			
 			switch (opc) {
 			case 1:
+				
 				
 				break;
 
