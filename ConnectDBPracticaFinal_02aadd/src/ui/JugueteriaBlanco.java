@@ -13,8 +13,8 @@ public class JugueteriaBlanco {
 		/* verificacion y carga de datos */
 		String url = "jdbc:mysql://localhost:3306/jugueteria";
 		String usuario = "root";
-		//String password = "sopita666"; 
-		String password = "cfgs";
+		String password = "sopita666"; 
+		//String password = "cfgs";
 
 		try {
 			/* Cargar el drive de la BD y crear conexion */
@@ -33,7 +33,9 @@ public class JugueteriaBlanco {
 			boolean banderaE = ControlErrores.comprobarEmpleadosVacio(conexion);
 
 			if (banderaJ && banderaE) {
-				System.err.println("[info] Filas vacias");
+				System.out.println("[info] Filas vacias. Se procede a la creacion de inserts");
+				ControlErrores.insertarJuguetesVacio(conexion);
+				ControlErrores.insertarEmpleadosVacio(conexion);
 			} else {
 
 				Scanner sc = new Scanner(System.in);
