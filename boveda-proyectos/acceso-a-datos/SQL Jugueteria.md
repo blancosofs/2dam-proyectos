@@ -61,3 +61,66 @@ INSERT INTO empleado (idEmpleado,Nombre,Cargo,Fecha_ingreso) VALUES ( DEFAULT,'n
 ```
 DELETE FROM empleado WHERE idEmpleado=1;
 ```
+
+```
+update empleado set Fecha_ingreso = DATE_ADD('2025-05-04', INTERVAL FLOOR(RAND()*21) DAY) where idEmpleado>0;
+```
+#### realizar venta
+```
+idventa --> auto increment 
+Fecha --> localDate
+Monto --> precio del juguete (xstock)
+tipo_pago --> teclado 
+EMPLEADO_idEMPLEADO --> teclado 
+stock_STAND_idStand --> teclado
+stock_STAND_ZONA_idzona --> consulta
+stock_JUGUETE_idJuguete --> teclado
+
+
+```
+
+## inserts zona
+```
+INSERT INTO zona (idZona, Nombre, Descripcion) VALUES
+(1, 'Luna', 'd1'),
+(2, 'Elisa', 'd2'),
+(3, 'Mario', 'd3'),
+(4, 'Rafa',  'd4');
+
+```
+
+## inserts stand
+```
+INSERT INTO stand (idStand, Nombre, Descripcion, ZONA_idZona) VALUES
+(1, 'A', 'da', 1),   
+(2, 'B', 'db', 1),    
+(3, 'C', 'dc', 2),          
+(4, 'D', 'dd', 3),     
+(5, 'E', 'de', 4);
+
+```
+
+## insert stock
+```
+INSERT INTO stock (STAND_idStand, STAND_ZONA_idzona, JUGUETE_idJuguete, CANTIDAD)
+VALUES (1, 1, 20, 10);
+
+INSERT INTO stock VALUES (2, 1, 19, 1),(3, 2, 3, 3);
+
+
+```
+
+## join para comprobar esto de arriba
+```
+SELECT s.STAND_idStand AS idStand,sd.ZONA_idZona AS idZona, j.idJuguete AS idJuguete, s.CANTIDAD AS Cantidad FROM stock s
+JOIN stand sd ON s.STAND_idStand = sd.idStand AND s.STAND_ZONA_idZona = sd.ZONA_idZona JOIN juguete j ON s.JUGUETE_idJuguete = j.idJuguete
+ORDER BY idStand, idJuguete;
+
+```
+
+pillas los id del stock y los juntas si te counciden con el la tabla de sd en id de stand y zona tmb unes juguete se coincide ordenalo por stand y asi lo reutilizas en realizar venta y mostrarJuguetesStand
+
+## join ver por mes
+```
+SELECT MONTH(Fecha) AS Mes, COUNT(*) AS NumeroVentas, SUM(Monto) AS TotalIngresos FROM venta GROUP BY MONTH(Fecha) ORDER BY Mes;
+```

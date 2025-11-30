@@ -3,8 +3,52 @@ package common;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class ControlErrores {
+	
+	public static int controlErroresInt(Scanner sc) {
+		boolean error = true;
+		int dato = 0;
+		do {
+			if (sc.hasNextInt()) {
+				dato = sc.nextInt();
+				error = false;
+			} else {
+				System.err.println("ERROR. Tiene que ser int");
+			}
+			sc.nextLine();
+		} while (error);
+		return dato;
+	}
+	
+	public static double controlErroresDouble(Scanner sc) {
+		boolean error = true;
+		double datoD = 0;
+		do {
+			if (sc.hasNextDouble()) {
+				datoD = sc.nextDouble();
+				error = false;
+			} else {
+				System.err.println("ERROR. Tiene que ser double");
+			}
+			sc.nextLine();
+		} while (error);
+		return datoD;
+	}
+	
+	public static String controlErroresPago(Scanner sc) {
+	    String tipoPago = sc.nextLine();
+
+	    while (!tipoPago.equalsIgnoreCase("efectivo") &&
+	           !tipoPago.equalsIgnoreCase("tarjeta")) {
+
+	        System.err.println("[error] Pago inválido (efectivo / tarjeta)");
+	        tipoPago = sc.nextLine();
+	    }
+	    return tipoPago;
+	}
+	
 	// true == vacio
 	public static boolean comprobarJuguetesVacio(Connection conexion) {
 		boolean vacio = true; // vacio
@@ -66,17 +110,10 @@ public class ControlErrores {
 					+ "(18,'nombre18','descripcion18',18.2,9) ,\n" + "(19,'nombre19','descripcion19',20.1,1) ,\n"
 					+ "(20,'nombre20','descripcion20',14.8,12);";
 			PreparedStatement sentencia = conexion.prepareStatement(insert);
-			ResultSet resultado = sentencia.executeQuery();
-
-			// Mostrar resultados
-			while (resultado.next()) {
-				int nFilas = resultado.getInt(1); // primera columna
-				if (nFilas <= 0) { // condicion para que vaya vacio!
-					System.out.println("[info] Total de filas creadas en juguete: " + nFilas);
-				} else {
-					System.err.println("[error] No se puedo realizar el insert de juguete");
-				}
-			}
+			
+			int lineas = sentencia.executeUpdate();
+	        System.out.println("[info] Filas insertadas en juguete: " + lineas);
+	        
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,17 +134,10 @@ public class ControlErrores {
 					+ "( DEFAULT,'nombre18','cajero',NULL) ,\n" + "( DEFAULT,'nombre19','cajero',NULL) ,\n"
 					+ "( DEFAULT,'nombre20','jefe',NULL);";
 			PreparedStatement sentencia = conexion.prepareStatement(insert);
-			ResultSet resultado = sentencia.executeQuery();
+			
+			int lineas = sentencia.executeUpdate();
+	        System.out.println("[info] Filas insertadas en empleado: " + lineas);
 
-			// Mostrar resultados
-			while (resultado.next()) {
-				int nFilas = resultado.getInt(1); // primera columna
-				if (nFilas <= 0) { // condicion para que vaya vacio!
-					System.out.println("[info] Total de filas creadas en empleado: " + nFilas);
-				} else {
-					System.err.println("[error] No se puedo realizar el insert de empleado");
-				}
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

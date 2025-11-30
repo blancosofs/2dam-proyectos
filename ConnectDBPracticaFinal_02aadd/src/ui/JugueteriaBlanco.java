@@ -13,8 +13,8 @@ public class JugueteriaBlanco {
 		/* verificacion y carga de datos */
 		String url = "jdbc:mysql://localhost:3306/jugueteria";
 		String usuario = "root";
-		String password = "sopita666"; 
-		//String password = "cfgs";
+		//String password = "sopita666"; 
+		String password = "cfgs";
 
 		try {
 			/* Cargar el drive de la BD y crear conexion */
@@ -51,18 +51,18 @@ public class JugueteriaBlanco {
 
 				switch (opc) {
 				case 1:
-					MenuJuguetes.main(args);
+					MenuJuguetes.main(args, conexion);
 					break;
 
 				case 2:
-					MenuEmpleado.main(args);
+					MenuEmpleado.main(args,conexion);
 
 					break;
 				case 3:
-					MenuVentas.main(args);
+					MenuVentas.main(args, conexion);
 					break;
 				case 4:
-					MenuDatos.main(args);
+					MenuDatos.main(args, conexion);
 					break;
 				case 0:
 					System.out.println("Saliendo del programa...");
