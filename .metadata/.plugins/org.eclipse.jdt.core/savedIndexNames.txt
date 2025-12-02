@@ -1,8 +1,0 @@
-INDEX VERSION 1.134+C:\Users\DAM\Desktop\githubBlanco\2dam-proyectos\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-83290117.index
-2256567042.index
-3765437452.index
-2777860694.index
-230433998.index
-238038555.index
