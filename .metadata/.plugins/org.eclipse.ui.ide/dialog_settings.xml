@@ -35,15 +35,17 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/Users/sofs/Desktop/cfgs/2DAM/2DAM-proyectos/FicherosPracticaFinal_01aadd"/>
+			<item value="/Users/sofs/Desktop/cfgs/2DAM/2DAM-proyectos/ConnectDBPracticaFinal_02aadd"/>
 			<item value="C:\Users\DAM\Desktop\githubBlanco\2dam-proyectos\FicherosPracticaFinal_01aadd"/>
 			<item value="C:\Users\DAM\Desktop\githubBlanco\2dam-proyectos\ConnectDBPracticaFinal_02aadd"/>
 		</list>
 		<section name="SmartImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="706"/>
+			<item key="DIALOG_X_ORIGIN" value="411"/>
 			<item key="DIALOG_Y_ORIGIN" value="187"/>
-			<item key="DIALOG_WIDTH" value="885"/>
-			<item key="DIALOG_HEIGHT" value="629"/>
-			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+			<item key="DIALOG_WIDTH" value="880"/>
+			<item key="DIALOG_HEIGHT" value="619"/>
+			<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
 		</section>
 	</section>
 </section>
