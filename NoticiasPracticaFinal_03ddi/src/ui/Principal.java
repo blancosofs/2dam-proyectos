@@ -1,17 +1,8 @@
 package ui;
 
 import java.awt.EventQueue;
-import java.io.IOException;
-import java.util.Scanner;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
-import java.awt.Color;
 
 public class Principal {
 
