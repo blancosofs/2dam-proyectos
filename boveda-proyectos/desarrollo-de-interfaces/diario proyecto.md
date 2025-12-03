@@ -7,6 +7,5 @@ exNot_dMarcas():String
 exNot_dAs():String
 
 
-
 Estado: Tienes métodos: exNot_dMarcas():String, exNot_dAs():String. Al final son de String y los imprimir normal
 Intentar hacer un switch case para elegir categorias y fuentes.
