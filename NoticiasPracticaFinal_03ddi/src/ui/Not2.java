@@ -38,8 +38,7 @@ public class Not2 {
 	private JLabel lbl_notDeportes;
 	private JLabel lbl_notEconomia;
 
-	private JLabel lbl_Marca;
-	private JLabel lbl_As;
+	private JLabel lbl_Titular;
 	private JLabel lbl_Economista;
 	private JLabel lbl_Confidencial;
 
@@ -79,6 +78,9 @@ public class Not2 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		// Para que no te deje seleccionar mas de uno, como en htmlforms
+		ButtonGroup g = new ButtonGroup();
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,43 +90,65 @@ public class Not2 {
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 800, 600);
 		frame.getContentPane().add(layeredPane);
-		
+
 		panel_selectFuentes = new JPanel();
 		panel_selectFuentes.setLayout(null);
 		panel_selectFuentes.setBackground(new Color(255, 204, 255));
 		panel_selectFuentes.setBounds(0, 0, 784, 561);
 		layeredPane.add(panel_selectFuentes);
-		
-		lbl_preferencias = new JLabel("Seleccione sus preferencias. 1 fuente por categoria .pulse guardar para continuar");
+
+		lbl_preferencias = new JLabel(
+				"Seleccione sus preferencias. 1 fuente por categoria .pulse guardar para continuar");
 		lbl_preferencias.setBounds(27, 26, 700, 31);
 		panel_selectFuentes.add(lbl_preferencias);
-		
+
 		lbl_FuentesDeportes = new JLabel("DEPORTES:");
 		lbl_FuentesDeportes.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lbl_FuentesDeportes.setBounds(26, 68, 180, 23);
 		panel_selectFuentes.add(lbl_FuentesDeportes);
-		
+
 		rdbtn_Marca = new JRadioButton("MARCA");
 		rdbtn_Marca.setBounds(27, 113, 109, 23);
 		panel_selectFuentes.add(rdbtn_Marca);
-		
+
 		rdbtn_As = new JRadioButton("AS");
 		rdbtn_As.setBounds(215, 113, 109, 23);
 		panel_selectFuentes.add(rdbtn_As);
-		
+
 		rdbtn_MundoDep = new JRadioButton("MUNDO DEP");
 		rdbtn_MundoDep.setBounds(427, 113, 109, 23);
 		panel_selectFuentes.add(rdbtn_MundoDep);
-		
+
+		g.add(rdbtn_Marca);
+		g.add(rdbtn_As);
+		g.add(rdbtn_MundoDep);
+
 		btn_save = new JButton("GUARDAR Y NEXT");
 		btn_save.setBounds(605, 464, 151, 53);
 		panel_selectFuentes.add(btn_save);
+		btn_save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (rdbtn_Marca.isSelected()) {
+					String rdbt_num = "1";
+					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+				} else if (rdbtn_As.isSelected()) {
+					String rdbt_num = "2";
+					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+				} else {
+					String rdbt_num = "3";
+					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+				}
+				panel_selectFuentes.setVisible(false);
+				panel_categorias.setVisible(true);
+			}
+		});
 
 		panel_categorias = new JPanel();
 		panel_categorias.setBackground(new Color(0, 153, 255));
 		panel_categorias.setBounds(0, 0, 800, 600);
 		layeredPane.add(panel_categorias);
 		panel_categorias.setLayout(null);
+		panel_categorias.setVisible(false);
 
 		lbl_select = new JLabel("Seleccione una categoría....");
 		lbl_select.setBounds(35, 60, 151, 14);
@@ -164,15 +188,10 @@ public class Not2 {
 		lbl_notDeportes.setBounds(25, 27, 224, 37);
 		panel_deportes.add(lbl_notDeportes);
 
-		lbl_Marca = new JLabel(GestorNoticias.exNot_dMarca());
-		lbl_Marca.setVerticalAlignment(SwingConstants.TOP);
-		lbl_Marca.setBounds(25, 75, 594, 97);
-		panel_deportes.add(lbl_Marca);
-
-		lbl_As = new JLabel(GestorNoticias.exNot_dAs());
-		lbl_As.setVerticalAlignment(SwingConstants.TOP);
-		lbl_As.setBounds(25, 183, 612, 51);
-		panel_deportes.add(lbl_As);
+		lbl_Titular = new JLabel(GestorNoticias.exNot_Titular());
+		lbl_Titular.setVerticalAlignment(SwingConstants.TOP);
+		lbl_Titular.setBounds(25, 75, 594, 97);
+		panel_deportes.add(lbl_Titular);
 
 		panel_economia = new JPanel();
 		panel_economia.setLayout(null);
@@ -195,7 +214,5 @@ public class Not2 {
 		lbl_Confidencial.setBounds(27, 187, 612, 51);
 		panel_economia.add(lbl_Confidencial);
 
-		// Para que no te deje seleccionar mas de uno, como en htmlforms
-		ButtonGroup g = new ButtonGroup();
 	}
 }

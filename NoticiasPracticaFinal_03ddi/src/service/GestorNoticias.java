@@ -10,6 +10,21 @@ import dao.ConfiguracionDAO;
 
 public class GestorNoticias {
 
+	public static String exNot_Titular() {
+		StringBuilder sb = new StringBuilder("Titular ultima hora: \n");
+		try {
+			String web = ConfiguracionDAO.sacarFuentesTXT();
+			Document doc = Jsoup.connect(web).get();
+		
+			Element palabra = doc.select("h2.mod-title a").get(0);
+			String resultado = palabra.html().toUpperCase();
+			sb.append(resultado).append(" \n");
+		} catch (IOException io) {
+			io.printStackTrace();
+		}
+		return sb.toString();
+	}
+
 	public static String exNot_dMarca() {
 		StringBuilder sb = new StringBuilder("Noticias Deportes-Marca: \n");
 		try {

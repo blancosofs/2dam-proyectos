@@ -19,6 +19,10 @@ Un txt editable por el usuario solo en la primera pantalla. puede elegir 1,2,3 y
 https://www.geeksforgeeks.org/java/jradiobutton-java-swing/ 
 Tienes si has seleccionado según que fuente ahora que devuelves. String abc y que escribirFuentes lo recoja y segun con un switch case que escriba. Ahora para sacarFuentes lo vas a leer te metes en el personalizar y donde tengas .dep@@ (string para usar equals) le devuelves el numero  y directo al switch case?
 
+12:45
+Se te va a index out of bounds pqeu no sabe que le estas pasando 
+ten uno soo de titular al que le psas el string de web y segun sea te exponga en un solo lbl el titular
+
 
 No necesitas el contador, solo pide 1 
 

@@ -1,4 +1,4 @@
-package ui;
+package ventanas;
 
 import java.awt.EventQueue;
 
@@ -14,7 +14,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
-import dao.ConfiguracionDAO;
 
 public class Not1 {
 
@@ -101,13 +100,13 @@ public class Not1 {
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtn_Marca.isSelected()) {
 					String rdbt_num = "1";
-					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+					//ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
 				} else if (rdbtn_As.isSelected()) {
 					String rdbt_num = "2";
-					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+					//ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
 				} else {
 					String rdbt_num = "3";
-					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+					//ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
 				}
 			}
 		});

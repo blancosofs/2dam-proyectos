@@ -1,11 +1,24 @@
 package dao;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 public class ConfiguracionDAO {
+	public static void main(String[] args) {
+
+		try {
+
+			System.out.println(sacarFuentesTXT());
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
 
 	public static void escribirFuentesTXT(String rdbt_num) {
 		try {
@@ -25,30 +38,22 @@ public class ConfiguracionDAO {
 		}
 	}
 
-	public static String sacarFuentesTXT() {
-		try {
-			File fichero = new File("TXT/personalizar");
+	public static String sacarFuentesTXT() throws IOException {
+		File fichero = new File("TXT/personalizar");
+		FileReader fr = new FileReader(fichero);
 
-			RandomAccessFile raf = new RandomAccessFile(fichero, "r");
-			raf.seek(0);
+		int opc = fr.read();
 
-			int opc = raf.readInt();
-
-			switch (opc) {
-			case 1:
-				String sMarca = "https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias";
-				return sMarca;
-			case 2:
-				String sAs = "https://as.com/futbol/";
-				return sAs;
-			case 3:
-				String sMundoDep = "https://www.mundodeportivo.com/loultimo";
-				return sMundoDep;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (opc == 1) {
+			String sMarca = "https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias";
+			return sMarca;
+		} else if (opc == 2) {
+			String sAs = "https://as.com/futbol/";
+			return sAs;
+		} else {
+			String sMundoDep = "https://www.mundodeportivo.com/loultimo";
+			return sMundoDep;
 		}
-		return null;
 	}
 
 	public static void comprobarTXT() {
