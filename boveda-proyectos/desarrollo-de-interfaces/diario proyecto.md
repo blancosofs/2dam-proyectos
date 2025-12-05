@@ -1,4 +1,10 @@
 
+## 05/12/2025
+
+Objetivo: lo de noticias per o por la parte de admin. Pilla lo que tienes y que lo muestras (la parte del test)
+
+Estado: Ventana de config y lo de mandar email hecho. Junta todo antes de seguir. Siguiente paso es tener clases diididas (creo que por cada JPanel hay una y dos JFrames)
+
 ## 04/12/2025
 
 ~~Objetivo: Ventana en la que se vean las noticias. Que salgan las seis categorías y según las fuentes un texto área de noticias~~

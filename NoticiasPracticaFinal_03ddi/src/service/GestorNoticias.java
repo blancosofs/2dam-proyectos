@@ -6,14 +6,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import dao.ConfiguracionDAO;
+import dao.PersonalizacionDAO;
 
 public class GestorNoticias {
 
 	public static String exNot_Titular() {
 		StringBuilder sb = new StringBuilder("Titular ultima hora: \n");
 		try {
-			String web = ConfiguracionDAO.sacarFuentesTXT();
+			String web = PersonalizacionDAO.sacarFuentesTXT();
 			Document doc = Jsoup.connect(web).get();
 		
 			Element palabra = doc.select("h2.mod-title a").get(0);
@@ -29,7 +29,7 @@ public class GestorNoticias {
 		StringBuilder sb = new StringBuilder("Noticias Deportes-Marca: \n");
 		try {
 
-			String web = ConfiguracionDAO.sacarFuentesTXT();
+			String web = "https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias";
 			Document doc = Jsoup.connect(web).get();
 
 			Element palabra = doc.select("h2.mod-title a").get(0);
@@ -44,7 +44,7 @@ public class GestorNoticias {
 	public static String exNot_dAs() {
 		StringBuilder sb = new StringBuilder("Noticias Deportes-As: \n");
 		try {
-			String web = ConfiguracionDAO.sacarFuentesTXT();
+			String web ="https://as.com/futbol/";
 			Document doc = Jsoup.connect(web).get();
 
 			Element palabra = doc.select("h3.s_t a").get(0);
@@ -61,7 +61,7 @@ public class GestorNoticias {
 		StringBuilder sb = new StringBuilder("Noticias Deportes-Mundo: \n");
 		try {
 
-			String web = ConfiguracionDAO.sacarFuentesTXT();
+			String web = "https://www.mundodeportivo.com/loultimo";
 			Document doc = Jsoup.connect(web).get();
 
 			Element palabra = doc.select("h2.title a.page-link").get(0);

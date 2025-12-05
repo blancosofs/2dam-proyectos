@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import service.GestorNoticias;
 import javax.swing.SwingConstants;
 
-import dao.ConfiguracionDAO;
+import dao.PersonalizacionDAO;
 
 public class Not2 {
 
@@ -130,13 +130,13 @@ public class Not2 {
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtn_Marca.isSelected()) {
 					String rdbt_num = "1";
-					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+					PersonalizacionDAO.escribirFuentesTXT(rdbt_num);
 				} else if (rdbtn_As.isSelected()) {
 					String rdbt_num = "2";
-					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+					PersonalizacionDAO.escribirFuentesTXT(rdbt_num);
 				} else {
 					String rdbt_num = "3";
-					ConfiguracionDAO.escribirFuentesTXT(rdbt_num);
+					PersonalizacionDAO.escribirFuentesTXT(rdbt_num);
 				}
 				panel_selectFuentes.setVisible(false);
 				panel_categorias.setVisible(true);

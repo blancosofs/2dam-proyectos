@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ConfiguracionDAO {
+public class PersonalizacionDAO {
 	public static void main(String[] args) {
 
 		try {
