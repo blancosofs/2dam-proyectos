@@ -106,8 +106,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "7b53992196d2273b",
@@ -214,8 +213,9 @@
   },
   "active": "7537a17610204094",
   "lastOpenFiles": [
-    "ConfiguracionDAO.md",
+    "Untitled.md",
     "desarrollo-de-interfaces/diario proyecto.md",
+    "ConfiguracionDAO.md",
     "desarrollo-de-interfaces/codigoPorSi/GestorNoticias.md",
     "desarrollo-de-interfaces/codigoPorSi",
     "eclipse revento.md",

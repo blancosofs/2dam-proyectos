@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JRadioButton;
 
 
@@ -68,6 +69,15 @@ public class Not1 {
 				"Seleccione sus preferencias. 1 fuente por categoria .pulse guardar para continuar");
 		lbl_preferencias.setBounds(27, 26, 700, 31);
 		panel_selectFuentes.add(lbl_preferencias);
+		
+
+		JEditorPane editorPane_h1Config = new JEditorPane();
+		editorPane_h1Config.setEnabled(false);
+		editorPane_h1Config.setEditable(false);
+		editorPane_h1Config.setBounds(6, 6, 423, 26);
+		panel_selectFuentes.add(editorPane_h1Config);
+		editorPane_h1Config.setContentType("Bienvenido al panel de configuracionn <br> Seleccione una de las siguientes opciones");
+		
 
 		lbl_FuentesDeportes = new JLabel("DEPORTES:");
 		lbl_FuentesDeportes.setFont(new Font("Tahoma", Font.BOLD, 15));

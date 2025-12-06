@@ -1,4 +1,4 @@
-package ui;
+package ventanas;
 
 import java.awt.EventQueue;
 
@@ -22,7 +22,6 @@ import java.util.Properties;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-import service.GestorNoticias;
 
 import javax.swing.JTextArea;
 
@@ -113,6 +112,7 @@ public class ConfigAdmin {
 		textArea.setEditable(false);
 		textArea.setBounds(10, 57, 748, 41);
 		panel_test.add(textArea);
+		textArea.setLineWrap(true);//que se vea todo
 
 		textArea_1 = new JTextArea(GestorNoticias.exNot_dAs());
 		textArea_1.setLineWrap(true);

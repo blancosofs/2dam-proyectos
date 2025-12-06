@@ -1,4 +1,4 @@
-package ui;
+package ventanas;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -12,14 +12,13 @@ import java.awt.Color;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-import service.GestorNoticias;
 import javax.swing.SwingConstants;
-
-import dao.PersonalizacionDAO;
 
 public class Not2 {
 
@@ -153,6 +152,14 @@ public class Not2 {
 		lbl_select = new JLabel("Seleccione una categoría....");
 		lbl_select.setBounds(35, 60, 151, 14);
 		panel_categorias.add(lbl_select);
+		
+		JEditorPane editorPane_h1Config = new JEditorPane();
+		editorPane_h1Config.setEnabled(false);
+		editorPane_h1Config.setEditable(false);
+		editorPane_h1Config.setBounds(6, 6, 423, 26);
+		panel_categorias.add(editorPane_h1Config);
+		editorPane_h1Config.setContentType("Bienvenido al panel de configuracionn <br> Seleccione una de las siguientes opciones");
+		
 
 		btn_nextEconomia = new JButton("Economia");
 		btn_nextEconomia.setBounds(36, 221, 117, 23);

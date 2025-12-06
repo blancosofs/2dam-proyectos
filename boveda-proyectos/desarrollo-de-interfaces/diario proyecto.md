@@ -1,3 +1,15 @@
+## 06/12/2025
+Objetivo: unir todo
+Te sale mejor borrar y volver. 
+HOY: carga y login separado
+
+usate esto 
+
+```
+textArea.setLineWrap(true);  // ajuste por linea 
+textArea.setWrapStyleWord(true); // ajuste por palabras 
+```
+
 
 ## 05/12/2025
 
