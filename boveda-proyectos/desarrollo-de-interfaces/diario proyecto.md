@@ -1,3 +1,10 @@
+## 07/12/2025
+
+Objetivo: iniciar y tener login y todos los paneles de admin
+
+--> para sacar la contraseña
+https://www.youtube.com/watch?v=bMBsqqFHvJo
+
 ## 06/12/2025
 Objetivo: unir todo
 Te sale mejor borrar y volver. 
@@ -10,6 +17,7 @@ textArea.setLineWrap(true);  // ajuste por linea
 textArea.setWrapStyleWord(true); // ajuste por palabras 
 ```
 
+usr: //no se puede cambiar y tu defines como el principio y el final de cada 
 
 ## 05/12/2025
 

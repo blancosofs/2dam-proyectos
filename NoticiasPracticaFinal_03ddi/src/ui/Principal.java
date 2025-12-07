@@ -13,7 +13,7 @@ public class Principal {
 					miVentanaLogin.setLocationRelativeTo(null);
 					miVentanaLogin.setVisible(true);
 
-					//VentanaCarga miVentanaCarga = new VentanaCarga();
+					// VentanaCarga miVentanaCarga = new VentanaCarga();
 
 				} catch (Exception e) {
 					e.printStackTrace();

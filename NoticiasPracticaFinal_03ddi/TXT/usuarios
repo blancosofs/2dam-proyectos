@@ -1,3 +1,7 @@
-**user1;yuiop;1;b@a.com**
+*user1::pwd1::usr1@email.com
+*user2::pwd2::usr2@email.com
+*user3::pwd3::usr3@email.com
 
-//no se puede cambiar y tu defines como el principio y el final de caa 
+#admin1::pwda1::admin1@email.com
+
+

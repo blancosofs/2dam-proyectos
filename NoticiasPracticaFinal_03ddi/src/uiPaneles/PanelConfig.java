@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 
-public class PanelConfig extends JPanel{
+public class PanelConfig extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JEditorPane editorPane_h1Config;
@@ -16,14 +16,15 @@ public class PanelConfig extends JPanel{
 	private JButton btn_test;
 	private JButton btn_hora;
 
-
-	public PanelConfig(PanelTest panelTest) {
+	public PanelConfig(PanelTest panelTest, PanelHora panelHora, PanelAlta panelAlta, PanelBaja panelBaja) {
 
 		setLayout(null);
+		setBounds(0, 0, 1200, 800);
 
 		editorPane_h1Config = new JEditorPane();
 		editorPane_h1Config.setContentType("text/html");
-		editorPane_h1Config.setText("Bienvenido al panel de configuracion <br> Seleccione una de las siguientes opciones");
+		editorPane_h1Config
+				.setText("Bienvenido al panel de configuracion <br> Seleccione una de las siguientes opciones");
 		editorPane_h1Config.setEnabled(false);
 		editorPane_h1Config.setEditable(false);
 		editorPane_h1Config.setBounds(6, 6, 423, 34);
@@ -34,7 +35,7 @@ public class PanelConfig extends JPanel{
 		add(btn_alta);
 		btn_alta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+
 			}
 		});
 
@@ -64,9 +65,6 @@ public class PanelConfig extends JPanel{
 
 			}
 		});
-
-
-
 
 	}
 }
