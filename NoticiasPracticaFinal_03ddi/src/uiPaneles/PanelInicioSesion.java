@@ -37,13 +37,13 @@ public class PanelInicioSesion extends JPanel {
 		setBounds(0, 0, 1200, 800);
 
 		editorPane_login = new JEditorPane();
-		editorPane_login.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		editorPane_login.setFont(new Font("Argelina", Font.BOLD, 20));
 		editorPane_login.setEditable(false);
 		editorPane_login.setEnabled(false);
-		editorPane_login.setBounds(22, 27, 947, 57);
+		editorPane_login.setBounds(39, 27, 1102, 90);
 		add(editorPane_login);
 		editorPane_login.setContentType("text/html");
-		editorPane_login.setText("Bienvenido a su app de noticias <br> Porfavor, indroduzca usuario y contrasena");
+		editorPane_login.setText("<center> <h1>Bienvenido a su app de noticias <br> <h2>Porfavor, indroduzca usuario y contraseña");
 
 		lbl_usuario = new JLabel("USUARIO:");
 		lbl_usuario.setBounds(215, 234, 61, 16);
@@ -57,14 +57,21 @@ public class PanelInicioSesion extends JPanel {
 		lbl_pwd = new JLabel("CONTRASEÑA:");
 		lbl_pwd.setBounds(215, 284, 101, 16);
 		add(lbl_pwd);
-
-		btn_ver = new JButton("👁️");
-		btn_ver.setBounds(788, 279, 117, 29);
-		add(btn_ver);
-
+		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(350, 279, 414, 26);
 		add(passwordField);
+
+		btn_ver = new JButton("👀");
+		btn_ver.setBounds(788, 279, 117, 29);
+		add(btn_ver);
+		btn_ver.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//si lo muestras ya no lo puedes ocultar. ~~~~~~~~~ ssolo si tienes tiempo
+				passwordField.setEchoChar((char) 0);
+			}
+		});
 
 		btn_iniciarSesion = new JButton("Iniciar Sesion");
 		btn_iniciarSesion.setBounds(457, 363, 220, 29);
@@ -78,6 +85,7 @@ public class PanelInicioSesion extends JPanel {
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass)) {
 					PanelAdmin miPanelAdmin = new PanelAdmin();
 					miPanelAdmin.setBounds(0, 0, 1200, 800);
+					
 					//getParent().add(miPanelAdmin);
 					//setVisible(false);
 				}
