@@ -39,7 +39,6 @@ public class PanelInicioSesion extends JPanel {
 		editorPane_login = new JEditorPane();
 		editorPane_login.setFont(new Font("Argelina", Font.BOLD, 20));
 		editorPane_login.setEditable(false);
-		editorPane_login.setEnabled(false);
 		editorPane_login.setBounds(39, 27, 1102, 90);
 		add(editorPane_login);
 		editorPane_login.setContentType("text/html");
@@ -82,12 +81,21 @@ public class PanelInicioSesion extends JPanel {
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
 				//validarPwd(pass);
-				if (UsuariosDAO.comprobarUsrTXT(usr, pass)) {
+				if (UsuariosDAO.comprobarUsrTXT(usr, pass)==1) {
+					System.out.print("[TEST] llegas?");
 					PanelAdmin miPanelAdmin = new PanelAdmin();
 					miPanelAdmin.setBounds(0, 0, 1200, 800);
-					
+					add(miPanelAdmin);
+		
 					//getParent().add(miPanelAdmin);
 					//setVisible(false);
+				}else if (UsuariosDAO.comprobarUsrTXT(usr, pass)==2) {
+					System.out.println("[TEST] llegas?");
+					PanelUsuario miPanelUsuario = new PanelUsuario();
+					miPanelUsuario.setBounds(0, 0, 1200, 800);
+					add(miPanelUsuario);
+				}else {
+					//ventana de errores
 				}
 			}
 		});
