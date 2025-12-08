@@ -5,6 +5,9 @@ Objetivo: iniciar y tener login y todos los paneles de admin
 --> para sacar la contraseña
 https://www.youtube.com/watch?v=bMBsqqFHvJo
 
+--> LO DE JOSE
+https://stackoverflow.com/questions/1938774/jlabel-get-parent-panel 
+
 ## 06/12/2025
 Objetivo: unir todo
 Te sale mejor borrar y volver. 

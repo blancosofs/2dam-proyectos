@@ -4,8 +4,11 @@ import java.io.BufferedReader;
 
 import java.io.FileReader;
 
+import uiPaneles.PanelAdmin;
+import uiPaneles.PanelInicioSesion;
+
 public class UsuariosDAO {
-	public static void comprobarUsrTXT(String usr, String pass) {
+	public static boolean comprobarUsrTXT(String usr, String pass) {
 
 		try {
 			FileReader archivo = new FileReader("TXT/usuarios");
@@ -14,6 +17,7 @@ public class UsuariosDAO {
 			String linea;
 
 			while ((linea = lector.readLine()) != null) {
+
 				if (linea.startsWith("*")) {
 					String[] cadena = linea.substring(1).split("::");
 
@@ -31,19 +35,21 @@ public class UsuariosDAO {
 
 					String usuario = cadena[0];
 					String password = cadena[1];
-					
+
 					if (usuario.equals(pass) && password.equals(pass)) {
-						// menu admin
+
+						return true;
 					} else {
-						// ventana de error
+						return false;
 					}
 				}
-				
+
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return false;
 
 	}
 }

@@ -37,5 +37,6 @@ public class PanelAdmin extends JLayeredPane {
 		panelConfig.setBounds(0, 0, 1200, 800);
 		add(panelConfig);
 
+		
 	}
 }

@@ -30,6 +30,7 @@ public class PanelInicioSesion extends JPanel {
 	private JButton btn_ver;
 
 	private JPasswordField passwordField;
+	private JButton btn_iniciarSesion;
 
 	public PanelInicioSesion() {
 		setLayout(null);
@@ -64,14 +65,22 @@ public class PanelInicioSesion extends JPanel {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(350, 279, 414, 26);
 		add(passwordField);
-		btn_ver.addActionListener(new ActionListener() {
+
+		btn_iniciarSesion = new JButton("Iniciar Sesion");
+		btn_iniciarSesion.setBounds(457, 363, 220, 29);
+		add(btn_iniciarSesion);
+		btn_iniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
-				validarPwd(pass);
-				UsuariosDAO.comprobarUsrTXT(usr,pass);
-				
+				//validarPwd(pass);
+				if (UsuariosDAO.comprobarUsrTXT(usr, pass)) {
+					PanelAdmin miPanelAdmin = new PanelAdmin();
+					miPanelAdmin.setBounds(0, 0, 1200, 800);
+					//getParent().add(miPanelAdmin);
+					//setVisible(false);
+				}
 			}
 		});
 	}
@@ -79,7 +88,7 @@ public class PanelInicioSesion extends JPanel {
 	public static boolean validarPwd(String pass) {
 		if (pass == null) {
 			String msg = "[error] Contrasena nula";
-			JOptionPane.showMessageDialog(null, msg,"",1);
+			JOptionPane.showMessageDialog(null, msg, "", 1);
 			return false;
 		}
 		Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,7}$");
@@ -87,12 +96,12 @@ public class PanelInicioSesion extends JPanel {
 
 		if (matcher.find()) {
 			String msg = "Contrasena valida";
-			JOptionPane.showMessageDialog(null, msg,"",1);
-		
+			JOptionPane.showMessageDialog(null, msg, "", 1);
+
 			return true;
 		} else {
 			String msg = "[error] Contrasena invalida";
-			JOptionPane.showMessageDialog(null, msg,"",1);
+			JOptionPane.showMessageDialog(null, msg, "", 1);
 			return false;
 		}
 	}
