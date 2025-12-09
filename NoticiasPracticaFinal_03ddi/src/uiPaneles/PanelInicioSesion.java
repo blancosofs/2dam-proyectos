@@ -82,12 +82,10 @@ public class PanelInicioSesion extends JPanel {
 				String pass = new String(passwordField.getPassword());
 				//validarPwd(pass);
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass)==1) {
-					System.out.print("[TEST] llegas?");
 					panelAdmin.setVisible(true);
 					setVisible(false);
 					
 				}else if (UsuariosDAO.comprobarUsrTXT(usr, pass)==2) {
-					System.out.println("[TEST] llegas?");
 					panelUsuario.setVisible(true);
 					setVisible(false);
 					

@@ -23,7 +23,7 @@ public class PanelBaja extends JPanel {
 	private JLabel lbl_pwd;
 	private JLabel lbl_email;
 	
-	private JButton btn_alta;
+	private JButton btn_baja;
 
 	public PanelBaja() {
 		setLayout(null);
@@ -32,7 +32,7 @@ public class PanelBaja extends JPanel {
 		editorPane = new JEditorPane();
 		editorPane.setFont(new Font("Argelina", Font.BOLD, 20));
 		editorPane.setContentType("text/html");
-		editorPane.setText("<center><h1>Bienvenido al panel de alta de usuarios <br> <h2>Introduzca los siguientes datos");
+		editorPane.setText("<center><h1>Bienvenido al panel de baja de usuarios <br> <h2>Introduzca los siguientes datos");
 		editorPane.setEditable(false);
 		editorPane.setBounds(223, 140, 760, 90);
 		add(editorPane);
@@ -64,10 +64,10 @@ public class PanelBaja extends JPanel {
 		lbl_email.setBounds(223, 514, 61, 16);
 		add(lbl_email);
 		
-		btn_alta = new JButton("Alta:");
-		btn_alta.setBounds(866, 584, 117, 29);
-		add(btn_alta);
-		btn_alta.addActionListener(new ActionListener() {
+		btn_baja = new JButton("Baja:");
+		btn_baja.setBounds(866, 584, 117, 29);
+		add(btn_baja);
+		btn_baja.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {

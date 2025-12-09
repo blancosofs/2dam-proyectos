@@ -37,6 +37,7 @@ public class PanelConfig extends JPanel {
 		btn_alta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelAlta.setVisible(true);
+				setVisible(false);
 			}
 		});
 
@@ -46,6 +47,7 @@ public class PanelConfig extends JPanel {
 		btn_baja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelBaja.setVisible(true);
+				setVisible(false);
 			}
 		});
 
@@ -55,6 +57,7 @@ public class PanelConfig extends JPanel {
 		btn_test.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelTest.setVisible(true);
+				setVisible(false);
 			}
 		});
 

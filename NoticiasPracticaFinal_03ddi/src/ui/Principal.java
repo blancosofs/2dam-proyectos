@@ -14,11 +14,9 @@ public class Principal {
 					miVentanaCarga.setUndecorated(true);
 					miVentanaCarga.setResizable(false);
 					miVentanaCarga.setLocationRelativeTo(null);
-					//~~~~~~~~~~~~~~~
 					//no va la imagen
 					miVentanaCarga.setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("icono.png")));
 					miVentanaCarga.setVisible(true);
-					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
