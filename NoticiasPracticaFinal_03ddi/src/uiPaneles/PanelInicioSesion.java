@@ -32,7 +32,7 @@ public class PanelInicioSesion extends JPanel {
 	private JPasswordField passwordField;
 	private JButton btn_iniciarSesion;
 
-	public PanelInicioSesion() {
+	public PanelInicioSesion(PanelAdmin panelAdmin, PanelUsuario panelUsuario) {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 
@@ -83,17 +83,14 @@ public class PanelInicioSesion extends JPanel {
 				//validarPwd(pass);
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass)==1) {
 					System.out.print("[TEST] llegas?");
-					//PanelAdmin miPanelAdmin = new PanelAdmin();
-					//miPanelAdmin.setBounds(0, 0, 1200, 800);
-					//add(miPanelAdmin);
-		
-					//getParent().add(miPanelAdmin);
-					//setVisible(false);
+					panelAdmin.setVisible(true);
+					setVisible(false);
+					
 				}else if (UsuariosDAO.comprobarUsrTXT(usr, pass)==2) {
-					//System.out.println("[TEST] llegas?");
-					//PanelUsuario miPanelUsuario = new PanelUsuario();
-					//miPanelUsuario.setBounds(0, 0, 1200, 800);
-					//add(miPanelUsuario);
+					System.out.println("[TEST] llegas?");
+					panelUsuario.setVisible(true);
+					setVisible(false);
+					
 				}else {
 					String msg = "[error] No encontrado";
 					JOptionPane.showMessageDialog(null, msg, "", 1);

@@ -15,19 +15,21 @@ public class VentanaLogin extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 
-		 //PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion();
-		 //miPanelInicioSesion.setBounds(0, 0, 1200, 800);
-		 //add(miPanelInicioSesion);
-
-		// [TEST]
+		
 		PanelAdmin panelAdmin = new PanelAdmin();
 		panelAdmin.setBounds(0, 0, 1200, 800);
 		add(panelAdmin);
+		panelAdmin.setVisible(false);
 		
-		// [TEST]
-		//PanelUsuario panelUsuario = new PanelUsuario();
-		//panelUsuario.setBounds(0, 0, 1200, 800);
-		//add(panelUsuario);
+
+		PanelUsuario panelUsuario = new PanelUsuario();
+		panelUsuario.setBounds(0, 0, 1200, 800);
+		add(panelUsuario);
+		panelUsuario.setVisible(false);
+		
+		 PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion(panelAdmin, panelUsuario);
+		 miPanelInicioSesion.setBounds(0, 0, 1200, 800);
+		 add(miPanelInicioSesion);
 
 	}
 }
