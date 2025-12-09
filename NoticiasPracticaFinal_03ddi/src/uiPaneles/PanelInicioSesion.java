@@ -67,7 +67,7 @@ public class PanelInicioSesion extends JPanel {
 		btn_ver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//si lo muestras ya no lo puedes ocultar. ~~~~~~~~~ ssolo si tienes tiempo
+				//si lo muestras ya no lo puedes ocultar. ~~~~~~~~~ solo si tienes tiempo
 				passwordField.setEchoChar((char) 0);
 			}
 		});
@@ -83,19 +83,20 @@ public class PanelInicioSesion extends JPanel {
 				//validarPwd(pass);
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass)==1) {
 					System.out.print("[TEST] llegas?");
-					PanelAdmin miPanelAdmin = new PanelAdmin();
-					miPanelAdmin.setBounds(0, 0, 1200, 800);
-					add(miPanelAdmin);
+					//PanelAdmin miPanelAdmin = new PanelAdmin();
+					//miPanelAdmin.setBounds(0, 0, 1200, 800);
+					//add(miPanelAdmin);
 		
 					//getParent().add(miPanelAdmin);
 					//setVisible(false);
 				}else if (UsuariosDAO.comprobarUsrTXT(usr, pass)==2) {
-					System.out.println("[TEST] llegas?");
-					PanelUsuario miPanelUsuario = new PanelUsuario();
-					miPanelUsuario.setBounds(0, 0, 1200, 800);
-					add(miPanelUsuario);
+					//System.out.println("[TEST] llegas?");
+					//PanelUsuario miPanelUsuario = new PanelUsuario();
+					//miPanelUsuario.setBounds(0, 0, 1200, 800);
+					//add(miPanelUsuario);
 				}else {
-					//ventana de errores
+					String msg = "[error] No encontrado";
+					JOptionPane.showMessageDialog(null, msg, "", 1);
 				}
 			}
 		});

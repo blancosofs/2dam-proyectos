@@ -1,8 +1,8 @@
 package uiPaneles;
 
-import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
-public class PanelAdmin extends JLayeredPane {
+public class PanelAdmin extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +37,5 @@ public class PanelAdmin extends JLayeredPane {
 		panelConfig.setBounds(0, 0, 1200, 800);
 		add(panelConfig);
 
-		
 	}
 }

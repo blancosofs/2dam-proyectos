@@ -9,7 +9,6 @@ import uiPaneles.PanelInicioSesion;
 
 public class UsuariosDAO {
 	public static int comprobarUsrTXT(String usr, String pass) {
-
 		try {
 			FileReader archivo = new FileReader("TXT/usuarios");
 			BufferedReader lector = new BufferedReader(archivo);
@@ -52,6 +51,15 @@ public class UsuariosDAO {
 			e.printStackTrace();
 		}
 		return 0;
-
 	}
+	
+	public static String AltaUsuario() {
+		 return null;
+	}
+	
+	public static String BajaUsuario() {
+		 return null;
+	}
+	
+	
 }
