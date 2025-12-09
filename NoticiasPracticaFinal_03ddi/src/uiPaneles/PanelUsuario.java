@@ -27,6 +27,9 @@ public class PanelUsuario extends JPanel {
 			panelUsuarioNuevo.setVisible(true);
 			setVisible(false);
 		}
+		
+		
+		
 	}
 
 }

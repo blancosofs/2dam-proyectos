@@ -12,6 +12,9 @@ public class PersonalizacionDAO {
 			String linea;
 
 			while ((linea = lector.readLine()) != null) {
+				
+				
+				
 				return false;
 			}
 

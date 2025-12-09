@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Image;
-
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,12 +21,14 @@ public class VentanaCarga extends JFrame {
 	Timer barra;
 	int contador = 0;
 
-	public VentanaCarga() {
+	public VentanaCarga(VentanaLogin miVentanaLogin) {
 		setSize(660, 330);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		getContentPane().add(buscarImagen());
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("icono.png")));
+		
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(45, 280, 560, 40);
@@ -41,18 +43,13 @@ public class VentanaCarga extends JFrame {
 				progressBar.setValue(contador);
 
 				if (contador == 80) {
-					// control errores TXT en boolean
+					// control errores para TXT (en boolean)
 					// si distinto de booleano llamas a ventana errores
 					// JOptionPane.showMessageDialog(null, null,"ERROR",1);
 				}
 
 				if (contador >= 100) {
 					barra.stop();
-					// llamas a VentanaLogin
-					VentanaLogin miVentanaLogin = new VentanaLogin();
-					miVentanaLogin.setSize(1200, 800);
-					miVentanaLogin.setResizable(false);
-					miVentanaLogin.setLocationRelativeTo(null);
 					miVentanaLogin.setVisible(true);
 					dispose();
 				}

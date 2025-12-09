@@ -18,7 +18,6 @@ public class PanelConfig extends JPanel {
 	private JButton btn_hora;
 
 	public PanelConfig(PanelTest panelTest, PanelHora panelHora, PanelAlta panelAlta, PanelBaja panelBaja) {
-
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 
