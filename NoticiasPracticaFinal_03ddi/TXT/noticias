@@ -1,3 +1,18 @@
-&marca;;https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias;;;h2.mod-title a
-&deportivo;;https://www.mundodeportivo.com/loultimo;;;h3.s_t a
-&&economista;;https://www.eleconomista.es/?gad_source=1&gad_campaignid=12340049456&gbraid=0AAAAAD9rSRDALaMK6Iu18PDLe2wUmJn6_&gclid=CjwKCAiA3L_JBhAlEiwAlcWO51eciKSeJV52Gth9BD3EoT1VAPo0XBAeXeteBuzCu8bz39StoWJz1xoC5n0QAvD_BwE;;h2.h1 a
+DEPORTESmarca==https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias==h2.mod-title a
+DEPORTESas==https://as.com/futbol/==h3.s_t a
+DEPORTESdeportivo==https://www.mundodeportivo.com/loultimo==h3.s_t a
+ECONOMIAeconomista==https://www.eleconomista.es/?gad_source=1&gad_campaignid=12340049456&gbraid=0AAAAAD9rSRDALaMK6Iu18PDLe2wUmJn6_&gclid=CjwKCAiA3L_JBhAlEiwAlcWO51eciKSeJV52Gth9BD3EoT1VAPo0XBAeXeteBuzCu8bz39StoWJz1xoC5n0QAvD_BwE==h2.h1 a
+ECONOMIAexpansion==https://www.expansion.com/==a.ue-c-cover-content__link h2.ue-c-cover-content__headline
+ECONOMIAdigital==https://www.economiadigital.es/==h2.entry-title a
+NACIONALrtve==https://www.rtve.es/noticias/==span.maintitle
+NACIONALthe objetive==https://theobjective.com/espana/==h2.tno-article-general__content__title a
+NACIONALel mundo==https://www.elmundo.es/espana.html==h2.ue-c-cover-content__headline
+INTERNACIONALeuropapress==https://www.europapress.es/internacional/==h2.articulo-titulo a
+INTERNACIONAL20mins==https://www.20minutos.es/internacional/==h2.c-article__title a
+INTERNACIONALla razon==https://www.larazon.es/internacional/==h2.article__title a
+MUSICArockfm==ttps://www.rockfm.fm/tag/noticia-del-dia==h2.c-article__title a
+MUSICAradiole==https://www.radiole.com/actualidad==h2.title span
+MUSICAel pais==https://elpais.com/noticias/musica/==h2.c_t a
+ALEATORIOcbr==https://www.cbr.com/category/anime-news/==h5.display-card-title a
+ALEATORIOlecturalia==https://www.lecturalia.com/blog/==h2 a
+ALEATORIO9to5==https://9to5mac.com/==a.article__title-link"
