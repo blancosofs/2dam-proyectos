@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 
 import uiPaneles.PanelInicioSesion;
@@ -14,6 +16,7 @@ public class VentanaLogin extends JFrame {
 		setSize(1200, 800);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
 
 		
 		PanelAdmin panelAdmin = new PanelAdmin();

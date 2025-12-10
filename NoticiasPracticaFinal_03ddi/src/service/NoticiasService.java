@@ -6,30 +6,10 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import dao.NoticiasDAO;
 
 public class NoticiasService {
 	
-	public static String exNot_Titular() {
-		StringBuilder sb = new StringBuilder();
-		int noticia=0;
-		try {
 
-			String web = NoticiasDAO.urlNoticia(noticia);
-			Document doc = Jsoup.connect(web).get();
-
-			Element palabra = doc.select("h2.mod-title a").get(0);
-			String resultado = palabra.html().toUpperCase();
-			sb.append(resultado).append(" \n");
-			
-			
-			
-		} catch (IOException io) {
-			io.printStackTrace();
-		}
-		return sb.toString();
-	}
-	
 	public static String exNot_dMarca() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -130,4 +110,5 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
+	
 }

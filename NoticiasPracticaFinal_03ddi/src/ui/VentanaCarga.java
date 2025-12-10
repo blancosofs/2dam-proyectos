@@ -27,7 +27,7 @@ public class VentanaCarga extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		getContentPane().add(buscarImagen());
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
 		
 
 		JProgressBar progressBar = new JProgressBar();

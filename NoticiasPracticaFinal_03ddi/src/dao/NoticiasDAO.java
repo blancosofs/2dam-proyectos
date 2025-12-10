@@ -2,42 +2,46 @@ package dao;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class NoticiasDAO {
-	public static String urlNoticia(int noticia) {
-		String url = null;
+	
+	public static ArrayList<String[]> extraerNoticia() {
+		ArrayList<String[]> arrayListNoticia = new ArrayList<>();;
 		try {
+			String[] arrayNoticia = null;
+
 			FileReader archivo = new FileReader("TXT/noticias");
 			BufferedReader lector = new BufferedReader(archivo);
-			String linea;
 
+			String linea;
 			while ((linea = lector.readLine()) != null) {
 
 				if (linea.startsWith("&")) {
-					String[] cadena = linea.substring(1).split("::");
+					String[] cadena = linea.substring(1).split(";;");
 
-					String marca = cadena[0];
-					String as = cadena[1];
-					String mundo = cadena[2];
-					
-					if (noticia == 1) {
-						url=marca;
-					} else if (noticia == 2) {
-						url=as;
-					}else {
-						url=mundo;
+					for (int i = 0; i < arrayNoticia.length; i++) {
+						arrayNoticia[0] = cadena[0];
+						arrayNoticia[1] = cadena[1];
+						arrayNoticia[2] = cadena[2];
 					}
+					
+					arrayListNoticia.add(arrayNoticia);
+				} 
+				
+				else if (linea.startsWith("&&")) {
+					String[] cadena = linea.substring(2).split(";;");
 
-				} else if (linea.startsWith("&&")) {
-					String[] cadena = linea.substring(2).split("::");
-
+					String nombre = cadena[0];
+					String link = cadena[1];
+					String css = cadena[2];
 				}
 			}
-
+			lector.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return url;
+		return arrayListNoticia;
 	}
-
+	
 }

@@ -12,12 +12,10 @@ public class PersonalizacionDAO {
 			String linea;
 
 			while ((linea = lector.readLine()) != null) {
-				
-				
-				
 				return false;
 			}
-
+			
+			lector.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

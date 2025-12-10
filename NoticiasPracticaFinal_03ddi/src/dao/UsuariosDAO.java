@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 
 import java.io.FileReader;
 
-
 public class UsuariosDAO {
 	public static int comprobarUsrTXT(String usr, String pass) {
 		try {
@@ -21,12 +20,12 @@ public class UsuariosDAO {
 					String usuario = cadena[0];
 					String password = cadena[1];
 					String email = cadena[2];
-					
+
 					if (usuario.equals(usr) && password.equals(pass)) {
-						//System.out.println("[TEST] "+usuario);
-						//System.out.println("[TEST] "+password);
+						// System.out.println("[TEST] "+usuario);
+						// System.out.println("[TEST] "+password);
 						return 2;
-					} 
+					}
 
 				} else if (linea.startsWith("#")) {
 					String[] cadena = linea.substring(1).split("::");
@@ -36,27 +35,25 @@ public class UsuariosDAO {
 					String email = cadena[2];
 
 					if (usuario.equals(usr) && password.equals(pass)) {
-						//System.out.println("[TEST] "+usuario);
-						//System.out.println("[TEST] "+password);
+						// System.out.println("[TEST] "+usuario);
+						// System.out.println("[TEST] "+password);
 						return 1;
-					} 
+					}
 				}
-
 			}
-
+			lector.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
-	
+
 	public static String AltaUsuario() {
-		 return null;
+		return null;
 	}
-	
+
 	public static String BajaUsuario() {
-		 return null;
+		return null;
 	}
-	
-	
+
 }
