@@ -258,7 +258,7 @@ public class NoticiasService {
 			String web = "https://elpais.com/noticias/musica/";
 			Document doc = Jsoup.connect(web).get();
 
-			Element palabra = doc.select("h2.c_t a").get(1);
+			Element palabra = doc.select("h2.c_t a").get(3);
 			String resultado = palabra.html().toUpperCase();
 			sb.append(resultado);
 

@@ -6,17 +6,6 @@ import java.util.ArrayList;
 
 public class NoticiasDAO {
 
-	public static void main(String[] args) {
-		ArrayList<String[]> noticias = extraerNoticia();
-
-		for (String[] categoria : noticias) {
-			for (String titular : categoria) {
-				System.out.println(titular);
-			}
-			System.out.println("---");
-		}
-	}
-
 	public static ArrayList<String[]> extraerNoticia() {
 		ArrayList<String[]> arrayListNoticia = new ArrayList<>();
 
@@ -47,7 +36,7 @@ public class NoticiasDAO {
 					arrayNoticia[2] = cadena[2];
 
 					arrayListNoticia.add(arrayNoticia);
-				}else if (linea.startsWith("NACIONAL")) {
+				} else if (linea.startsWith("NACIONAL")) {
 					String[] cadena = linea.substring(8).split("==");
 
 					String[] arrayNoticia = new String[3];
@@ -56,7 +45,7 @@ public class NoticiasDAO {
 					arrayNoticia[2] = cadena[2];
 
 					arrayListNoticia.add(arrayNoticia);
-				}else if (linea.startsWith("INTERNACIONAL")) {
+				} else if (linea.startsWith("INTERNACIONAL")) {
 					String[] cadena = linea.substring(13).split("==");
 
 					String[] arrayNoticia = new String[3];
@@ -65,7 +54,7 @@ public class NoticiasDAO {
 					arrayNoticia[2] = cadena[2];
 
 					arrayListNoticia.add(arrayNoticia);
-				}else if (linea.startsWith("MUSICA")) {
+				} else if (linea.startsWith("MUSICA")) {
 					String[] cadena = linea.substring(6).split("==");
 
 					String[] arrayNoticia = new String[3];
@@ -74,7 +63,7 @@ public class NoticiasDAO {
 					arrayNoticia[2] = cadena[2];
 
 					arrayListNoticia.add(arrayNoticia);
-				}else if (linea.startsWith("ALEATORIO")) {
+				} else if (linea.startsWith("ALEATORIO")) {
 					String[] cadena = linea.substring(9).split("==");
 
 					String[] arrayNoticia = new String[3];
@@ -91,5 +80,16 @@ public class NoticiasDAO {
 		}
 		return arrayListNoticia;
 	}
+	
+	/*public static void main(String[] args) {
+		ArrayList<String[]> noticias = extraerNoticia();
+
+		for (String[] categoria : noticias) {
+			for (String titular : categoria) {
+				System.out.println(titular);
+			}
+			System.out.println("---");
+		}
+	}*/
 
 }

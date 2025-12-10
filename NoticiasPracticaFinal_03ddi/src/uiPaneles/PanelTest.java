@@ -1,7 +1,8 @@
 package uiPaneles;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import service.NoticiasService;
@@ -35,11 +36,23 @@ public class PanelTest extends JPanel {
 	private JTextArea textArea_N1;
 	private JTextArea textArea_N2;
 	private JTextArea textArea_N3;
+	private JLabel lbl_msgInternacional;
+	private JTextArea textArea_I1;
+	private JTextArea textArea_I2;
+	private JTextArea textArea_I3;
+	private JLabel lbl_msgMusica;
+	private JTextArea textArea_M1;
+	private JTextArea textArea_M2;
+	private JTextArea textArea_M3;
+	private JLabel lbl_msgAleatorio;
+	private JTextArea textArea_A1;
+	private JTextArea textArea_A2;
+	private JTextArea textArea_A3;
 	private JButton btnNextTest;
 
 	public PanelTest() {
 		setLayout(null);
-		   setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 1200, 800);
 
 		lbl_msgDeporte = new JLabel("DEPORTE");
 		lbl_msgDeporte.setBounds(20, 16, 108, 16);
@@ -65,7 +78,7 @@ public class PanelTest extends JPanel {
 		add(textArea_D3);
 		textArea_D3.setLineWrap(true);
 		textArea_D3.setWrapStyleWord(true);
-
+//------------------------------------------------------------------------
 		lbl_msgEconomia = new JLabel("ECONOMIA");
 		lbl_msgEconomia.setBounds(20, 269, 123, 16);
 		add(lbl_msgEconomia);
@@ -90,28 +103,122 @@ public class PanelTest extends JPanel {
 		add(textArea_E3);
 		textArea_E3.setLineWrap(true);
 		textArea_E3.setWrapStyleWord(true);
-
+		// ------------------------------------------------------------------------
 		lbl_msgNacional = new JLabel("NACIONAL");
 		lbl_msgNacional.setBounds(20, 522, 123, 16);
 		add(lbl_msgNacional);
 
-		textArea_N1 = new JTextArea();
+		textArea_N1 = new JTextArea(NoticiasService.exNot_nRtve());
 		textArea_N1.setEditable(false);
 		textArea_N1.setBounds(20, 550, 537, 60);
 		add(textArea_N1);
+		textArea_N1.setLineWrap(true);
+		textArea_N1.setWrapStyleWord(true);
 
-		textArea_N2 = new JTextArea();
+		textArea_N2 = new JTextArea(NoticiasService.exNot_nTheObjetive());
 		textArea_N2.setEditable(false);
 		textArea_N2.setBounds(20, 621, 537, 60);
 		add(textArea_N2);
+		textArea_N2.setLineWrap(true);
+		textArea_N2.setWrapStyleWord(true);
 
-		textArea_N3 = new JTextArea();
+		textArea_N3 = new JTextArea(NoticiasService.exNot_nElMundo());
 		textArea_N3.setEditable(false);
-		textArea_N3.setBounds(20, 692, 537, 60);
+		textArea_N3.setBounds(20, 692, 537, 34);
 		add(textArea_N3);
+		textArea_N3.setLineWrap(true);
+		textArea_N3.setWrapStyleWord(true);
+		// ------------------------------------------------------------------------
+		lbl_msgInternacional = new JLabel("INTERNACIONAL");
+		lbl_msgInternacional.setBounds(614, 16, 108, 16);
+		add(lbl_msgInternacional);
 
-		btnNextTest = new JButton("->");
-		btnNextTest.setBounds(560, 760, 48, 29);
+		textArea_I1 = new JTextArea(NoticiasService.exNot_iEuropaPress());
+		textArea_I1.setWrapStyleWord(true);
+		textArea_I1.setLineWrap(true);
+		textArea_I1.setEditable(false);
+		textArea_I1.setBounds(614, 44, 537, 60);
+		add(textArea_I1);
+		textArea_I1.setLineWrap(true);
+		textArea_I1.setWrapStyleWord(true);
+
+		textArea_I2 = new JTextArea(NoticiasService.exNot_i20mins());
+		textArea_I2.setWrapStyleWord(true);
+		textArea_I2.setLineWrap(true);
+		textArea_I2.setEditable(false);
+		textArea_I2.setBounds(614, 116, 537, 60);
+		add(textArea_I2);
+		textArea_I2.setLineWrap(true);
+		textArea_I2.setWrapStyleWord(true);
+
+		textArea_I3 = new JTextArea(NoticiasService.exNot_iLaRazon());
+		textArea_I3.setWrapStyleWord(true);
+		textArea_I3.setLineWrap(true);
+		textArea_I3.setEditable(false);
+		textArea_I3.setBounds(614, 197, 537, 60);
+		add(textArea_I3);
+		textArea_I3.setLineWrap(true);
+		textArea_I3.setWrapStyleWord(true);
+		// ------------------------------------------------------------------------
+		lbl_msgMusica = new JLabel("MUSICA");
+		lbl_msgMusica.setBounds(614, 269, 123, 16);
+		add(lbl_msgMusica);
+
+		textArea_M1 = new JTextArea(NoticiasService.exNot_mRockFm());
+		textArea_M1.setWrapStyleWord(true);
+		textArea_M1.setLineWrap(true);
+		textArea_M1.setEditable(false);
+		textArea_M1.setBounds(614, 297, 537, 60);
+		add(textArea_M1);
+		textArea_M1.setLineWrap(true);
+		textArea_M1.setWrapStyleWord(true);
+
+		textArea_M2 = new JTextArea(NoticiasService.exNot_mRadiole());
+		textArea_M2.setWrapStyleWord(true);
+		textArea_M2.setLineWrap(true);
+		textArea_M2.setEditable(false);
+		textArea_M2.setBounds(614, 367, 537, 60);
+		add(textArea_M2);
+		textArea_M2.setLineWrap(true);
+		textArea_M2.setWrapStyleWord(true);
+
+		textArea_M3 = new JTextArea(NoticiasService.exNot_mPaisMusica());
+		textArea_M3.setWrapStyleWord(true);
+		textArea_M3.setLineWrap(true);
+		textArea_M3.setEditable(false);
+		textArea_M3.setBounds(614, 439, 537, 60);
+		add(textArea_M3);
+		textArea_M3.setLineWrap(true);
+		textArea_M3.setWrapStyleWord(true);
+		// ------------------------------------------------------------------------
+		lbl_msgAleatorio = new JLabel("ALEATORIO");
+		lbl_msgAleatorio.setBounds(614, 522, 123, 16);
+		add(lbl_msgAleatorio);
+		
+
+		textArea_A1 = new JTextArea(NoticiasService.exNot_aCbr());
+		textArea_A1.setEditable(false);
+		textArea_A1.setBounds(614, 550, 537, 60);
+		add(textArea_A1);
+		textArea_A1.setLineWrap(true);
+		textArea_A1.setWrapStyleWord(true);
+
+		textArea_A2 = new JTextArea(NoticiasService.exNot_aLecturalia());
+		textArea_A2.setEditable(false);
+		textArea_A2.setBounds(614, 621, 537, 60);
+		add(textArea_A2);
+		textArea_A2.setLineWrap(true);
+		textArea_A2.setWrapStyleWord(true);
+
+		textArea_A3 = new JTextArea(NoticiasService.exNot_a9to5());
+		textArea_A3.setEditable(false);
+		textArea_A3.setBounds(614, 692, 537, 34);
+		add(textArea_A3);
+		textArea_A3.setLineWrap(true);
+		textArea_A3.setWrapStyleWord(true);
+		
+		btnNextTest = new JButton("enviar");
+		btnNextTest.setBounds(540, 738, 92, 29);
 		btnNextTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				final String fromEmail = "sofiablanco.cal@gmail.com";
@@ -131,85 +238,37 @@ public class PanelTest extends JPanel {
 						return new PasswordAuthentication(fromEmail, password);
 					}
 				};
-				sb.append("--\nDEPORTES\n--\n").append(textArea_D1.getText()).append("\n").append(textArea_D2.getText())
-						.append("\n").append(textArea_D3.getText()).append("--\nECONOMIA\n--\n")
-						.append(textArea_E1.getText()).append("\n").append(textArea_E2.getText()).append("\n")
-						.append(textArea_E3.getText());
+				sb.append("--\nDEPORTES\n--\n")
+				.append("Titular 1: ").append(textArea_D1.getText()).append("\n")
+				.append("Titular 2: ").append(textArea_D2.getText()).append("\n")
+				.append("Titular 3: ").append(textArea_D3.getText()).append("\n")
+						.append("--\nECONOMIA\n--\n")
+						.append("Titular 4: ").append(textArea_E1.getText()).append("\n")
+						.append("Titular 5: ").append(textArea_E2.getText()).append("\n")
+						.append("Titular 6: ").append(textArea_E3.getText()).append("\n")
+						.append("--\nNACIONAL\n--\n")
+						.append("Titular 7: ").append(textArea_N1.getText()).append("\n")
+						.append("Titular 8: ").append(textArea_N2.getText()).append("\n")
+						.append("Titular 9: ").append(textArea_N3.getText()).append("\n")
+						.append("--\nINTERNACIONAL\n--\n")
+						.append("Titular 10: ").append(textArea_I1.getText()).append("\n")
+						.append("Titular 11: ").append(textArea_I2.getText()).append("\n")
+						.append("Titular 12: ").append(textArea_I3.getText()).append("\n")
+						.append("--\nMUSICA\n--\n")
+						.append("Titular 13: ").append(textArea_M1.getText()).append("\n")
+						.append("Titular 14: ").append(textArea_M2.getText()).append("\n")
+						.append("Titular 15: ").append(textArea_M3.getText()).append("\n")
+						.append("--\nALEATORIO\n--\n")
+						.append("Titular 16: ").append(textArea_A1.getText()).append("\n")
+						.append("Titular 17: ").append(textArea_A2.getText()).append("\n")
+						.append("Titular 18: ").append(textArea_A3.getText());
+
 				Session session = Session.getDefaultInstance(props, auth);
-				sendEmail(session, toEmail, "EMAIL", sb.toString());
+				sendEmail(session, toEmail, "EMAIL DE PRUEBA", sb.toString());
 			}
 		});
 		add(btnNextTest);
-		
-		JLabel lbl_msgDeporte_1 = new JLabel("DEPORTE");
-		lbl_msgDeporte_1.setBounds(614, 16, 108, 16);
-		add(lbl_msgDeporte_1);
-		
-		JTextArea textArea_D1_1 = new JTextArea("");
-		textArea_D1_1.setWrapStyleWord(true);
-		textArea_D1_1.setLineWrap(true);
-		textArea_D1_1.setEditable(false);
-		textArea_D1_1.setBounds(614, 44, 537, 60);
-		add(textArea_D1_1);
-		
-		JTextArea textArea_D2_1 = new JTextArea("");
-		textArea_D2_1.setWrapStyleWord(true);
-		textArea_D2_1.setLineWrap(true);
-		textArea_D2_1.setEditable(false);
-		textArea_D2_1.setBounds(614, 116, 537, 60);
-		add(textArea_D2_1);
-		
-		JTextArea textArea_D3_1 = new JTextArea("");
-		textArea_D3_1.setWrapStyleWord(true);
-		textArea_D3_1.setLineWrap(true);
-		textArea_D3_1.setEditable(false);
-		textArea_D3_1.setBounds(614, 197, 537, 60);
-		add(textArea_D3_1);
-		
-		JLabel lbl_msgEconomia_1 = new JLabel("ECONOMIA");
-		lbl_msgEconomia_1.setBounds(614, 269, 123, 16);
-		add(lbl_msgEconomia_1);
-		
-		JTextArea textArea_E1_1 = new JTextArea("");
-		textArea_E1_1.setWrapStyleWord(true);
-		textArea_E1_1.setLineWrap(true);
-		textArea_E1_1.setEditable(false);
-		textArea_E1_1.setBounds(614, 297, 537, 60);
-		add(textArea_E1_1);
-		
-		JTextArea textArea_E2_1 = new JTextArea("");
-		textArea_E2_1.setWrapStyleWord(true);
-		textArea_E2_1.setLineWrap(true);
-		textArea_E2_1.setEditable(false);
-		textArea_E2_1.setBounds(614, 367, 537, 60);
-		add(textArea_E2_1);
-		
-		JTextArea textArea_E3_1 = new JTextArea("");
-		textArea_E3_1.setWrapStyleWord(true);
-		textArea_E3_1.setLineWrap(true);
-		textArea_E3_1.setEditable(false);
-		textArea_E3_1.setBounds(614, 439, 537, 60);
-		add(textArea_E3_1);
-		
-		JLabel lbl_msgNacional_1 = new JLabel("NACIONAL");
-		lbl_msgNacional_1.setBounds(614, 522, 123, 16);
-		add(lbl_msgNacional_1);
-		
-		JTextArea textArea_N1_1 = new JTextArea();
-		textArea_N1_1.setEnabled(false);
-		textArea_N1_1.setEditable(false);
-		textArea_N1_1.setBounds(614, 550, 537, 60);
-		add(textArea_N1_1);
-		
-		JTextArea textArea_N2_1 = new JTextArea();
-		textArea_N2_1.setEditable(false);
-		textArea_N2_1.setBounds(614, 621, 537, 60);
-		add(textArea_N2_1);
-		
-		JTextArea textArea_N3_1 = new JTextArea();
-		textArea_N3_1.setEditable(false);
-		textArea_N3_1.setBounds(614, 692, 537, 60);
-		add(textArea_N3_1);
+
 	}
 
 	public static void sendEmail(Session session, String toEmail, String subject, String body) {

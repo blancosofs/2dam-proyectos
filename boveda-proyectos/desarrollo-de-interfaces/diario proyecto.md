@@ -3,6 +3,7 @@ Haz las funcionalidades que pedas
 lAS PERSONALIZACIONES MINIMO 1 FUENTE
 Lo de ver los paneles lo mejor es cargar todo y luego controlas visibilidades
 
+
 ## 07/12/2025
 
 Objetivo: iniciar y tener login y todos los paneles de admin
