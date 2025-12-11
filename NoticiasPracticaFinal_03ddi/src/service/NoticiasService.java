@@ -1,23 +1,31 @@
 package service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import dao.NoticiasDAO;
+import domain.Noticias;
+
 public class NoticiasService {
 	
 	public static String exNoticias() {
-
 		StringBuilder sb = new StringBuilder();
+		List<Noticias> fuentes=NoticiasDAO.extraerNoticiasObjeto();
 		try {
-			String web = "https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias";
+			for (Noticias n : fuentes) {
+				
+			String web = (n.getUrl());
 			Document doc = Jsoup.connect(web).get();
 
-			Element palabra = doc.select("h2.mod-title a").get(0);
+			Element palabra = doc.select(n.getCss()).get(0);
 			String resultado = palabra.html().toUpperCase();
 			sb.append(resultado);
+			}
 		} catch (IOException io) {
 			io.printStackTrace();
 		}

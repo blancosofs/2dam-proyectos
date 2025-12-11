@@ -8,7 +8,8 @@ import service.NoticiasService;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -21,37 +22,55 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import dao.NoticiasDAO;
+import domain.Noticias;
+
 public class PanelTest extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private JLabel lbl_msgDeporte;
-	private JTextArea textArea_D1;
+	private JLabel lbl_msgEmail;
+	private JTextArea textArea_NoticiasCompleto;
+
 	private JButton btnNextTest;
 	private JButton btn_volver;
-	private JTextField textField;
+
+	private JTextField textField_email;
+	
+	/*public static void main(String[] args) {
+		List<Noticias> fuentes = NoticiasDAO.extraerNoticiasObjeto();
+		for (Noticias n : fuentes) {
+			System.out.println(n);
+		}
+	}*/
 
 	public PanelTest() {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 
-		lbl_msgDeporte = new JLabel("DEPORTE");
-		lbl_msgDeporte.setBounds(22, 121, 129, 16);
-		add(lbl_msgDeporte);
+		lbl_msgEmail = new JLabel("Email:");
+		lbl_msgEmail.setBounds(22, 121, 129, 16);
+		add(lbl_msgEmail);
 
-		textArea_D1 = new JTextArea(NoticiasService.exNot_dMarca());
-		textArea_D1.setEditable(false);
-		textArea_D1.setBounds(22, 197, 1151, 474);
-		add(textArea_D1);
-		textArea_D1.setLineWrap(true);
-		textArea_D1.setWrapStyleWord(true);
-		
+		textField_email = new JTextField();
+		textField_email.setBounds(163, 116, 1007, 26);
+		add(textField_email);
+		textField_email.setColumns(10);
+
+		textArea_NoticiasCompleto = new JTextArea(NoticiasService.exNoticias());
+		textArea_NoticiasCompleto.setEditable(false);
+		textArea_NoticiasCompleto.setBounds(22, 197, 1151, 474);
+		add(textArea_NoticiasCompleto);
+		textArea_NoticiasCompleto.setLineWrap(true);
+		textArea_NoticiasCompleto.setWrapStyleWord(true);
+
+
 		btnNextTest = new JButton("enviar");
 		btnNextTest.setBounds(1081, 732, 92, 29);
 		btnNextTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				final String fromEmail = "sofiablanco.cal@gmail.com";
 				final String password = "fvtr pbjr czbk jylm";
-				final String toEmail = "sofiablanco.cal@gmail.com";
+				final String toEmail = textField_email.getText();
 				final StringBuilder sb = new StringBuilder();
 
 				Properties props = new Properties();
@@ -61,6 +80,9 @@ public class PanelTest extends JPanel {
 				props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 				props.put("mail.smtp.auth", "true");
 				props.put("mail.smtp.port", "465");
+
+				sb.append("FECHA/HORA(se encuentra en desarrollo)");
+
 				Authenticator auth = new Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(fromEmail, password);
@@ -68,24 +90,19 @@ public class PanelTest extends JPanel {
 				};
 
 				Session session = Session.getDefaultInstance(props, auth);
-				sendEmail(session, toEmail, "EMAIL DE PRUEBA", sb.toString());
+				sendEmail(session, toEmail, "NOTICIAS DAM", sb.toString());
 			}
 		});
 		add(btnNextTest);
-		
+
 		btn_volver = new JButton("<--");
 		btn_volver.setBounds(20, 764, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//como cambio al panel padre sin pasarselo como parametro
+				// como cambio al panel padre sin pasarselo como parametro
 			}
 		});
 		add(btn_volver);
-		
-		textField = new JTextField();
-		textField.setBounds(163, 116, 1007, 26);
-		add(textField);
-		textField.setColumns(10);
 
 	}
 
@@ -96,7 +113,7 @@ public class PanelTest extends JPanel {
 			msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
 			msg.addHeader("format", "flowed");
 			msg.addHeader("Content-Transfer-Encoding", "8bit");
-			msg.setFrom(new InternetAddress("no_reply@example.com", "SOFIA"));
+			msg.setFrom(new InternetAddress("no_reply@example.com", "BLANCO SOFIA"));
 			msg.setReplyTo(InternetAddress.parse("no_reply_DOSA@DAM.com", false));
 			msg.setSubject(subject, "UTF-8");
 			msg.setText(body, "UTF-8");
