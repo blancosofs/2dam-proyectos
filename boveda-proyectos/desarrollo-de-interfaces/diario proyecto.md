@@ -1,3 +1,43 @@
+
+## 11/12/25
+1. Component parentComponent
+Es el componente padre sobre el que se va a centrar el JOptionPane.
+Normalmente es this si estás dentro de un JFrame o JPanel.
+Si pones null, el cuadro se centra en la pantalla.
+Ejemplos:
+this → se centra en la ventana actual.
+null → se centra en el monitor.
+2. Object message
+Es lo que quieres mostrar dentro del cuadro de diálogo.
+Puede ser:
+String (lo normal)
+JLabel
+JPanel
+Cualquier componente Swing
+3. String title
+Es el título de la ventana del diálogo.
+Ejemplos:
+"Confirmación"
+"Aviso"
+"¿Seguro?"
+4. int optionType
+Define qué botones tendrá el cuadro de diálogo.
+Valores posibles:
+JOptionPane.OK_CANCEL_OPTION
+JOptionPane.YES_NO_OPTION
+JOptionPane.YES_NO_CANCEL_OPTION
+JOptionPane.DEFAULT_OPTION
+Esto controla los botones, no el icono.
+5. int messageType
+Define el icono por defecto y el estilo del mensaje:
+Valores posibles:
+messageType	Icono
+JOptionPane.ERROR_MESSAGE	❌
+JOptionPane.INFORMATION_MESSAGE	ℹ️
+JOptionPane.WARNING_MESSAGE	⚠️
+JOptionPane.QUESTION_MESSAGE	?
+JOptionPane.PLAIN_MESSAGE	sin icono
+
 ## 09/12 /25
 Haz las funcionalidades que pedas
 lAS PERSONALIZACIONES MINIMO 1 FUENTE

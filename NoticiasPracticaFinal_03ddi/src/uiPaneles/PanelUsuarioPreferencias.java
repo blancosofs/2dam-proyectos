@@ -1,5 +1,6 @@
 package uiPaneles;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import dao.PreferenciasDAO;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class PanelUsuarioPreferencias extends JPanel {
 
@@ -47,6 +49,8 @@ public class PanelUsuarioPreferencias extends JPanel {
 	private JCheckBox chckbx_A1;
 	private JCheckBox chckbx_A2;
 	private JCheckBox chckbx_A3;
+	
+	private JButton btn_exit;
 
 	public PanelUsuarioPreferencias(PanelUsuarioNoticias panelUsuarioNoticias) {
 		int[] seleccionPreferencias = new int[6];
@@ -194,6 +198,22 @@ public class PanelUsuarioPreferencias extends JPanel {
 				setVisible(false);
 			}
 		});
+		
+		btn_exit = new JButton("x");
+		btn_exit.setBorder(null);
+		btn_exit.setBackground(new Color(255, 21, 0));
+		btn_exit.setBounds(1141, 6, 53, 26);
+
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (confirmacion == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+		add(btn_exit);
 
 	}
 }

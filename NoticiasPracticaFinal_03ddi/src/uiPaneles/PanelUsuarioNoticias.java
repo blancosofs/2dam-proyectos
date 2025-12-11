@@ -24,6 +24,7 @@ public class PanelUsuarioNoticias extends JPanel{
 	private JTextArea textArea_N2;
 	private JTextArea textArea_N3;
 	
+	
 	public PanelUsuarioNoticias() {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
@@ -166,6 +167,8 @@ public class PanelUsuarioNoticias extends JPanel{
 		textArea_N3_1.setEditable(false);
 		textArea_N3_1.setBounds(614, 692, 537, 60);
 		add(textArea_N3_1);
+		
+		
 		
 	}
 }

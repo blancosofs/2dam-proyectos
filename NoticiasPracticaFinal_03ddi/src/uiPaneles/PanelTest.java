@@ -48,6 +48,7 @@ public class PanelTest extends JPanel {
 	private JTextArea textArea_A2;
 	private JTextArea textArea_A3;
 	private JButton btnNextTest;
+	private JButton btn_volver;
 
 	public PanelTest() {
 		setLayout(null);
@@ -267,6 +268,15 @@ public class PanelTest extends JPanel {
 			}
 		});
 		add(btnNextTest);
+		
+		btn_volver = new JButton("<--");
+		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//como cambio al panel padre sin pasarselo como parametro
+			}
+		});
+		add(btn_volver);
 
 	}
 
@@ -289,4 +299,6 @@ public class PanelTest extends JPanel {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

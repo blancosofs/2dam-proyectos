@@ -3,20 +3,17 @@ package uiPaneles;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dao.UsuariosDAO;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
-import java.awt.Font;
 
 public class PanelInicioSesion extends JPanel {
 
@@ -29,6 +26,7 @@ public class PanelInicioSesion extends JPanel {
 	private JLabel lbl_pwd;
 
 	private JButton btn_ver;
+	private JButton btn_exit;
 
 	private JPasswordField passwordField;
 	private JButton btn_iniciarSesion;
@@ -43,7 +41,8 @@ public class PanelInicioSesion extends JPanel {
 		editorPane_login.setBounds(39, 27, 1102, 90);
 		add(editorPane_login);
 		editorPane_login.setContentType("text/html");
-		editorPane_login.setText("<center> <h1>Bienvenido a su app de noticias <br> <h2>Porfavor, indroduzca usuario y contraseña");
+		editorPane_login.setText(
+				"<center> <h1>Bienvenido a su app de noticias <br> <h2>Porfavor, indroduzca usuario y contraseña");
 
 		lbl_usuario = new JLabel("USUARIO:");
 		lbl_usuario.setBounds(215, 234, 61, 16);
@@ -57,7 +56,7 @@ public class PanelInicioSesion extends JPanel {
 		lbl_pwd = new JLabel("CONTRASEÑA:");
 		lbl_pwd.setBounds(215, 284, 101, 16);
 		add(lbl_pwd);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(350, 279, 414, 26);
 		add(passwordField);
@@ -68,7 +67,7 @@ public class PanelInicioSesion extends JPanel {
 		btn_ver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//si lo muestras ya no lo puedes ocultar. ~~~~~~~~~ solo si tienes tiempo
+				// si lo muestras ya no lo puedes ocultar ~~~~~~~~~ solo si tienes tiempo
 				passwordField.setEchoChar((char) 0);
 			}
 		});
@@ -81,41 +80,35 @@ public class PanelInicioSesion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
-				//validarPwd(pass);
-				if (UsuariosDAO.comprobarUsrTXT(usr, pass)==1) {
+				if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 1) {
 					panelAdmin.setVisible(true);
 					setVisible(false);
-					
-				}else if (UsuariosDAO.comprobarUsrTXT(usr, pass)==2) {
+
+				} else if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 2) {
 					panelUsuario.setVisible(true);
 					setVisible(false);
-					
-				}else {
-					String msg = "[error] No encontrado";
+				} else {
+					String msg = "[error] Usuario no encontrado";
 					JOptionPane.showMessageDialog(null, msg, "", 1);
 				}
 			}
 		});
-	}
+		btn_iniciarSesion.setEnabled(false);
 
-	public static boolean validarPwd(String pass) {
-		if (pass == null) {
-			String msg = "[error] Contrasena nula";
-			JOptionPane.showMessageDialog(null, msg, "", 1);
-			return false;
-		}
-		Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,7}$");
-		Matcher matcher = pattern.matcher(pass);
+		btn_exit = new JButton("x");
+		btn_exit.setBorder(null);
+		btn_exit.setBounds(1141, 6, 53, 26);
 
-		if (matcher.find()) {
-			String msg = "Contrasena valida";
-			JOptionPane.showMessageDialog(null, msg, "", 1);
-
-			return true;
-		} else {
-			String msg = "[error] Contrasena invalida";
-			JOptionPane.showMessageDialog(null, msg, "", 1);
-			return false;
-		}
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// 0->aceptar, 1->no, 2->cancelar
+				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (confirmacion == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+		add(btn_exit);
 	}
 }

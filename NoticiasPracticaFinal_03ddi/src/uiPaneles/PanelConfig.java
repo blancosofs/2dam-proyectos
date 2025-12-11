@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelConfig extends JPanel {
@@ -16,6 +17,9 @@ public class PanelConfig extends JPanel {
 	private JButton btn_baja;
 	private JButton btn_test;
 	private JButton btn_hora;
+
+	private JButton btn_exit;
+	private JButton btn_volver;
 
 	public PanelConfig(PanelTest panelTest, PanelHora panelHora, PanelAlta panelAlta, PanelBaja panelBaja) {
 		setLayout(null);
@@ -65,9 +69,34 @@ public class PanelConfig extends JPanel {
 		add(btn_hora);
 		btn_hora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
+
+		btn_exit = new JButton("x");
+		btn_exit.setBorder(null);
+		btn_exit.setBounds(1141, 6, 53, 26);
+
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (confirmacion == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+		add(btn_exit);
+		
+		btn_volver = new JButton("<--");
+		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//como cambio al panel padre sin pasarselo como parametro
+			}
+		});
+		add(btn_volver);
 
 	}
 }

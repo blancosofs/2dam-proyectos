@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import java.awt.Font;
+
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -19,6 +21,7 @@ public class VentanaLogin extends JFrame {
 	private JMenu mnNewMenu;
 	private JMenuItem mntm_ver;
 	private JMenuItem mntm_des;
+
 
 	public VentanaLogin() {
 		setSize(1200, 800);
@@ -32,9 +35,10 @@ public class VentanaLogin extends JFrame {
 		panelUsuario.setVisible(false);
 
 		menuBar = new JMenuBar();
-		menuBar.setBounds(40, 61, 51, 33);
+		menuBar.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		menuBar.setBounds(0, 0, 1200, 15);
 
-		mnNewMenu = new JMenu("...");
+		mnNewMenu = new JMenu("Acerca de ..");
 		menuBar.add(mnNewMenu);
 
 		mntm_ver = new JMenuItem("Version 1.0");
@@ -42,16 +46,15 @@ public class VentanaLogin extends JFrame {
 
 		mntm_des = new JMenuItem("Blanco Calsina Sofía");
 		mnNewMenu.add(mntm_des);
-		
+
 		PanelAdmin panelAdmin = new PanelAdmin();
 		panelAdmin.setBounds(0, 0, 1200, 800);
 		getContentPane().add(panelAdmin);
 		panelAdmin.setVisible(false);
-				
+
 		PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion(panelAdmin, panelUsuario);
 		miPanelInicioSesion.setBounds(0, 0, 1200, 800);
 		getContentPane().add(miPanelInicioSesion);
 		miPanelInicioSesion.add(menuBar);
-
 	}
 }

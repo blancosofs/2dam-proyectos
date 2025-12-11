@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "desarrollo-de-interfaces/dudas.md",
+                "file": "desarrollo-de-interfaces/diario proyecto.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dudas"
+              "title": "diario proyecto"
             }
           },
           {
@@ -242,8 +242,8 @@
   },
   "active": "8554af986cec547a",
   "lastOpenFiles": [
-    "desarrollo-de-interfaces/diario proyecto.md",
     "desarrollo-de-interfaces/dudas.md",
+    "desarrollo-de-interfaces/diario proyecto.md",
     "desarrollo-de-interfaces/codigoPorSi/GestorNoticias.md",
     "nnn.md",
     "ConfiguracionDAO.md",

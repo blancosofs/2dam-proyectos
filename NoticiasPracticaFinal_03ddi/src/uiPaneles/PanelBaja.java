@@ -22,6 +22,7 @@ public class PanelBaja extends JPanel {
 	private JLabel lbl_nombre;
 
 	private JButton btn_baja;
+	private JButton btn_volver;
 
 	public PanelBaja() {
 		setLayout(null);
@@ -57,6 +58,15 @@ public class PanelBaja extends JPanel {
 				UsuariosDAO.bajaUsuario(nombreBaja);
 			}
 		});
+		
+		btn_volver = new JButton("<--");
+		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//como cambio al panel padre sin pasarselo como parametro
+			}
+		});
+		add(btn_volver);
 
 	}
 }
