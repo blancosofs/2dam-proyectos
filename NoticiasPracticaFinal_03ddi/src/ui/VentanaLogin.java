@@ -43,12 +43,12 @@ public class VentanaLogin extends JFrame {
 		mntm_des = new JMenuItem("Blanco Calsina Sofía");
 		mnNewMenu.add(mntm_des);
 		
-				PanelAdmin panelAdmin = new PanelAdmin();
-				panelUsuario.add(panelAdmin);
-				panelAdmin.setBounds(0, 0, 1200, 800);
-				panelAdmin.setVisible(false);
+		PanelAdmin panelAdmin = new PanelAdmin();
+		panelUsuario.add(panelAdmin);
+		panelAdmin.setBounds(0, 0, 1200, 800);
+		panelAdmin.setVisible(false);
 				
-						PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion(panelAdmin, panelUsuario);
+		PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion(panelAdmin, panelUsuario);
 		miPanelInicioSesion.setBounds(0, 0, 1200, 800);
 		getContentPane().add(miPanelInicioSesion);
 		miPanelInicioSesion.add(menuBar);

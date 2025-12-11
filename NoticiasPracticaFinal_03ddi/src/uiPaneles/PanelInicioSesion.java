@@ -3,6 +3,7 @@ package uiPaneles;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 

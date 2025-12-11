@@ -36,7 +36,7 @@ public class VentanaCarga extends JFrame {
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(45, 280, 560, 40);
-		progressBar.setStringPainted(true);
+		//progressBar.setStringPainted(true);
 		progressBar.setOpaque(true);
 		getContentPane().add(progressBar);
 
