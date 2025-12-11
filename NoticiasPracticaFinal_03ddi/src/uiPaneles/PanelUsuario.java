@@ -6,6 +6,8 @@ import dao.PreferenciasDAO;
 
 public class PanelUsuario extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+
 	public PanelUsuario() {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
@@ -15,11 +17,12 @@ public class PanelUsuario extends JPanel {
 		add(panelUsuarioNoticias);
 		panelUsuarioNoticias.setVisible(false);
 		
-		PanelUsuarioPreferencias panelUsuarioNuevo = new PanelUsuarioPreferencias();
+		PanelUsuarioPreferencias panelUsuarioNuevo = new PanelUsuarioPreferencias(panelUsuarioNoticias);
 		panelUsuarioNuevo.setBounds(0, 0, 1200, 800);
 		add(panelUsuarioNuevo);
 		panelUsuarioNuevo.setVisible(false);
 		
+		//EDITAAAAR
 		if(!PreferenciasDAO.comprobarPersonalizacion()) { //si es false
 			panelUsuarioNoticias.setVisible(true);
 			setVisible(false);

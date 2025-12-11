@@ -1,14 +1,10 @@
 package service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
-import dao.NoticiasDAO;
-
 
 public class NoticiasService {
 	

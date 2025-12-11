@@ -3,21 +3,22 @@ package dao;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class PreferenciasDAO {
 	public static boolean comprobarPersonalizacion() {
 		// true lleno, false vacio
 		try {
-			FileReader archivo = new FileReader("TXT/preferencias");
-			BufferedReader lector = new BufferedReader(archivo);
+			BufferedReader lector = new BufferedReader(new FileReader("TXT/configuracion"));
 			String linea;
-
 			while ((linea = lector.readLine()) != null) {
+				//fin de personalizacion
+				//EDITAAAAAAR
+				if (linea.endsWith("&"))
 				return false;
 			}
-
 			lector.close();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return true;
@@ -25,7 +26,7 @@ public class PreferenciasDAO {
 
 	public static void escribirPreferencias(int[] seleccionPreferencias) {
 		try {
-			FileWriter fw = new FileWriter("TXT/preferencias", true);
+			FileWriter fw = new FileWriter("TXT/configuracion", true);
 			fw.write("*");
 			for (int i = 0; i < seleccionPreferencias.length; i++) {
 				System.out.print(seleccionPreferencias[i]);

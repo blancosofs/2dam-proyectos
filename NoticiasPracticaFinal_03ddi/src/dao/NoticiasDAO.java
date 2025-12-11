@@ -12,7 +12,7 @@ public class NoticiasDAO {
 	public static List<Noticias> extraerNoticiasObjeto() {
 		List<Noticias> fuentes=new ArrayList<>();
 		try {
-			FileReader archivo = new FileReader("TXT/noticias");
+			FileReader archivo = new FileReader("TXT/configuracion");
 			BufferedReader lector = new BufferedReader(archivo);
 
 			String linea;

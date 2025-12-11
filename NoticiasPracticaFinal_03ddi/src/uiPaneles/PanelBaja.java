@@ -19,12 +19,7 @@ public class PanelBaja extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
-	private JTextField textField_pwd;
-	private JTextField textField_email;
-
 	private JLabel lbl_nombre;
-	private JLabel lbl_pwd;
-	private JLabel lbl_email;
 
 	private JButton btn_baja;
 

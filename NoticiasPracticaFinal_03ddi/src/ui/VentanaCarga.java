@@ -21,6 +21,7 @@ import javax.swing.Timer;
 import common.ControlErrores;
 
 public class VentanaCarga extends JFrame {
+	private static final long serialVersionUID = 1L;
 	Timer barra;
 	int contador = 0;
 

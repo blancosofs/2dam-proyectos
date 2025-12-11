@@ -8,6 +8,8 @@ import service.NoticiasService;
 import javax.swing.JLabel;
 
 public class PanelUsuarioNoticias extends JPanel{
+
+	private static final long serialVersionUID = 1L;
 	
 	private JLabel lbl_msgDeporte;
 	private JTextArea textArea_D1;

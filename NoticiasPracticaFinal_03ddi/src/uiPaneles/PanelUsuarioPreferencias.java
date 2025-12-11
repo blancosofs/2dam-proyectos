@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 
 public class PanelUsuarioPreferencias extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JEditorPane editorPane;
 	private JButton button;
 	private JLabel lbl_deportes;
@@ -46,7 +48,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 	private JCheckBox chckbx_A2;
 	private JCheckBox chckbx_A3;
 
-	public PanelUsuarioPreferencias() {
+	public PanelUsuarioPreferencias(PanelUsuarioNoticias panelUsuarioNoticias) {
 		int[] seleccionPreferencias = new int[6];
 
 		setLayout(null);
@@ -188,6 +190,8 @@ public class PanelUsuarioPreferencias extends JPanel {
 					seleccionPreferencias[5] = 1;
 				}
 				PreferenciasDAO.escribirPreferencias(seleccionPreferencias);
+				panelUsuarioNoticias.setVisible(true);
+				setVisible(false);
 			}
 		});
 
