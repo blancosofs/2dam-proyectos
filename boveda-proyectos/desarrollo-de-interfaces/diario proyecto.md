@@ -38,6 +38,55 @@ JOptionPane.WARNING_MESSAGE	⚠️
 JOptionPane.QUESTION_MESSAGE	?
 JOptionPane.PLAIN_MESSAGE	sin icono
 
+
+sb.append("--\nDEPORTES\n--\n")
+
+.append("Titular 1: ").append(textArea_D1.getText()).append("\n")
+
+.append("Titular 2: ").append(textArea_D2.getText()).append("\n")
+
+.append("Titular 3: ").append(textArea_D3.getText()).append("\n")
+
+.append("--\nECONOMIA\n--\n")
+
+.append("Titular 4: ").append(textArea_E1.getText()).append("\n")
+
+.append("Titular 5: ").append(textArea_E2.getText()).append("\n")
+
+.append("Titular 6: ").append(textArea_E3.getText()).append("\n")
+
+.append("--\nNACIONAL\n--\n")
+
+.append("Titular 7: ").append(textArea_N1.getText()).append("\n")
+
+.append("Titular 8: ").append(textArea_N2.getText()).append("\n")
+
+.append("Titular 9: ").append(textArea_N3.getText()).append("\n")
+
+.append("--\nINTERNACIONAL\n--\n")
+
+.append("Titular 10: ").append(textArea_I1.getText()).append("\n")
+
+.append("Titular 11: ").append(textArea_I2.getText()).append("\n")
+
+.append("Titular 12: ").append(textArea_I3.getText()).append("\n")
+
+.append("--\nMUSICA\n--\n")
+
+.append("Titular 13: ").append(textArea_M1.getText()).append("\n")
+
+.append("Titular 14: ").append(textArea_M2.getText()).append("\n")
+
+.append("Titular 15: ").append(textArea_M3.getText()).append("\n")
+
+.append("--\nALEATORIO\n--\n")
+
+.append("Titular 16: ").append(textArea_A1.getText()).append("\n")
+
+.append("Titular 17: ").append(textArea_A2.getText()).append("\n")
+
+.append("Titular 18: ").append(textArea_A3.getText());
+
 ## 09/12 /25
 Haz las funcionalidades que pedas
 lAS PERSONALIZACIONES MINIMO 1 FUENTE
