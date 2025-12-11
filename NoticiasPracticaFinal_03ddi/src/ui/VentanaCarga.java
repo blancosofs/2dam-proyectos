@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -16,6 +17,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
+
+import common.ControlErrores;
 
 public class VentanaCarga extends JFrame {
 	Timer barra;
@@ -36,16 +39,16 @@ public class VentanaCarga extends JFrame {
 		progressBar.setOpaque(true);
 		getContentPane().add(progressBar);
 
-		barra = new Timer(500, new ActionListener() { // Timer el millisegundos. Con 500 avanza en 5segundos
+		barra = new Timer(500, new ActionListener() { // Timer en millisegundos. Con 500 avanza en 5segundos
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				contador += 20;
 				progressBar.setValue(contador);
 
 				if (contador == 80) {
-					// control errores para TXT (en boolean)
-					// si distinto de booleano llamas a ventana errores
-					// JOptionPane.showMessageDialog(null, null,"ERROR",1);
+					if(ControlErrores.comprobarTXT()) {
+						JOptionPane.showMessageDialog(null, null,"ERROR",1);
+					}
 				}
 
 				if (contador >= 100) {

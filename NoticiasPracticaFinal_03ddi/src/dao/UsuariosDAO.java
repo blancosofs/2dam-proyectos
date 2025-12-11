@@ -17,9 +17,10 @@ public class UsuariosDAO {
 				if (linea.startsWith("*")) {
 					String[] cadena = linea.substring(1).split("::");
 
-					String usuario = cadena[0];
-					String password = cadena[1];
-					String email = cadena[2];
+					String id = cadena[0];
+					String usuario = cadena[1];
+					String password = cadena[2];
+					String email = cadena[3];
 
 					if (usuario.equals(usr) && password.equals(pass)) {
 						// System.out.println("[TEST] "+usuario);
@@ -30,9 +31,10 @@ public class UsuariosDAO {
 				} else if (linea.startsWith("#")) {
 					String[] cadena = linea.substring(1).split("::");
 
-					String usuario = cadena[0];
-					String password = cadena[1];
-					String email = cadena[2];
+					String id = cadena[0];
+					String usuario = cadena[1];
+					String password = cadena[2];
+					String email = cadena[3];
 
 					if (usuario.equals(usr) && password.equals(pass)) {
 						// System.out.println("[TEST] "+usuario);
@@ -85,7 +87,7 @@ public class UsuariosDAO {
 					String email = cadena[2];
 
 					if (nombreBaja.equals(usuario)) {
-						// dar de baja
+						fw.write("");
 					}
 				}
 			}

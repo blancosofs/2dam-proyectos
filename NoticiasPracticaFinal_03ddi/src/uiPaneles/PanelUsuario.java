@@ -2,7 +2,7 @@ package uiPaneles;
 
 import javax.swing.JPanel;
 
-import dao.PersonalizacionDAO;
+import dao.PreferenciasDAO;
 
 public class PanelUsuario extends JPanel {
 
@@ -15,12 +15,12 @@ public class PanelUsuario extends JPanel {
 		add(panelUsuarioNoticias);
 		panelUsuarioNoticias.setVisible(false);
 		
-		PanelUsuarioNuevo panelUsuarioNuevo = new PanelUsuarioNuevo();
+		PanelUsuarioPreferencias panelUsuarioNuevo = new PanelUsuarioPreferencias();
 		panelUsuarioNuevo.setBounds(0, 0, 1200, 800);
 		add(panelUsuarioNuevo);
 		panelUsuarioNuevo.setVisible(false);
 		
-		if(!PersonalizacionDAO.comprobarPersonalizacion()) { //si es false
+		if(!PreferenciasDAO.comprobarPersonalizacion()) { //si es false
 			panelUsuarioNoticias.setVisible(true);
 			setVisible(false);
 		} else {

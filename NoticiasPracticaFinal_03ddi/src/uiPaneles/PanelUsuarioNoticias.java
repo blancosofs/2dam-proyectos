@@ -9,8 +9,6 @@ import javax.swing.JLabel;
 
 public class PanelUsuarioNoticias extends JPanel{
 	
-	private JLabel lbl_Noticas ;
-	
 	private JLabel lbl_msgDeporte;
 	private JTextArea textArea_D1;
 	private JTextArea textArea_D2;
@@ -27,10 +25,6 @@ public class PanelUsuarioNoticias extends JPanel{
 	public PanelUsuarioNoticias() {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
-		
-		lbl_Noticas = new JLabel("Tus noticias de hoy son: ");
-		lbl_Noticas.setBounds(37, 30, 287, 26);
-		add(lbl_Noticas);
 		
 		lbl_msgDeporte = new JLabel("DEPORTE");
 		lbl_msgDeporte.setBounds(20, 16, 108, 16);

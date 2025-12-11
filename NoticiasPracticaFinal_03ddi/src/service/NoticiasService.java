@@ -1,13 +1,34 @@
 package service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import dao.NoticiasDAO;
+
 
 public class NoticiasService {
+	
+	public static String exNoticias() {
+
+		StringBuilder sb = new StringBuilder();
+		try {
+			String web = "https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias";
+			Document doc = Jsoup.connect(web).get();
+
+			Element palabra = doc.select("h2.mod-title a").get(0);
+			String resultado = palabra.html().toUpperCase();
+			sb.append(resultado);
+		} catch (IOException io) {
+			io.printStackTrace();
+		}
+		return sb.toString();
+	}
+	
+	
 
 	public static String exNot_dMarca() {
 		StringBuilder sb = new StringBuilder();
