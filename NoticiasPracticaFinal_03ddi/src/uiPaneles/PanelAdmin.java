@@ -36,6 +36,6 @@ public class PanelAdmin extends JPanel {
 		PanelConfig panelConfig = new PanelConfig(panelTest, panelHora, panelAlta, panelBaja);
 		panelConfig.setBounds(0, 0, 1200, 800);
 		add(panelConfig);
-
+		
 	}
 }

@@ -11,19 +11,22 @@ public class Usuario {
 	String email;
 	String cargo;
 	
+	boolean loggeado;
+	boolean preferencias;
+	
 	public Usuario() {}
 	
-
-	public Usuario(String id, String nombre, String pass, String email, String cargo) {
+	public Usuario(String id, String nombre, String pass, String email, String cargo, boolean loggeado,
+			boolean preferencias) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.pass = pass;
 		this.email = email;
 		this.cargo = cargo;
+		this.loggeado = loggeado;
+		this.preferencias = preferencias;
 	}
-
-
 
 	public String getId() {
 		return id;
@@ -61,6 +64,22 @@ public class Usuario {
 		return cargo;
 	}
 
+	public boolean isLoggeado() {
+		return loggeado;
+	}
+
+	public void setLoggeado(boolean loggeado) {
+		this.loggeado = loggeado;
+	}
+
+	public boolean isPreferencias() {
+		return preferencias;
+	}
+
+	public void setPreferencias(boolean preferencias) {
+		this.preferencias = preferencias;
+	}
+
 	public void setCargo(String cargo) {
 		try {
 			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios"));
@@ -79,8 +98,8 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", pass=" + pass + ", email=" + email + ", cargo=" + cargo
-				+ "]";
+				+ ", loggeado=" + loggeado + ", preferencias=" + preferencias + "]";
 	}
-	
+
 	
 }

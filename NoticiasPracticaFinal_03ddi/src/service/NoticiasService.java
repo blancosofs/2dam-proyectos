@@ -12,15 +12,13 @@ import domain.Noticias;
 
 public class NoticiasService {
 	
-	
+	/*
 	public static void main(String[] args) {
-		String prueba = exNot_dAs();
+		String prueba = exNoticias();
 		System.out.println(prueba);
-	}
+	}*/
 	
-	public static String exNoticias() {
-		
-		StringBuilder sb = new StringBuilder();
+	public static String exNoticias() {	
 		List<Noticias> fuentes=NoticiasDAO.extraerNoticiasObjeto();
 		try {
 			for (Noticias n : fuentes) {
@@ -31,16 +29,14 @@ public class NoticiasService {
 			//problema
 			Element palabra = doc.select(n.getCss()).get(0);
 			String resultado = palabra.html().toUpperCase();
-			sb.append(resultado);
+			return resultado;
 			}
 		} catch (IOException io) {
 			io.printStackTrace();
 		}
-		return sb.toString();
+		return null;
 	}
 	
-	
-
 	public static String exNot_dMarca() {
 		StringBuilder sb = new StringBuilder();
 		try {

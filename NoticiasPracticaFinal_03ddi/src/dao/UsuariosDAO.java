@@ -10,6 +10,7 @@ import java.util.List;
 import domain.Usuario;
 
 public class UsuariosDAO {
+	
 	public static void main(String[] args) {
 		List<Usuario> user = extraerUsuarioObjeto() ;
 		for(Usuario u : user) {
@@ -20,7 +21,7 @@ public class UsuariosDAO {
 	public static List<Usuario> extraerUsuarioObjeto() {
 		List<Usuario> user=new ArrayList<>();
 		try {
-			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios"));
+			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios.txt"));
 			String linea;
 			while ((linea = lector.readLine()) != null) {
 
@@ -31,7 +32,7 @@ public class UsuariosDAO {
 					String password = cadena[2];
 					String email = cadena[3];
 
-					Usuario u1 = new Usuario(id,usuario,password,email,"user");
+					Usuario u1 = new Usuario(id,usuario,password,email,"user",false,false);
 					user.add(u1);
 
 				} else if (linea.startsWith("#")) {
@@ -41,8 +42,8 @@ public class UsuariosDAO {
 					String password = cadena[2];
 					String email = cadena[3];
 					
-					Usuario u1 = new Usuario(id,usuario,password,email,"admin");
-					user.add(u1);
+					Usuario a1 = new Usuario(id,usuario,password,email,"admin",false,false);
+					user.add(a1);		
 				}
 			}
 			lector.close();
@@ -54,7 +55,7 @@ public class UsuariosDAO {
 
 	public static int comprobarUsrTXT(String usr, String pass) {
 		try {
-			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios"));
+			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios.txt"));
 			String linea;
 			while ((linea = lector.readLine()) != null) {
 
@@ -69,6 +70,11 @@ public class UsuariosDAO {
 					if (usuario.equals(usr) && password.equals(pass)) {
 						// System.out.println("[TEST] "+usuario);
 						// System.out.println("[TEST] "+password);
+						
+						//iniciar sesion!!!!!!!
+						Usuario u = new Usuario();
+						u.setLoggeado(true);
+						//System.out.println("[test]"+u.isLoggeado());
 						return 2;
 					}
 
@@ -83,6 +89,10 @@ public class UsuariosDAO {
 					if (usuario.equals(usr) && password.equals(pass)) {
 						// System.out.println("[TEST] "+usuario);
 						// System.out.println("[TEST] "+password);
+						
+						//iniciar sesion!!!!!!!
+						Usuario u = new Usuario();
+						u.setLoggeado(true);
 						return 1;
 					}
 				}
@@ -96,7 +106,7 @@ public class UsuariosDAO {
 
 	public static void altaUsuario(String newNombre, String newPass, String newEmail) {
 		try {
-			FileWriter fw = new FileWriter("TXT/usuarios", true);
+			FileWriter fw = new FileWriter("TXT/usuarios.txt", true);
 			fw.write("\n");
 			fw.write("*");
 			fw.write(newNombre);
@@ -117,7 +127,7 @@ public class UsuariosDAO {
 
 	public static void bajaUsuario(String nombreBaja) {
 		try {
-			FileReader archivo = new FileReader("TXT/usuarios");
+			FileReader archivo = new FileReader("TXT/usuarios.txt");
 			BufferedReader lector = new BufferedReader(archivo);
 			FileWriter fw = new FileWriter("TXT/usuarios", true);
 			String linea;
@@ -129,7 +139,6 @@ public class UsuariosDAO {
 					String usuario = cadena[0];
 					// String password = cadena[1];
 					// String email = cadena[2];
-
 					if (nombreBaja.equals(usuario)) {
 						fw.write("");
 					}

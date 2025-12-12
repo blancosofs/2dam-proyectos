@@ -9,6 +9,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 
 import dao.PreferenciasDAO;
+import domain.Usuario;
 
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
 public class PanelUsuarioPreferencias extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JEditorPane editorPane;
 	private JButton button;
 	private JLabel lbl_deportes;
@@ -49,11 +50,11 @@ public class PanelUsuarioPreferencias extends JPanel {
 	private JCheckBox chckbx_A1;
 	private JCheckBox chckbx_A2;
 	private JCheckBox chckbx_A3;
-	
+
 	private JButton btn_exit;
 
 	public PanelUsuarioPreferencias(PanelUsuarioNoticias panelUsuarioNoticias) {
-		int[] seleccionPreferencias = new int[6];
+		int[] seleccionPreferencias = new int[18];
 
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
@@ -193,12 +194,53 @@ public class PanelUsuarioPreferencias extends JPanel {
 				if (chckbx_E3.isSelected()) {
 					seleccionPreferencias[5] = 1;
 				}
+				if (chckbx_N1.isSelected()) {
+					seleccionPreferencias[6] = 1;
+				}
+				if (chckbx_N2.isSelected()) {
+					seleccionPreferencias[7] = 1;
+				}
+				if (chckbx_N3.isSelected()) {
+					seleccionPreferencias[8] = 1;
+				}
+				if (chckbx_I1.isSelected()) {
+					seleccionPreferencias[9] = 1;
+				}
+				if (chckbx_I2.isSelected()) {
+					seleccionPreferencias[10] = 1;
+				}
+				if (chckbx_I3.isSelected()) {
+					seleccionPreferencias[11] = 1;
+				}
+				if (chckbx_M1.isSelected()) {
+					seleccionPreferencias[12] = 1;
+				}
+				if (chckbx_M2.isSelected()) {
+					seleccionPreferencias[13] = 1;
+				}
+				if (chckbx_M3.isSelected()) {
+					seleccionPreferencias[14] = 1;
+				}
+				if (chckbx_A1.isSelected()) {
+					seleccionPreferencias[15] = 1;
+				}
+				if (chckbx_A2.isSelected()) {
+					seleccionPreferencias[16] = 1;
+				}
+				if (chckbx_A3.isSelected()) {
+					seleccionPreferencias[17] = 1;
+				}
+
+				//guardar preferencias
+				Usuario u = new Usuario();
+				u.setPreferencias(true);
+				
 				PreferenciasDAO.escribirPreferencias(seleccionPreferencias);
 				panelUsuarioNoticias.setVisible(true);
 				setVisible(false);
 			}
 		});
-		
+
 		btn_exit = new JButton("x");
 		btn_exit.setBorder(null);
 		btn_exit.setBackground(new Color(255, 21, 0));

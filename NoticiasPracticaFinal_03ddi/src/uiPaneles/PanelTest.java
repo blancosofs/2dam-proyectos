@@ -294,10 +294,11 @@ public class PanelTest extends JPanel {
 		add(btnNextTest);
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.setBounds(529, 738, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//como cambio al panel padre sin pasarselo como parametro
+			public void actionPerformed(ActionEvent e) {	
+				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
 		add(btn_volver);

@@ -40,10 +40,10 @@ public class VentanaCarga extends JFrame {
 		progressBar.setOpaque(true);
 		getContentPane().add(progressBar);
 
-		barra = new Timer(500, new ActionListener() { // Timer en millisegundos. Con 500 avanza en 5segundos
+		barra = new Timer(30, new ActionListener() { // Timer en millisegundos. Con 500 avanza en 5segundos
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				contador += 20;
+				contador ++;
 				progressBar.setValue(contador);
 
 				if (contador == 80) {

@@ -96,7 +96,7 @@ public class PanelAlta extends JPanel {
 		});
 
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.setBounds(699, 584, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//como cambio al panel padre sin pasarselo como parametro

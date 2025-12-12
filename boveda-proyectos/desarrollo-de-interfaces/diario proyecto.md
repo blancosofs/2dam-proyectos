@@ -1,3 +1,4 @@
+## objeto loggin . cajita donde puede meter cosas
 
 ## 11/12/25
 1. Component parentComponent

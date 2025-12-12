@@ -48,7 +48,7 @@ public class PanelBaja extends JPanel {
 
 		String nombreBaja = textField.getText();
 
-		btn_baja = new JButton("Baja:");
+		btn_baja = new JButton("Baja");
 		btn_baja.setBounds(866, 584, 117, 29);
 		add(btn_baja);
 		btn_baja.addActionListener(new ActionListener() {
@@ -61,7 +61,7 @@ public class PanelBaja extends JPanel {
 		});
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.setBounds(740, 584, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//como cambio al panel padre sin pasarselo como parametro

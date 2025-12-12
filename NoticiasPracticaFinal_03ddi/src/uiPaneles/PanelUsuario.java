@@ -23,7 +23,7 @@ public class PanelUsuario extends JPanel {
 		panelUsuarioNuevo.setVisible(false);
 		
 		//EDITAAAAR
-		if(!PreferenciasDAO.comprobarPersonalizacion()) { //si es false
+		if(PreferenciasDAO.comprobarPersonalizacion()) {
 			panelUsuarioNoticias.setVisible(true);
 			setVisible(false);
 		} else {

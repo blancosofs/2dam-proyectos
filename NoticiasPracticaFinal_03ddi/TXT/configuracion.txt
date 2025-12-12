@@ -1,1 +1,19 @@
- 
+DEPORTES1==marca==https://www.marca.com/ultimas-noticias.html?intcmp=MENUDEST&s_kw=ultimas-noticias==h2.mod-title a
+DEPORTES2==as==https://as.com/futbol/==h3.s_t a
+DEPORTES3==deportivo==https://www.mundodeportivo.com/loultimo==h3.s_t a
+ECONOMIA4==economista==https://www.eleconomista.es/?gad_source=1&gad_campaignid=12340049456&gbraid=0AAAAAD9rSRDALaMK6Iu18PDLe2wUmJn6_&gclid=CjwKCAiA3L_JBhAlEiwAlcWO51eciKSeJV52Gth9BD3EoT1VAPo0XBAeXeteBuzCu8bz39StoWJz1xoC5n0QAvD_BwE==h2.h1 a
+ECONOMIA5==expansion==https://www.expansion.com/==a.ue-c-cover-content__link h2.ue-c-cover-content__headline
+ECONOMIA6==digital==https://www.economiadigital.es/==h2.entry-title a
+NACIONAL7==rtve==https://www.rtve.es/noticias/==span.maintitle
+NACIONAL8==the objetive==https://theobjective.com/espana/==h2.tno-article-general__content__title a
+NACIONAL9==el mundo==https://www.elmundo.es/espana.html==h2.ue-c-cover-content__headline
+INTERNACIONAL10==europapress==https://www.europapress.es/internacional/==h2.articulo-titulo a
+INTERNACIONAL11==20mins==https://www.20minutos.es/internacional/==h2.c-article__title a
+INTERNACIONAL12==la razon==https://www.larazon.es/internacional/==h2.article__title a
+MUSICA13==rockfm==https://www.rockfm.fm/tag/noticia-del-dia==h2.c-article__title a
+MUSICA14==radiole==https://www.radiole.com/actualidad==h2.title span
+MUSICA15==el pais==https://elpais.com/noticias/musica/==h2.c_t a
+ALEATORIO16==cbr==https://www.cbr.com/category/anime-news/==h5.display-card-title a
+ALEATORIO17==lecturalia==https://www.lecturalia.com/blog/==h2 a
+ALEATORIO18==9to5==https://9to5mac.com/==a.article__title-link"
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
