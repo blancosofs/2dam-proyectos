@@ -1,7 +1,6 @@
 package service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -13,7 +12,14 @@ import domain.Noticias;
 
 public class NoticiasService {
 	
+	
+	public static void main(String[] args) {
+		String prueba = exNot_dAs();
+		System.out.println(prueba);
+	}
+	
 	public static String exNoticias() {
+		
 		StringBuilder sb = new StringBuilder();
 		List<Noticias> fuentes=NoticiasDAO.extraerNoticiasObjeto();
 		try {
@@ -22,6 +28,7 @@ public class NoticiasService {
 			String web = (n.getUrl());
 			Document doc = Jsoup.connect(web).get();
 
+			//problema
 			Element palabra = doc.select(n.getCss()).get(0);
 			String resultado = palabra.html().toUpperCase();
 			sb.append(resultado);
@@ -348,10 +355,6 @@ public class NoticiasService {
 		return sb.toString();
 	}
 	
-	/*
-	public static void main(String[] args) {
-		String prueba = exNot_a9to5();
-		System.out.println(prueba);
-	}*/
+	
 	
 }

@@ -4,8 +4,54 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import domain.Usuario;
 
 public class UsuariosDAO {
+	public static void main(String[] args) {
+		List<Usuario> user = extraerUsuarioObjeto() ;
+		for(Usuario u : user) {
+			System.out.println(u);
+		}
+	}
+	
+	public static List<Usuario> extraerUsuarioObjeto() {
+		List<Usuario> user=new ArrayList<>();
+		try {
+			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios"));
+			String linea;
+			while ((linea = lector.readLine()) != null) {
+
+				if (linea.startsWith("*")) {
+					String[] cadena = linea.substring(1).split("::");
+					String id = cadena[0];
+					String usuario = cadena[1];
+					String password = cadena[2];
+					String email = cadena[3];
+
+					Usuario u1 = new Usuario(id,usuario,password,email,"user");
+					user.add(u1);
+
+				} else if (linea.startsWith("#")) {
+					String[] cadena = linea.substring(1).split("::");
+					String id = cadena[0];
+					String usuario = cadena[1];
+					String password = cadena[2];
+					String email = cadena[3];
+					
+					Usuario u1 = new Usuario(id,usuario,password,email,"admin");
+					user.add(u1);
+				}
+			}
+			lector.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return user;	
+	}
+
 	public static int comprobarUsrTXT(String usr, String pass) {
 		try {
 			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios"));

@@ -1,0 +1,1 @@
+*id1::user1::pwd1::usr1@email.com*id2::user2::pwd2::usr2@email.com#ida1::admin1::pwda1::admin1@email.com

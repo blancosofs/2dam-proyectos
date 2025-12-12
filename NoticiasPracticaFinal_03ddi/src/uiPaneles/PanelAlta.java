@@ -8,9 +8,11 @@ import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import common.ControlErrores;
 import dao.UsuariosDAO;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 public class PanelAlta extends JPanel {
@@ -28,6 +30,7 @@ public class PanelAlta extends JPanel {
 
 	private JButton btn_alta;
 	private JButton btn_volver;
+	private JButton btn_exit;
 
 	public PanelAlta() {
 		setLayout(null);
@@ -83,7 +86,12 @@ public class PanelAlta extends JPanel {
 				String newNombre=textField.getText();	
 				String newPass=textField_pwd.getText();
 				String newEmail=textField_email.getText();	
-				UsuariosDAO.altaUsuario(newNombre, newPass, newEmail);
+				if (!ControlErrores.comprobarAltaUsuarios()) {
+					String msg = "[error] Numero de usuarios superado. La aplicacion solo soporta 3";
+					JOptionPane.showMessageDialog(null, msg, "", 1);
+				}else {
+					UsuariosDAO.altaUsuario(newNombre, newPass, newEmail);
+				}
 			}
 		});
 
@@ -95,5 +103,20 @@ public class PanelAlta extends JPanel {
 			}
 		});
 		add(btn_volver);
+		
+		btn_exit = new JButton("x");
+		btn_exit.setBorder(null);
+		btn_exit.setBounds(1141, 6, 53, 26);
+
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (confirmacion == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+		add(btn_exit);
 	}
 }

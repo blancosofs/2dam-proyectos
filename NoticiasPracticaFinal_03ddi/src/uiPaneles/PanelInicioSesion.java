@@ -83,17 +83,17 @@ public class PanelInicioSesion extends JPanel {
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 1) {
 					panelAdmin.setVisible(true);
 					setVisible(false);
-
+					btn_iniciarSesion.setEnabled(false);
 				} else if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 2) {
 					panelUsuario.setVisible(true);
 					setVisible(false);
+					btn_iniciarSesion.setEnabled(false);
 				} else {
 					String msg = "[error] Usuario no encontrado";
 					JOptionPane.showMessageDialog(null, msg, "", 1);
 				}
 			}
 		});
-		btn_iniciarSesion.setEnabled(false);
 
 		btn_exit = new JButton("x");
 		btn_exit.setBorder(null);

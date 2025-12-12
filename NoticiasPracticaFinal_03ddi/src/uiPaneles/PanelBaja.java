@@ -8,9 +8,8 @@ import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import dao.UsuariosDAO;
-
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 public class PanelBaja extends JPanel {
@@ -23,6 +22,7 @@ public class PanelBaja extends JPanel {
 
 	private JButton btn_baja;
 	private JButton btn_volver;
+	private JButton btn_exit;
 
 	public PanelBaja() {
 		setLayout(null);
@@ -52,10 +52,11 @@ public class PanelBaja extends JPanel {
 		btn_baja.setBounds(866, 584, 117, 29);
 		add(btn_baja);
 		btn_baja.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UsuariosDAO.bajaUsuario(nombreBaja);
+				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
+				//UsuariosDAO.bajaUsuario(nombreBaja);
 			}
 		});
 		
@@ -67,6 +68,21 @@ public class PanelBaja extends JPanel {
 			}
 		});
 		add(btn_volver);
+		
+		btn_exit = new JButton("x");
+		btn_exit.setBorder(null);
+		btn_exit.setBounds(1141, 6, 53, 26);
+
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (confirmacion == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+		add(btn_exit);
 
 	}
 }

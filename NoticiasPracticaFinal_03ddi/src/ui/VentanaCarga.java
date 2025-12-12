@@ -47,11 +47,12 @@ public class VentanaCarga extends JFrame {
 				progressBar.setValue(contador);
 
 				if (contador == 80) {
-					if(ControlErrores.comprobarTXT()) {
-						JOptionPane.showMessageDialog(null, null,"ERROR",1);
+					if(!ControlErrores.comprobarTXTconfig()&&!ControlErrores.comprobarTXThistorico()&&!ControlErrores.comprobarTXTusuarios()) {
+						String msg = "[error] Error en la carga de archivos, sentimos las molestias!";
+						JOptionPane.showMessageDialog(null, msg, "", 1);
+						return;
 					}
 				}
-
 				if (contador >= 100) {
 					barra.stop();
 					miVentanaLogin.setVisible(true);
