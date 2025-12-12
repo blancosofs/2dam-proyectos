@@ -47,22 +47,26 @@ public class VentanaCarga extends JFrame {
 				progressBar.setValue(contador);
 
 				if (contador == 80) {
-					if(!ControlErrores.comprobarTXTconfig()&&!ControlErrores.comprobarTXThistorico()&&!ControlErrores.comprobarTXTusuarios()) {
+					if(!ControlErrores.comprobarTXTconfig()||!ControlErrores.comprobarTXThistorico()||!ControlErrores.comprobarTXTusuarios()) {
 						String msg = "[error] Error en la carga de archivos, sentimos las molestias!";
 						JOptionPane.showMessageDialog(null, msg, "", 1);
+						dispose();
 						return;
+					}else {
+						barra.stop();
+						miVentanaLogin.setVisible(true);
+						dispose();	
 					}
 				}
-				if (contador >= 100) {
+				/*if (contador >= 100) {
 					barra.stop();
 					miVentanaLogin.setVisible(true);
 					dispose();
-				}
+				}*/
 			}
 		});
 		
 		barra.start();
-
 	}
 
 	private Component buscarImagen() {

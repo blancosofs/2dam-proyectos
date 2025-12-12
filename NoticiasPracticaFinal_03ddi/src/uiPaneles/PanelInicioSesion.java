@@ -78,6 +78,10 @@ public class PanelInicioSesion extends JPanel {
 		btn_iniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//editar limite intentos
+				
+				
+				
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 1) {
@@ -93,6 +97,8 @@ public class PanelInicioSesion extends JPanel {
 					JOptionPane.showMessageDialog(null, msg, "", 1);
 				}
 			}
+			
+			
 		});
 
 		btn_exit = new JButton("x");

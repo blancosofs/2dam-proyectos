@@ -43,7 +43,7 @@ public class ControlErrores {
 			while ((linea = lector.readLine()) != null) {
 				if (linea.startsWith("*")) {
 					contador++;
-					if (contador>=3) {
+					if (contador>=10) {
 						return false;
 					}
 				}
