@@ -49,8 +49,10 @@ public class PanelConfig extends JPanel {
 		add(btn_baja);
 		btn_baja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelBaja.setVisible(true);
-				setVisible(false);
+				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
+				//panelBaja.setVisible(true);
+				//setVisible(false);
 			}
 		});
 

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+import domain.Usuario;
 
 public class ControlErrores {
 
@@ -43,7 +43,7 @@ public class ControlErrores {
 			while ((linea = lector.readLine()) != null) {
 				if (linea.startsWith("*")) {
 					contador++;
-					if (contador>=10) {
+					if (contador >= 10) {
 						return false;
 					}
 				}
@@ -54,12 +54,67 @@ public class ControlErrores {
 		return true;
 	}
 
-	public static boolean comprobarEmail(String toEmail){
+	public static boolean comprobarAltaUsuariosNombre(String nombre) {
+		try {
+
+			BufferedReader lector = new BufferedReader(new FileReader("TXT/usuarios.txt"));
+			String linea;
+			while ((linea = lector.readLine()) != null) {
+				if (linea.startsWith("*")) {
+
+					String[] cadena = linea.substring(1).split("::");
+
+					// String id = cadena[0];
+					String usuario = cadena[1];
+					// String password = cadena[2];
+					// String email = cadena[3];
+
+					if (usuario.equals(nombre)) {
+
+						return false;
+					}
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public static boolean comprobarEmail(String toEmail) {
 		if (toEmail == null) {
 			return false;
 		}
 		Pattern pattern = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
 		Matcher matcher = pattern.matcher(toEmail);
+
+		if (matcher.find()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean comprobarNombre(String nombre) {
+		if (nombre == null) {
+			return false;
+		}
+		Pattern pattern = Pattern.compile("^user[1-9]$");
+		Matcher matcher = pattern.matcher(nombre);
+
+		if (matcher.find()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean comprobarPass(String pass) {
+		if (pass == null) {
+			return false;
+		}
+		Pattern pattern = Pattern.compile("^pwd[1-9]$");
+		Matcher matcher = pattern.matcher(pass);
 
 		if (matcher.find()) {
 			return true;

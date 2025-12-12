@@ -35,6 +35,9 @@ public class PanelUsuarioNoticias extends JPanel{
 		textArea = new TextArea();
 		textArea.setBounds(50, 73, 956, 486);
 		textArea.append("\n---\nTus noticias son:\n---\n");
+		
+		
+		
 		textArea.append(NoticiasService.exNoticias());
 		
 		add(textArea);
@@ -50,7 +53,6 @@ public class PanelUsuarioNoticias extends JPanel{
 			}
 		});
 		
-
 		btn_volver = new JButton("<--");
 		btn_volver.setBounds(20, 764, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {

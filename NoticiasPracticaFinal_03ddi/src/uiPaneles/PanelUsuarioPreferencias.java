@@ -63,7 +63,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 		editorPane.setFont(new Font("Argelina", Font.BOLD, 20));
 		editorPane.setContentType("text/html");
 		editorPane.setText(
-				"<center><h1>Bienvenido al panel de personalizacion <br> <h2>Seleccione sus preferencias (Primero categoria, luego fuente)");
+				"<center><h1>Bienvenido al panel de personalizacion <br> <h2>Seleccione sus preferencias (max 18 minimo 1)");
 		editorPane.setEditable(false);
 		editorPane.setBounds(221, 35, 760, 90);
 		add(editorPane);
