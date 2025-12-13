@@ -34,6 +34,7 @@ public class PanelInicioSesion extends JPanel {
 	public PanelInicioSesion(PanelAdmin panelAdmin, PanelUsuario panelUsuario) {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
+	
 
 		editorPane_login = new JEditorPane();
 		editorPane_login.setFont(new Font("Argelina", Font.BOLD, 20));

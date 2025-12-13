@@ -15,6 +15,11 @@ MUSICA14==radiole==https://www.radiole.com/actualidad==h2.title span
 MUSICA15==el pais==https://elpais.com/noticias/musica/==h2.c_t a
 ALEATORIO16==cbr==https://www.cbr.com/category/anime-news/==h5.display-card-title a
 ALEATORIO17==lecturalia==https://www.lecturalia.com/blog/==h2 a
-ALEATORIO18==9to5==https://9to5mac.com/==a.article__title-link"
+ALEATORIO18==9to5==https://9to5mac.com/==a.article__title-link
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *==0==0==0==1==0==0==0==0==0==0==0==0==0==1==0==0==0==1
+*==1==0==0==0==0==0==0==1==0==0==0==0==0==1==0==0==0==0
+*==0==0==0==1==0==0==0==1==0==0==1==0==0==0==1==0==0==0
+*==0==0==0==1==0==0==1==0==0==0==1==0==0==0==0==0==0==0
+*==0==0==0==0==1==0==1==0==0==1==0==0==0==1==0==0==0==0
+*==0==0==0==1==0==0==0==1==0==0==0==0==0==0==0==0==0==0

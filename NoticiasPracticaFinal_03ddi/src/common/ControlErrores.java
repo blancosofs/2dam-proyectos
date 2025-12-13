@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import domain.Usuario;
-
 public class ControlErrores {
 
 	public static boolean comprobarTXTconfig() {

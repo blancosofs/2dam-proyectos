@@ -2,6 +2,7 @@ package uiPaneles;
 
 import javax.swing.JPanel;
 
+import dao.HistoricoDAO;
 import service.NoticiasService;
 
 import javax.swing.JLabel;
@@ -29,17 +30,14 @@ public class PanelUsuarioNoticias extends JPanel{
 		setBounds(0, 0, 1200, 800);
 		
 		lbl_msgNoticias = new JLabel("Noticias");
-		lbl_msgNoticias.setBounds(38, 33, 46, 14);
+		lbl_msgNoticias.setBounds(38, 33, 60, 14);
 		add(lbl_msgNoticias);
 		
 		textArea = new TextArea();
 		textArea.setBounds(50, 73, 956, 486);
+		textArea.setEditable(false);
 		textArea.append("\n---\nTus noticias son:\n---\n");
-		
-		
-		
 		textArea.append(NoticiasService.exNoticias());
-		
 		add(textArea);
 		
 		btn_guardar = new JButton("Guardar en el historico");
@@ -48,7 +46,8 @@ public class PanelUsuarioNoticias extends JPanel{
 		btn_guardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				HistoricoDAO.escribirEnHistorico();
+				String msg = "[info] Noticias guardadadas con exito en el txt";
 				JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});

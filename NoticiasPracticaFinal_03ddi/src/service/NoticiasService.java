@@ -6,36 +6,48 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import dao.NoticiasDAO;
 import domain.Noticias;
 
 public class NoticiasService {
-	
+
 	/*
-	public static void main(String[] args) {
-		String prueba = exNoticias();
-		System.out.println(prueba);
-	}*/
-	
-	public static String exNoticias() {	
-		List<Noticias> fuentes=NoticiasDAO.extraerNoticiasObjeto();
+	 * public static void main(String[] args) { String prueba = exNoticias();
+	 * System.out.println(prueba); }
+	 */
+
+	public static String exNoticias() {
+		List<Noticias> fuentes = NoticiasDAO.extraerNoticiasObjeto();
+		StringBuilder sb = new StringBuilder();
 		try {
 			for (Noticias n : fuentes) {
-				
-			String web = (n.getUrl());
-			Document doc = Jsoup.connect(web).get();
 
-			//problema
-			Element palabra = doc.select(n.getCss()).get(0);
-			String resultado = palabra.html().toUpperCase();
-			return resultado;
+				String web = (n.getUrl());
+				Document doc = Jsoup.connect(web).get();
+
+				// problema
+				  Elements elementosComprobar = doc.select(n.getCss());
+		            if (!elementosComprobar.isEmpty()) {
+		                Element palabra = elementosComprobar.get(0);
+		                String resultado = palabra.text().toUpperCase();
+		                
+		                if (resultado != null && !resultado.isEmpty()) {
+		                    sb.append(n.getNombre()).append("\n")
+		                      .append(resultado)
+		                      .append("\n\n-----------------\n\n");
+		                }
+		            }
+
 			}
 		} catch (IOException io) {
 			io.printStackTrace();
 		}
-		return null;
+		return sb.toString();
 	}
+
+	// DEPORTES -----------------------------------	
 	
 	public static String exNot_dMarca() {
 		StringBuilder sb = new StringBuilder();
@@ -56,7 +68,7 @@ public class NoticiasService {
 	public static String exNot_dAs() {
 		StringBuilder sb = new StringBuilder();
 		try {
-			String web ="https://as.com/futbol/";
+			String web = "https://as.com/futbol/";
 			Document doc = Jsoup.connect(web).get();
 
 			Element palabra = doc.select("h3.s_t a").get(0);
@@ -120,7 +132,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_eDigital() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -155,7 +167,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_nTheObjetive() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -172,7 +184,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_nElMundo() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -191,7 +203,7 @@ public class NoticiasService {
 	}
 
 	// INTERNACIONAL -----------------------------------
-	
+
 	public static String exNot_iEuropaPress() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -208,7 +220,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_i20mins() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -225,7 +237,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_iLaRazon() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -242,9 +254,9 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	// MUSICA -----------------------------------
-	
+
 	public static String exNot_mRockFm() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -261,7 +273,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_mRadiole() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -278,7 +290,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_mPaisMusica() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -295,8 +307,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
-	
+
 	// ALEATORIO -----------------------------------
 
 	public static String exNot_aCbr() {
@@ -315,7 +326,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String exNot_aLecturalia() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -332,8 +343,7 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
-	 
+
 	public static String exNot_a9to5() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -350,7 +360,5 @@ public class NoticiasService {
 		}
 		return sb.toString();
 	}
-	
-	
-	
+
 }

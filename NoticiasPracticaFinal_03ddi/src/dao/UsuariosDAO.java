@@ -62,10 +62,12 @@ public class UsuariosDAO {
 
 				if (linea.startsWith("*")) {
 					String[] cadena = linea.substring(1).split("::");
-
+					
 					// String id = cadena[0];
 					String usuario = cadena[1];
+					usuario.trim().toLowerCase();
 					String password = cadena[2];
+					password.trim().toLowerCase();
 					// String email = cadena[3];
 
 					if (usuario.equals(usr) && password.equals(pass)) {
@@ -84,7 +86,9 @@ public class UsuariosDAO {
 
 					// String id = cadena[0];
 					String usuario = cadena[1];
+					usuario.trim().toLowerCase();
 					String password = cadena[2];
+					password.trim().toLowerCase();
 					// String email = cadena[3];
 
 					if (usuario.equals(usr) && password.equals(pass)) {
