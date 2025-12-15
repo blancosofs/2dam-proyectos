@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "desarrollo-de-interfaces/diario proyecto.md",
+                "file": "acceso-a-datos/SQL Jugueteria.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "diario proyecto"
+              "title": "SQL Jugueteria"
             }
           }
         ],
@@ -254,10 +254,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "f7f291201e3c17ea",
+  "active": "0533fe3acd3949c6",
   "lastOpenFiles": [
-    "``.md",
+    "acceso-a-datos/SQL JugueteriaBea.md",
     "desarrollo-de-interfaces/diario proyecto.md",
+    "``.md",
     "desarrollo-de-interfaces/dudas.md",
     "desarrollo-de-interfaces/codigoPorSi/GestorNoticias.md",
     "nnn.md",
@@ -266,7 +267,6 @@
     "desarrollo-de-interfaces/codigoPorSi",
     "eclipse revento.md",
     "desarrollo-de-interfaces",
-    "acceso-a-datos/SQL JugueteriaBea.md",
     "acceso-a-datos/SQL Jugueteria.md",
     "Welcome.md",
     "desarrollo-de-interfaces",
