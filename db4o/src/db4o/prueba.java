@@ -1,22 +1,25 @@
 package db4o;
 
 
+import java.io.File;
+
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 
 public class prueba {
 
 	public static void main(String[] args) {
-		String DBOO_EJEM = "databaseFile.db4o";
-		ObjectContainer db = Db4oEmbedded.openFile(DBOO_EJEM);
+		File f = new File ("personas.db4o");
+		f.delete();
+		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
 		try {
-			Estudiantes est1 = new Estudiantes("E1", 6);
+			est2 est1 = new est2("E1", 6);
 			db.store(est1);
-			System.out.println("Stored " + est1);
+			//System.out.println("Stored " + est1);
 			
-			Estudiantes est2 =new Estudiantes("E2",7);
+			est2 est2 =new est2("E2",7);
 			db.store(est2);
-			System.out.println("Stored "+est2);
+			//System.out.println("Stored "+est2);
 		} finally {
 			db.close();
 		}

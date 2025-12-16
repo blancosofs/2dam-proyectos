@@ -1,10 +1,10 @@
 package db4o;
 
-public class Estudiantes {
+public class est2 {
 	private String name;
 	 private int notas;
 
-	 public Estudiantes(String name,int notas) {
+	 public est2(String name,int notas) {
 	 this.name=name;
 	 this.notas=notas;
 	 }
