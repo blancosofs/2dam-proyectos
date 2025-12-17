@@ -16,10 +16,11 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("# Ejemplo de uso db4o #");
 		int opc = 0;
+
 		do {
 			System.out.println("Seleccione la opcion a probar");
 			System.out.println("1. Insercion (Create)");
-			System.out.println("2. Consulta (Read)");
+			System.out.println("2. Mostrar (Read)");
 			System.out.println("3. Actualizacion (Update)");
 			System.out.println("4. Borrado (Delete)");
 			System.out.println("0. Salir");
@@ -29,15 +30,17 @@ public class Main {
 			case 1:
 				create(f);
 				break;
-
 			case 2:
+				read(f);
 				break;
 			case 3:
+				update(f);
+				read(f);
 				break;
-
 			case 4:
+				delete(f);
+				read(f);
 				break;
-
 			case 0:
 				System.out.println("Saliendo del  programa....");
 				break;
@@ -53,16 +56,18 @@ public class Main {
 
 	public static void create(File f) {
 		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
-
 		try {
 
-			Estudiantes est1 = new Estudiantes("Samuel", 1, 7);
+			Estudiantes est1 = new Estudiantes(1, "Samuel", 21, 7);
 			db.store(est1);
-			System.out.println(est1);
-
-			Estudiantes est2 = new Estudiantes("Ashley", 2, 7);
+			Estudiantes est2 = new Estudiantes(2, "Ashley", 19, 7);
 			db.store(est2);
+			Estudiantes est3 = new Estudiantes(3, "Sofia", 19, 7);
+			db.store(est3);
+
+			System.out.println(est1);
 			System.out.println(est2);
+			System.out.println(est3);
 
 		} finally {
 			db.close();
@@ -71,19 +76,56 @@ public class Main {
 
 	public static void read(File f) {
 		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
-
 		try {
+			
+			Estudiantes estRead = new Estudiantes();
 
-			// Creamos un estudiante "plantilla" solo con el dato que buscamos
-			Estudiantes plantilla = new Estudiantes("Samuel", 0, 0);
+			ObjectSet<Estudiantes> result = db.queryByExample(estRead);
 
-			// Pedimos a la base de datos que busque objetos que coincidan
-			ObjectSet<Estudiantes> resultado = db.queryByExample(plantilla);
-
-			while (resultado.hasNext()) {
-				System.out.println(resultado.next().getNombre());
+			while (result.hasNext()) {
+				System.out.println(result.next());
 			}
 
+		} finally {
+			db.close();
+		}
+	}
+
+	public static void update(File f) {
+		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
+		try {
+
+			Estudiantes estUpdate= new Estudiantes(0,"Samuel",0,0);
+
+			ObjectSet<Estudiantes> result = db.queryByExample(estUpdate);
+
+			if (result.hasNext()) {
+				Estudiantes estUpdate2 = result.next();
+
+				estUpdate2.setNotaFinal(10);
+
+				db.store(estUpdate2);
+				System.out.println(estUpdate2);
+			}
+
+		} finally {
+			db.close();
+		}
+	}
+
+	public static void delete(File f) {
+		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
+		try {
+			// 1. Buscamos el objeto
+			Estudiantes estDelete = new Estudiantes(0, "Sofia", 0, 0);
+			ObjectSet<Estudiantes> result = db.queryByExample(estDelete);
+
+			// 2. Lo borramos
+			if (result.hasNext()) {
+				Estudiantes estudianteborrar = result.next();
+				db.delete(estudianteborrar);
+				
+			}
 		} finally {
 			db.close();
 		}
