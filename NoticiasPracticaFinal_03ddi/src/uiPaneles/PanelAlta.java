@@ -122,8 +122,12 @@ public class PanelAlta extends JPanel {
 		btn_volver.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// como cambio al panel padre sin pasarselo como parametro
+				//getParent().setVisible(true);
+				setVisible(false);
 				
+				// como cambio al panel padre sin pasarselo como parametro
+				//getTopLevelAncestor().setVisible(true);
+				//setVisible(false);
 				//String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
 				//JOptionPane.showMessageDialog(null, msg, "", 1);
 			}

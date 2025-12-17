@@ -95,7 +95,9 @@ public class PanelConfig extends JPanel {
 		btn_volver.setBounds(531, 505, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				getParent().setVisible(true); //esto va a admin
 				setVisible(false);
+				
 				//getParent().isVisible();
 				//String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
 				//JOptionPane.showMessageDialog(null, msg, "", 1);
