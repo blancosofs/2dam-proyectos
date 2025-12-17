@@ -4,95 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "57909261d84eb37e",
+        "id": "b867dea64f3daca6",
         "type": "tabs",
         "children": [
           {
-            "id": "7537a17610204094",
+            "id": "ac0be3f5b8e9dded",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "desarrollo-de-interfaces/diario proyecto.md",
+                "file": "desarrollo-de-interfaces/diario recu.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "diario proyecto"
-            }
-          },
-          {
-            "id": "8554af986cec547a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "desarrollo-de-interfaces/diario proyecto.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "diario proyecto"
-            }
-          },
-          {
-            "id": "06305915fcaf510b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "desarrollo-de-interfaces/codigoPorSi/GestorNoticias.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "GestorNoticias"
-            }
-          },
-          {
-            "id": "dc3e734a4529a3df",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ConfiguracionDAO.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ConfiguracionDAO"
-            }
-          },
-          {
-            "id": "d6bc911bc0b7b2ee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "nnn.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "nnn"
-            }
-          },
-          {
-            "id": "f7f291201e3c17ea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "acceso-a-datos/SQL Jugueteria.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "SQL Jugueteria"
+              "title": "diario recu"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -254,11 +183,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "0533fe3acd3949c6",
+  "active": "ac0be3f5b8e9dded",
   "lastOpenFiles": [
+    "``.md",
+    "desarrollo-de-interfaces/diario recu.md",
+    "acceso-a-datos/SQL Jugueteria.md",
     "acceso-a-datos/SQL JugueteriaBea.md",
     "desarrollo-de-interfaces/diario proyecto.md",
-    "``.md",
     "desarrollo-de-interfaces/dudas.md",
     "desarrollo-de-interfaces/codigoPorSi/GestorNoticias.md",
     "nnn.md",
@@ -267,7 +198,6 @@
     "desarrollo-de-interfaces/codigoPorSi",
     "eclipse revento.md",
     "desarrollo-de-interfaces",
-    "acceso-a-datos/SQL Jugueteria.md",
     "Welcome.md",
     "desarrollo-de-interfaces",
     "acceso-a-datos"

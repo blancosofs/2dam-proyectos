@@ -81,8 +81,6 @@ public class PanelInicioSesion extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//editar limite intentos
 				
-				
-				
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 1) {

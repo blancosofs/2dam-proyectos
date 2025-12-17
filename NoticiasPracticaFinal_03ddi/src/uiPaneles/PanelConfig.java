@@ -92,11 +92,13 @@ public class PanelConfig extends JPanel {
 		add(btn_exit);
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(20, 764, 117, 29);
+		btn_volver.setBounds(531, 505, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
-				JOptionPane.showMessageDialog(null, msg, "", 1);
+				setVisible(false);
+				//getParent().isVisible();
+				//String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				//JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
 		add(btn_volver);

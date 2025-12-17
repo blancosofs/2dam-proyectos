@@ -123,8 +123,9 @@ public class PanelAlta extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// como cambio al panel padre sin pasarselo como parametro
-				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
-				JOptionPane.showMessageDialog(null, msg, "", 1);
+				
+				//String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				//JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
 		add(btn_volver);
