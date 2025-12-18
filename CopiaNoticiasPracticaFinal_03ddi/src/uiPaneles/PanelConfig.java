@@ -21,7 +21,7 @@ public class PanelConfig extends JPanel {
 	private JButton btn_exit;
 	private JButton btn_volver;
 
-	public PanelConfig(PanelTest panelTest, PanelHora panelHora,PanelAlta panelAlta, PanelBaja panelBaja) {
+	public PanelConfig(PanelTest panelTest, PanelHora panelHora, PanelAlta panelAlta, PanelBaja panelBaja) {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 
@@ -95,8 +95,7 @@ public class PanelConfig extends JPanel {
 		btn_volver.setBounds(531, 505, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//getTopLevelAncestor().setVisible(true);
-				getParent().setVisible(true); //esto va a admin q esta vacio
+				getParent().setVisible(true); //esto va a admin
 				setVisible(false);
 				
 				//getParent().isVisible();

@@ -5,12 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import uiPaneles.PanelInicioSesion;
-import uiPaneles.PanelTest;
 import uiPaneles.PanelAdmin;
-import uiPaneles.PanelAlta;
-import uiPaneles.PanelBaja;
-import uiPaneles.PanelConfig;
-import uiPaneles.PanelHora;
 import uiPaneles.PanelUsuario;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -36,14 +31,9 @@ public class VentanaLogin extends JFrame {
 
 		PanelUsuario panelUsuario = new PanelUsuario();
 		panelUsuario.setBounds(0, 0, 1200, 800);
-		add(panelUsuario);
+		getContentPane().add(panelUsuario);
 		panelUsuario.setVisible(false);
-		
-		PanelAdmin panelAdmin = new PanelAdmin();
-		panelUsuario.setBounds(0, 0, 1200, 800);
-		add(panelAdmin);
-		panelAdmin.setVisible(false);
-		
+
 		menuBar = new JMenuBar();
 		menuBar.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		menuBar.setBounds(0, 0, 1200, 15);
@@ -57,7 +47,12 @@ public class VentanaLogin extends JFrame {
 		mntm_des = new JMenuItem("Blanco Calsina Sofía");
 		mnNewMenu.add(mntm_des);
 
-		PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion(panelUsuario,panelAdmin);
+		PanelAdmin panelAdmin = new PanelAdmin();
+		panelAdmin.setBounds(0, 0, 1200, 800);
+		getContentPane().add(panelAdmin);
+		panelAdmin.setVisible(false);
+
+		PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion(panelAdmin, panelUsuario);
 		miPanelInicioSesion.setBounds(0, 0, 1200, 800);
 		getContentPane().add(miPanelInicioSesion);
 		miPanelInicioSesion.add(menuBar);

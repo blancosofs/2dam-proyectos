@@ -53,13 +53,11 @@ public class PanelUsuarioNoticias extends JPanel{
 		});
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(487, 637, 117, 29);
+		btn_volver.setBounds(20, 764, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getParent().setVisible(true); //esto va a admin q esta vacio
-				setVisible(false);
-				//String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
-				//JOptionPane.showMessageDialog(null, msg, "", 1);
+				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
 		add(btn_volver);

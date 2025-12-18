@@ -34,15 +34,9 @@ public class PanelAdmin extends JPanel {
 		panelHora.setLayout(null);
 		panelHora.setVisible(false);
 
-		PanelConfig panelConfig = new PanelConfig(panelTest, panelHora, panelAlta ,panelBaja);
+		PanelConfig panelConfig = new PanelConfig(panelTest, panelHora, panelAlta, panelBaja);
 		panelConfig.setBounds(0, 0, 1200, 800);
 		add(panelConfig);
 		
 	}
-	
-	public static void getPanelAdmin(PanelAlta panelAlta){
-		panelAlta.setVisible(true);
-	}
-	
-	
 }

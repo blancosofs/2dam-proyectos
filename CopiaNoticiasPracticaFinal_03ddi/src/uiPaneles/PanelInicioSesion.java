@@ -31,10 +31,11 @@ public class PanelInicioSesion extends JPanel {
 	private JPasswordField passwordField;
 	private JButton btn_iniciarSesion;
 
-	public PanelInicioSesion(PanelUsuario panelUsuario,PanelAdmin panelAdmin ) {
+	public PanelInicioSesion(PanelAdmin panelAdmin, PanelUsuario panelUsuario) {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 	
+
 		editorPane_login = new JEditorPane();
 		editorPane_login.setFont(new Font("Argelina", Font.BOLD, 20));
 		editorPane_login.setEditable(false);
@@ -95,6 +96,8 @@ public class PanelInicioSesion extends JPanel {
 					JOptionPane.showMessageDialog(null, msg, "", 1);
 				}
 			}
+			
+			
 		});
 
 		btn_exit = new JButton("x");

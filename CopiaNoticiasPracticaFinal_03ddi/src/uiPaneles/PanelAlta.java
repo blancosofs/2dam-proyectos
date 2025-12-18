@@ -122,7 +122,7 @@ public class PanelAlta extends JPanel {
 		btn_volver.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				getParent().get //esto va a admin q esta vacio
+				//getParent().setVisible(true);
 				setVisible(false);
 				
 				// como cambio al panel padre sin pasarselo como parametro

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "desarrollo-de-interfaces/diario recu.md",
+                "file": "desarrollo-de-interfaces/diario proyecto.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "diario recu"
+              "title": "diario proyecto"
             }
           }
         ]
@@ -185,8 +185,8 @@
   },
   "active": "ac0be3f5b8e9dded",
   "lastOpenFiles": [
-    "``.md",
     "desarrollo-de-interfaces/diario recu.md",
+    "``.md",
     "acceso-a-datos/SQL Jugueteria.md",
     "acceso-a-datos/SQL JugueteriaBea.md",
     "desarrollo-de-interfaces/diario proyecto.md",
