@@ -103,9 +103,31 @@ INSERT INTO stand (idStand, Nombre, Descripcion, ZONA_idZona) VALUES
 ## insert stock
 ```
 INSERT INTO stock (STAND_idStand, STAND_ZONA_idzona, JUGUETE_idJuguete, CANTIDAD)
-VALUES (1, 1, 20, 10);
+VALUES (1, 1, 20, 10),(2, 1, 19, 1),(3, 2, 3, 3);
 
 INSERT INTO stock VALUES (2, 1, 19, 1),(3, 2, 3, 3);
+
+INSERT INTO stock (STAND_idStand, STAND_ZONA_idzona, JUGUETE_idJuguete, CANTIDAD) VALUES 
+(1, 1, 1, '5'),
+(1, 1, 2, '3'),
+(1, 1, 3, '3'),
+(1, 1, 4, '10'),
+(2, 1, 5, '2'),
+(2, 1, 6, '8'),
+(2, 1, 7, '15'),
+(2, 1, 8, '4'),
+(3, 2, 9, '6'),
+(3, 2, 10, '12'),
+(3, 2, 11, '5'),
+(3, 2, 12, '7'),
+(4, 3, 13, '19'),
+(4, 3, 14, '5'),
+(4, 3, 15, '5'),
+(4, 3, 16, '15'),
+(5, 4, 17, '10'),
+(5, 4, 18, '9'),
+(5, 4, 19, '1'),
+(5, 4, 20, '10');
 
 
 ```
@@ -123,4 +145,19 @@ pillas los id del stock y los juntas si te counciden con el la tabla de sd en id
 ## join ver por mes
 ```
 SELECT MONTH(Fecha) AS Mes, COUNT(*) AS NumeroVentas, SUM(Monto) AS TotalIngresos FROM venta GROUP BY MONTH(Fecha) ORDER BY Mes;
+```
+
+
+## join mas vendido 
+
+```
+select j.Nombre as NombreJuguete, COUNT(v.idventa) AS TotalVentas FROM venta v JOIN juguete j ON v.stock_JUGUETE_idJuguete = j.idJuguete GROUP BY v.stock_JUGUETE_idJuguete ORDER BY TotalVentas limit 1;
+```
+
+los calculos y lo juntas por id juguete 
+
+## join empleados mas venden
+
+```
+select e.nombre as NombreEmpleado, COUNT(v.idventa) as TotalVentas from venta v join empleado e on v.EMPLEADO_idEMPLEADO = e.idEmpleado group by v.EMPLEADO_idEMPLEADO order by TotalVentas limit 1;
 ```
