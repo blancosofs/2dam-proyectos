@@ -9,7 +9,7 @@ import domain.Planta;
 import service.GestorVendedorService;
 
 public class MenuVendedor {
-
+	
 	public static void mostrarMenuVendedor(Empleado empleadoRegistrado, ArrayList<Planta> arrayCatalogoPlantas) {
 		Scanner sc = new Scanner(System.in);
 		int opc = 0;
@@ -52,12 +52,13 @@ public class MenuVendedor {
 					System.out.println("Introduzca e codigo de planta que desee comprar:");
 					int codigoVenta = ControlErrores.controlErroresInt(sc);
 
-					if (GestorVendedorService.validarCodigo(arrayCestaTemporal,codigoVenta)) {
+					if (GestorVendedorService.validarCodigo(arrayCatalogoPlantas,codigoVenta)) {
 						System.out.println("Introduzca la cantidad de plantas que desee comprar:");
 						int cantidadVenta = ControlErrores.controlErroresInt(sc);
 
-						if (GestorVendedorService.validarCandtidad(arrayCestaTemporal,codigoVenta,cantidadVenta)) {
+						if (GestorVendedorService.validarCandtidad(arrayCatalogoPlantas,codigoVenta,cantidadVenta)) {
 
+							
 						}else {
 							System.out.println("[error] stock insuficiente");
 						}

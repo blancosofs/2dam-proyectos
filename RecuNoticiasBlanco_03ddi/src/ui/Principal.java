@@ -16,7 +16,7 @@ public class Principal {
 		 * [info] Credenciales usuario prueba: user1 pwd1
 		 * [info] Credenciales admin prueba: admin1 pwda1
 		 * 
-		 * Inicie la eplicacion y disfrute de las noticias de ultima hora :))
+		 * Inicie la aplicacion y disfrute de las noticias de ultima hora :))
 		 * 
 		 * */
 		

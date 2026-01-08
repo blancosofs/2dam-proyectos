@@ -26,47 +26,66 @@ public class VentanaCarga extends JFrame {
 	int contador = 0;
 
 	public VentanaCarga(VentanaLogin miVentanaLogin) {
-		setSize(660, 330);
-		setResizable(false);
-		setLocationRelativeTo(null);
-		getContentPane().setLayout(null);
-		getContentPane().add(buscarImagen());
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
-		
+		if (!ControlErrores.hayInternet()) {
+			String msg = "[error] No hay internet!\nPorfavor conectate a la red para cargar la aplicacion";
+			JOptionPane.showMessageDialog(null, msg, "", 1);
+			dispose();
+			System.exit(0);
+		} else {
+			setSize(660, 330);
+			setResizable(false);
+			setLocationRelativeTo(null);
+			getContentPane().setLayout(null);
 
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(45, 280, 560, 40);
-		progressBar.setStringPainted(true);
-		progressBar.setOpaque(true);
-		getContentPane().add(progressBar);
+			/* CONTROL IMAGENES */
+			if (!ControlErrores.comprobarIcono() || !ControlErrores.comprobarFondo()) {
+				String msg = "[error] Error en la carga de imagenes, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
+				dispose();
+				System.exit(0);
+			} else {
 
-		barra = new Timer(30, new ActionListener() { // Timer en millisegundos. Con 500 avanza en 5segundos
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				contador ++;
-				progressBar.setValue(contador);
+				// fondo
+				getContentPane().add(buscarImagen());
+				// icono
+				setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
 
-				if (contador == 80) {
-					if(!ControlErrores.comprobarTXTconfig()||!ControlErrores.comprobarTXThistorico()||!ControlErrores.comprobarTXTusuarios()) {
-						String msg = "[error] Error en la carga de archivos, sentimos las molestias!";
-						JOptionPane.showMessageDialog(null, msg, "", 1);
-						dispose();
-						return;
-					}else {
-						barra.stop();
-						miVentanaLogin.setVisible(true);
-						dispose();	
+				JProgressBar progressBar = new JProgressBar();
+				progressBar.setBounds(45, 280, 560, 40);
+				progressBar.setStringPainted(true);
+				progressBar.setOpaque(true);
+				getContentPane().add(progressBar);
+
+				barra = new Timer(30, new ActionListener() { // Timer en millisegundos. Con 500 avanza en 5segundos
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						contador++;
+						progressBar.setValue(contador);
+
+						if (contador == 80) {
+							/* CONTROL ARCHIVOS */
+							if (!ControlErrores.comprobarTXTconfig() || !ControlErrores.comprobarTXThistorico()
+									|| !ControlErrores.comprobarTXTusuarios()) {
+								String msg = "[error] Error en la carga de archivos, sentimos las molestias!";
+								JOptionPane.showMessageDialog(null, msg, "", 1);
+								dispose();
+								return;
+							} else {
+								barra.stop();
+								miVentanaLogin.setVisible(true);
+								dispose();
+							}
+						}
+						/*
+						 * if (contador >= 100) { barra.stop(); miVentanaLogin.setVisible(true);
+						 * dispose(); }
+						 */
 					}
-				}
-				/*if (contador >= 100) {
-					barra.stop();
-					miVentanaLogin.setVisible(true);
-					dispose();
-				}*/
+				});
+
+				barra.start();
 			}
-		});
-		
-		barra.start();
+		}
 	}
 
 	private Component buscarImagen() {
@@ -92,4 +111,5 @@ public class VentanaCarga extends JFrame {
 
 		return panelConFondo;
 	}
+
 }

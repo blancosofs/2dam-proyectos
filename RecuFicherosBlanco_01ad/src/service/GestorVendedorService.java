@@ -22,8 +22,8 @@ public class GestorVendedorService {
 		}
 	}
 
-	public static boolean validarCodigo(ArrayList<Planta> arrayCestaTemporal, int codigoVenta) {
-		for (Planta planta : arrayCestaTemporal) {
+	public static boolean validarCodigo(ArrayList<Planta> arrayCatalogoPlantas, int codigoVenta) {
+		for (Planta planta : arrayCatalogoPlantas) {
 			if (codigoVenta == planta.getCodigo()) {
 				return true;
 			}
@@ -31,18 +31,21 @@ public class GestorVendedorService {
 		return false;
 	}
 
-	public static boolean validarCandtidad(ArrayList<Planta> arrayCestaTemporal, int codigoVenta, int cantidadVenta) {
-		for (Planta planta : arrayCestaTemporal) {
+	public static boolean validarCandtidad(ArrayList<Planta> arrayCatalogoPlantas, int codigoVenta, int cantidadVenta) {
+		for (Planta planta : arrayCatalogoPlantas) {
 			if (codigoVenta == planta.getCodigo()) {
 				if (cantidadVenta <= planta.getStock()) {
 					return true;
-				}else {
+				} else {
 					return false;
 				}
 			}
 		}
-		
 		return false;
+	}
+
+	public static void insertarVenta(ArrayList<Planta> arrayCestaTemporal, int codigoVenta, int cantidadVenta) {
+		
 	}
 
 	public static boolean generarVentas(ArrayList<Planta> arrayCatalogoPlantas, ArrayList<Planta> arrayCestaTemporal,

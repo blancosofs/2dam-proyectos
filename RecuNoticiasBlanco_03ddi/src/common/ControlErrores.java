@@ -8,6 +8,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ControlErrores {
+	
+	public static boolean hayInternet() {
+	  
+		return true;
+	}
+	
+	public static boolean comprobarIcono() {
+		File fichero = new File("imagen/icono.png");
+		if (!fichero.exists()) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean comprobarFondo() {
+		File fichero = new File("src/ui/fondo.jpg");
+		if (!fichero.exists()) {
+			return false;
+		}
+		return true;
+	}
 
 	public static boolean comprobarTXTconfig() {
 		File fichero = new File("TXT/configuracion.txt");
