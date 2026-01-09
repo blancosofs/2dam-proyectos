@@ -129,6 +129,28 @@ public class VentaDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void mostrarStock1(Connection conexion, int idJugueteB) {
+		try {
+			String consulta = "SELECT * from stock WHERE JUGUETE_idJuguete =?";
+			PreparedStatement sentencia = conexion.prepareStatement(consulta);
+			sentencia.setInt(1, idJugueteB);
+
+			ResultSet resultado = sentencia.executeQuery();
+			while (resultado.next()) {
+				int idS = resultado.getInt("STAND_idStand");
+				int idZ = resultado.getInt("STAND_ZONA_idzona");
+				int idJ = resultado.getInt("JUGUETE_idJuguete");
+				int cant = resultado.getInt("CANTIDAD");
+
+				System.out.println();
+				System.out.println("idZona: " + idZ + ", idStand: " + idS + "   <->  " + ", idJuguete: " + idJ
+						+ ", Cantidad: " + cant);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void productoMasVendido(Connection conexion) {
 		try {

@@ -14,8 +14,8 @@ public class JugueteriaBlanco {
 		//String url = "jdbc:mysql://localhost:3306/jugueteria";
 		String url = "jdbc:mysql://localhost:3306/jugueteriaBlancoC";
 		String usuario = "root";
-		String password = "sopita666"; 
-		//String password = "cfgs";
+		//String password = "sopita666"; 
+		String password = "cfgs";
 
 		try {
 			/* Cargar el drive de la BD y crear conexion */

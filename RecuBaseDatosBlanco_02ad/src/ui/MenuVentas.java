@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import common.ControlErrores;
+import dao.DatosDAO;
 import dao.EmpleadoDAO;
 import dao.JuguetesDAO;
 import dao.VentaDAO;
@@ -53,11 +54,12 @@ public class MenuVentas {
 				if (!posibleVenta) {
 					System.err.println("[error] Venta no posible. No existe el juguete");
 				} else {
-					System.out.println("\nIntroduzca la fecha de venta");
-					System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
-					System.out.println("Fecha de venta (yyyy-MM-dd): ");
-					String fechaTexto = sc.nextLine();
-					LocalDate fechaSQL = LocalDate.parse(fechaTexto);
+					//System.out.println("\nIntroduzca la fecha de venta");
+					//System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
+					//System.out.println("Fecha de venta (yyyy-MM-dd): ");
+					//String fechaTexto = sc.nextLine();
+					//LocalDate fechaSQL = LocalDate.parse(fechaTexto);
+					LocalDate fechaSQL = LocalDate.now();
 					
 					// mostrar
 					ArrayList<Empleado> empleadosMostrar = EmpleadoDAO.leerObjetoEmpleado(conexion);
@@ -75,7 +77,7 @@ public class MenuVentas {
 						System.err.println("[error] Venta no posible. No existe el empleado");
 					} else {
 						// mostrar
-						VentaDAO.mostrarStand(conexion);
+						VentaDAO.mostrarStock1(conexion,idJugueteB);
 						System.out.println("\nIntroduzca el stand desde donde va a comprar");
 						int idStandV = ControlErrores.controlErroresInt(sc);
 						int idZonaV = JuguetesDAO.stock_idZonaBuscar(conexion, idStandV);

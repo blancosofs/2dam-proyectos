@@ -44,6 +44,7 @@ public class EmpleadoDAO {
 			sentencia.setString(1, nombre);
 			sentencia.setString(2, cargo);
 			//cuidado
+			//sentencia.setDate(3, java.sql.Date.valueOf(fechaSQL));
 			sentencia.setDate(3, java.sql.Date.valueOf(fechaSQL));
 
 			int resultado = sentencia.executeUpdate();

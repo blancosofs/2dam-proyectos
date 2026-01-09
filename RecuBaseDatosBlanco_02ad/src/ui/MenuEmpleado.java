@@ -41,11 +41,12 @@ public class MenuEmpleado {
 				String cargo = ControlErrores.controlErroresCargo(sc);
 
 				// control de errores pqeu solo te aceota este formato
-				System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
-				System.out.println("Fecha_Ingreso (yyyy-MM-dd);");
-				String fechaTexto = sc.nextLine();
-
-				LocalDate fechaSQL = LocalDate.parse(fechaTexto);
+				// System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-)
+				// MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
+				// System.out.println("Fecha_Ingreso (yyyy-MM-dd);");
+				// String fechaTexto = sc.nextLine();
+				LocalDate fechaSQL = LocalDate.now();
+				// LocalDate fechaSQL = LocalDate.parse(fechaTexto);
 
 				// SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
 				// java.util.Date fechaFormateada = formato.parse(fechaTexto);
@@ -88,11 +89,12 @@ public class MenuEmpleado {
 				System.out.println("Cargo: ");
 				String cargoB = ControlErrores.controlErroresCargo(sc);
 
-				System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
+				System.out.println(
+						"[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
 				System.out.println("FechaIngreso (yyyy-MM-dd): ");
 				String fechaTexto2 = sc.nextLine();
 				LocalDate fechaSQL2 = LocalDate.parse(fechaTexto2);
-				
+
 				EmpleadoDAO.modificarEmpleado(conexion, nombreB, cargoB, fechaSQL2, idEmpleadoB);
 
 				// mostrar
@@ -102,7 +104,7 @@ public class MenuEmpleado {
 					System.out.println("Empleado [id=" + e.getId() + ", nombre=" + e.getNombre() + ", cargo="
 							+ e.getCargo() + ", fechaIngreso=" + e.getFechaIngreso() + "]");
 				}
-				
+
 				break;
 			case 3:
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");

@@ -21,13 +21,7 @@ public class MenuVendedor {
 			System.out.println("3. Generar Devolucion");
 			System.out.println("4. Buscar por n ticket");
 			System.out.println("0. Volver");
-			// control scanner 1
-			String opcTexto = sc.nextLine().trim();
-			try {
-				opc = Integer.parseInt(opcTexto);
-			} catch (NumberFormatException e) {
-				opc = -1;
-			}
+			opc = ControlErrores.controlErroresInt(sc);
 
 			switch (opc) {
 			case 1:
@@ -57,12 +51,11 @@ public class MenuVendedor {
 						int cantidadVenta = ControlErrores.controlErroresInt(sc);
 
 						if (GestorVendedorService.validarCandtidad(arrayCatalogoPlantas,codigoVenta,cantidadVenta)) {
-
 							
+							seguirVentaBoolean = false;
 						}else {
 							System.out.println("[error] stock insuficiente");
 						}
-
 					} else {
 						System.out.println("[error] planta no encontrada");
 					}
