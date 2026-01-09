@@ -44,7 +44,7 @@ public class GestorVendedorService {
 		return false;
 	}
 
-	public static void insertarVenta(ArrayList<Planta> arrayCestaTemporal, int codigoVenta, int cantidadVenta) {
+	public static void insertarVenta(ArrayList<Planta> arrayCatalogoPlantas, int codigoVenta, int cantidadVenta) {
 		
 	}
 

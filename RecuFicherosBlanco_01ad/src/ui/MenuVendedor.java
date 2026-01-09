@@ -9,7 +9,7 @@ import domain.Planta;
 import service.GestorVendedorService;
 
 public class MenuVendedor {
-	
+
 	public static void mostrarMenuVendedor(Empleado empleadoRegistrado, ArrayList<Planta> arrayCatalogoPlantas) {
 		Scanner sc = new Scanner(System.in);
 		int opc = 0;
@@ -33,8 +33,8 @@ public class MenuVendedor {
 						"---------------------------------------------------------------------------------------------------------------------------\n");
 				break;
 			case 2:
-				//este esta vacio lol. De alguna forma saca el cataogo plantas para validar las cosas y luego usas el temporal para anyadir. sos
-				ArrayList<Planta> arrayCestaTemporal = new ArrayList<Planta>();
+				// este esta vacio lol. De alguna forma saca el cataogo plantas para validar las
+				// cosas y luego usas el temporal para anyadir. sos
 
 				System.out.println("~ VENTA DE PLANTAS: ~");
 				System.out.println("Vamos a proceder a la venta de una planta por codigo");
@@ -46,14 +46,32 @@ public class MenuVendedor {
 					System.out.println("Introduzca e codigo de planta que desee comprar:");
 					int codigoVenta = ControlErrores.controlErroresInt(sc);
 
-					if (GestorVendedorService.validarCodigo(arrayCatalogoPlantas,codigoVenta)) {
+					if (GestorVendedorService.validarCodigo(arrayCatalogoPlantas, codigoVenta)) {
 						System.out.println("Introduzca la cantidad de plantas que desee comprar:");
 						int cantidadVenta = ControlErrores.controlErroresInt(sc);
 
-						if (GestorVendedorService.validarCandtidad(arrayCatalogoPlantas,codigoVenta,cantidadVenta)) {
-							
-							seguirVentaBoolean = false;
-						}else {
+						if (GestorVendedorService.validarCandtidad(arrayCatalogoPlantas, codigoVenta, cantidadVenta)) {
+							Planta p = new Planta();
+
+							System.out.println("Resumen de compra:");
+							// 5.4.2 precio total
+							float precioTotal = (p.getPrecio() * cantidadVenta);
+							System.out.println("Planta COMPRAR [codigo=" + p.getCodigo() + ", cantidad=" + cantidadVenta
+									+ ", precio total=" + precioTotal + "]");
+
+							System.out.println("Confirmar venta? (s/n)");
+							String respuesta = sc.nextLine().trim();
+
+							if (respuesta.equalsIgnoreCase("s")) {
+
+								GestorVendedorService.insertarVenta(arrayCatalogoPlantas, codigoVenta, cantidadVenta);
+
+							} else {
+								System.out.println("Venta cancelada");
+								seguirVentaBoolean = false;
+							}
+
+						} else {
 							System.out.println("[error] stock insuficiente");
 						}
 					} else {
@@ -61,7 +79,7 @@ public class MenuVendedor {
 					}
 
 				} while (seguirVentaBoolean);
-				
+
 				break;
 			case 3:
 				GestorVendedorService.generarDevolucion();
