@@ -154,7 +154,7 @@ public class VentaDAO {
 
 	public static void productoMasVendido(Connection conexion) {
 		try {
-			String consulta = "select j.Nombre as NombreJuguete, COUNT(v.idventa) AS TotalVentas FROM venta v JOIN juguete j ON v.stock_JUGUETE_idJuguete = j.idJuguete GROUP BY v.stock_JUGUETE_idJuguete ORDER BY TotalVentas limit 1;";
+			String consulta = "select j.Nombre as NombreJuguete, COUNT(v.idventa) AS TotalVentas FROM venta v JOIN juguete j ON v.stock_JUGUETE_idJuguete = j.idJuguete GROUP BY v.stock_JUGUETE_idJuguete ORDER BY TotalVentas desc limit 1;";
 			PreparedStatement sentencia = conexion.prepareStatement(consulta);
 
 			ResultSet resultado = sentencia.executeQuery();
@@ -172,7 +172,7 @@ public class VentaDAO {
 
 	public static void empleadosMasVenden(Connection conexion) {
 		try {
-			String consulta = "select e.nombre as NombreEmpleado, COUNT(v.idventa) as TotalVentas from venta v join empleado e on v.EMPLEADO_idEMPLEADO = e.idEmpleado group by v.EMPLEADO_idEMPLEADO order by TotalVentas limit 1;";
+			String consulta = "select e.nombre as NombreEmpleado, COUNT(v.idventa) as TotalVentas from venta v join empleado e on v.EMPLEADO_idEMPLEADO = e.idEmpleado group by v.EMPLEADO_idEMPLEADO order by TotalVentas desc limit 1;";
 			PreparedStatement sentencia = conexion.prepareStatement(consulta);
 
 			ResultSet resultado = sentencia.executeQuery();
