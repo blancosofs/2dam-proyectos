@@ -1,14 +1,17 @@
 package db4o_ejemplo;
 
 import java.io.File;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
+//aqui lo tenemos para local! 
+//vamos a trabajar en un archivo local
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 
 public class Main {
-
+	private static Scanner entrada = new Scanner(System.in);
 	public static void main(String[] args) {
 		File f = new File("personas.db4o");
 		// f.delete();
@@ -32,9 +35,11 @@ public class Main {
 				break;
 			case 2:
 				read(f);
+				//readNative(f);
 				break;
 			case 3:
-				update(f);
+				updateParametros(f);
+				//update(f);
 				read(f);
 				break;
 			case 4:
@@ -77,9 +82,10 @@ public class Main {
 	public static void read(File f) {
 		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
 		try {
-			
+
 			Estudiantes estRead = new Estudiantes();
 
+			// interfaz de lista
 			ObjectSet<Estudiantes> result = db.queryByExample(estRead);
 
 			while (result.hasNext()) {
@@ -94,8 +100,7 @@ public class Main {
 	public static void update(File f) {
 		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
 		try {
-
-			Estudiantes estUpdate= new Estudiantes(0,"Samuel",0,0);
+			Estudiantes estUpdate = new Estudiantes(0, "Samuel", 0, 0);
 
 			ObjectSet<Estudiantes> result = db.queryByExample(estUpdate);
 
@@ -106,6 +111,28 @@ public class Main {
 
 				db.store(estUpdate2);
 				System.out.println(estUpdate2);
+			}
+
+		} finally {
+			db.close();
+		}
+	}
+	
+	public static void updateParametros(File f) {
+		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
+		try {
+			System.out.println("Introduzca nombre a modificar datos");
+			String nombre = entrada.nextLine();
+
+			ObjectSet<Estudiantes> result = db.queryByExample(new Estudiantes(0, nombre, 0, 0));
+
+			if (result.hasNext()) {
+				Estudiantes estUpdate2 = result.next();
+				System.out.println("Introduzca nueva nota");
+				Double nota = entrada.nextDouble();
+				estUpdate2.setNotaFinal(nota);
+
+				db.store(estUpdate2);
 			}
 
 		} finally {
@@ -124,10 +151,31 @@ public class Main {
 			if (result.hasNext()) {
 				Estudiantes estudianteborrar = result.next();
 				db.delete(estudianteborrar);
-				
+
 			}
 		} finally {
 			db.close();
 		}
 	}
+	
+
+	/*
+	public static void readNative(File f) {
+		ObjectContainer db = Db4oEmbedded.openFile(f.getAbsolutePath());
+		try {
+
+			// interfaz de lista
+			ObjectSet<Estudiantes> result =(ObjectSet<Estudiantes>) db.query();
+
+			while (result.hasNext()) {
+				System.out.println(result.next());
+			}
+		} finally {
+			db.close();
+		}
+	}
+	*/
+	
+
+
 }
