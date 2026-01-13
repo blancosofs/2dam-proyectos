@@ -129,7 +129,7 @@ public class VentaDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void mostrarStock1(Connection conexion, int idJugueteB) {
 		try {
 			String consulta = "SELECT * from stock WHERE JUGUETE_idJuguete =?";
@@ -188,6 +188,7 @@ public class VentaDAO {
 		}
 	}
 
+	//para el cambio
 	public static boolean buscarVenta(Connection conexion, int idVentaC) {
 		try {
 			String consultaBuscar = "SELECT COUNT(*) FROM venta WHERE idventa = ?";
