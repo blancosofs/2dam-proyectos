@@ -12,11 +12,9 @@ import dao.NoticiasDAO;
 import domain.Noticias;
 
 public class NoticiasService {
-
-	/*
-	 * public static void main(String[] args) { String prueba = exNoticias();
-	 * System.out.println(prueba); }
-	 */
+	//public static void main(String[] args) { String prueba = exNoticias();
+	//System.out.println(prueba); }
+	 
 
 	public static String exNoticias() {
 		List<Noticias> fuentes = NoticiasDAO.extraerNoticiasObjeto();
@@ -47,6 +45,8 @@ public class NoticiasService {
 		return sb.toString();
 	}
 
+	
+	
 	// DEPORTES -----------------------------------	
 	
 	public static String exNot_dMarca() {

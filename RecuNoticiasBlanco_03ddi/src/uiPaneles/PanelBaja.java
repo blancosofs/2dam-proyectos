@@ -64,8 +64,7 @@ public class PanelBaja extends JPanel {
 		btn_volver.setBounds(740, 584, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
-				JOptionPane.showMessageDialog(null, msg, "", 1);
+				PanelAdmin.mostrar2("config");
 			}
 		});
 		add(btn_volver);

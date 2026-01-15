@@ -9,6 +9,8 @@ import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import ui.VentanaLogin;
+
 public class PanelConfig extends JPanel {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +23,7 @@ public class PanelConfig extends JPanel {
 	private JButton btn_exit;
 	private JButton btn_volver;
 
-	public PanelConfig(PanelTest panelTest, PanelHora panelHora, PanelAlta panelAlta, PanelBaja panelBaja) {
+	public PanelConfig() {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
 
@@ -39,8 +41,9 @@ public class PanelConfig extends JPanel {
 		add(btn_alta);
 		btn_alta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAlta.setVisible(true);
-				setVisible(false);
+				//panelAlta.setVisible(true);
+				//setVisible(false);
+				PanelAdmin.mostrar2("alta");
 			}
 		});
 
@@ -53,6 +56,7 @@ public class PanelConfig extends JPanel {
 				JOptionPane.showMessageDialog(null, msg, "", 1);
 				//panelBaja.setVisible(true);
 				//setVisible(false);
+				//PanelAdmin.mostrar("baja");
 			}
 		});
 
@@ -61,8 +65,9 @@ public class PanelConfig extends JPanel {
 		add(btn_test);
 		btn_test.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelTest.setVisible(true);
-				setVisible(false);
+				//panelTest.setVisible(true);
+				//setVisible(false);
+				PanelAdmin.mostrar2("test");
 			}
 		});
 
@@ -73,6 +78,7 @@ public class PanelConfig extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
 				JOptionPane.showMessageDialog(null, msg, "", 1);
+				//PanelAdmin.mostrar("hora");
 			}
 		});
 
@@ -95,9 +101,9 @@ public class PanelConfig extends JPanel {
 		btn_volver.setBounds(531, 505, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getParent().setVisible(true); //esto va a admin
-				setVisible(false);
-				
+				VentanaLogin.mostrar("inicio de sesion");
+				//getParent().setVisible(true); //esto va a admin
+				//setVisible(false);
 				//getParent().isVisible();
 				//String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
 				//JOptionPane.showMessageDialog(null, msg, "", 1);

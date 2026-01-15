@@ -122,9 +122,9 @@ public class PanelAlta extends JPanel {
 		btn_volver.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				PanelAdmin.mostrar2("config");
 				//getParent().setVisible(true);
-				setVisible(false);
-				
+				//setVisible(false);
 				// como cambio al panel padre sin pasarselo como parametro
 				//getTopLevelAncestor().setVisible(true);
 				//setVisible(false);
@@ -132,6 +132,7 @@ public class PanelAlta extends JPanel {
 				//JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
+		
 		add(btn_volver);
 
 		btn_exit = new JButton("x");

@@ -26,6 +26,7 @@ public class VentanaCarga extends JFrame {
 	int contador = 0;
 
 	public VentanaCarga(VentanaLogin miVentanaLogin) {
+		/* CONTROL INTERNET */
 		if (!ControlErrores.hayInternet()) {
 			String msg = "[error] No hay internet!\nPorfavor conectate a la red para cargar la aplicacion";
 			JOptionPane.showMessageDialog(null, msg, "", 1);
@@ -44,7 +45,6 @@ public class VentanaCarga extends JFrame {
 				dispose();
 				System.exit(0);
 			} else {
-
 				// fondo
 				getContentPane().add(buscarImagen());
 				// icono
@@ -70,16 +70,14 @@ public class VentanaCarga extends JFrame {
 								JOptionPane.showMessageDialog(null, msg, "", 1);
 								dispose();
 								return;
-							} else {
-								barra.stop();
-								miVentanaLogin.setVisible(true);
-								dispose();
-							}
+							} 
 						}
-						/*
-						 * if (contador >= 100) { barra.stop(); miVentanaLogin.setVisible(true);
-						 * dispose(); }
-						 */
+						if (contador == 100) { //todo guay y lo  lanza
+							barra.stop();
+							miVentanaLogin.setVisible(true);
+							dispose();
+						}
+						
 					}
 				});
 

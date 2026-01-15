@@ -10,8 +10,7 @@ public class Principal {
 		 * 
 		 * Bienvenidoa a mi aplicacion de noticias!
 		 * 
-		 * [AVISO] La applicaciion tarda un ratito en cargar, porfavor tenga paciencia
-		 * [INFO] En la memoria del proyecto hay un apardado de Estructura del codigo
+		 * [AVISO] La applicacion tarda un ratito en cargar, porfavor tenga paciencia
 		 * 
 		 * [info] Credenciales usuario prueba: user1 pwd1
 		 * [info] Credenciales admin prueba: admin1 pwda1

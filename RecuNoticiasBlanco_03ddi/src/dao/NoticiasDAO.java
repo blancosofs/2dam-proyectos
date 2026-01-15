@@ -8,14 +8,9 @@ import java.util.List;
 import domain.Noticias;
 
 public class NoticiasDAO {
-	
-
-	public static void main(String[] args) {
-		List<Noticias> noticias = extraerNoticiasObjeto() ;
-		for(Noticias n : noticias) {
-			System.out.println(n);
-		}
-	}
+	//public static void main(String[] args) {
+	//	List<Noticias> noticias = extraerNoticiasObjeto() ;
+	//	for(Noticias n : noticias) {System.out.println(n);}}
 	
 	public static List<Noticias> extraerNoticiasObjeto() {
 		List<Noticias> fuentes=new ArrayList<>();

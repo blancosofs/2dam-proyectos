@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dao.UsuariosDAO;
+import ui.VentanaLogin;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -31,10 +32,9 @@ public class PanelInicioSesion extends JPanel {
 	private JPasswordField passwordField;
 	private JButton btn_iniciarSesion;
 
-	public PanelInicioSesion(PanelAdmin panelAdmin, PanelUsuario panelUsuario) {
+	public PanelInicioSesion() {
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
-	
 
 		editorPane_login = new JEditorPane();
 		editorPane_login.setFont(new Font("Argelina", Font.BOLD, 20));
@@ -80,24 +80,23 @@ public class PanelInicioSesion extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//editar limite intentos
-				
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
 				if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 1) {
-					panelAdmin.setVisible(true);
-					setVisible(false);
+					//panelAdmin.setVisible(true);
+					//setVisible(false);
+					VentanaLogin.mostrar("administrador");
 					btn_iniciarSesion.setEnabled(false);
 				} else if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 2) {
-					panelUsuario.setVisible(true);
-					setVisible(false);
+					//panelUsuario.setVisible(true);
+					//setVisible(false);
+					VentanaLogin.mostrar("usuario");
 					btn_iniciarSesion.setEnabled(false);
 				} else {
 					String msg = "[error] Usuario no encontrado";
 					JOptionPane.showMessageDialog(null, msg, "", 1);
 				}
 			}
-			
-			
 		});
 
 		btn_exit = new JButton("x");
