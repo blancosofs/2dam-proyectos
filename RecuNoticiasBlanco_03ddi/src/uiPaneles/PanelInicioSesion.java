@@ -7,11 +7,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dao.UsuariosDAO;
+import domain.Usuario;
 import ui.VentanaLogin;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -31,6 +33,9 @@ public class PanelInicioSesion extends JPanel {
 
 	private JPasswordField passwordField;
 	private JButton btn_iniciarSesion;
+	private JButton btn_baja;
+
+	private Usuario existe = null;
 
 	public PanelInicioSesion() {
 		setLayout(null);
@@ -79,19 +84,38 @@ public class PanelInicioSesion extends JPanel {
 		btn_iniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//editar limite intentos
+				// ~~~~~ editar limite intentos
 				String usr = textField_usuario.getText();
 				String pass = new String(passwordField.getPassword());
-				if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 1) {
-					//panelAdmin.setVisible(true);
-					//setVisible(false);
-					VentanaLogin.mostrar("administrador");
+
+				// Usuario existe = null; // vacio, subelo para poder verlo en cerrar sesion
+				List<Usuario> userLeer = UsuariosDAO.extraerUsuarioObjeto();
+				for (Usuario u : userLeer) {
+					if (u.getNombre().equalsIgnoreCase(usr.trim()) && u.getPass().equalsIgnoreCase(pass.trim())) {
+						existe = u; // recorres, comparas y le metes esos valores
+					}
+				}
+				// si ya no lo tienes vacio
+				if (existe != null) {
+					// ahora si!!!!
+					/* INICIAR SESION */
+					existe.setLoggeado(true);
+					// en lugar de numeros comparas directamente con el cargo
+					if (existe.getCargo().equals("user")) {
+						VentanaLogin.mostrar("usuario");
+						/* COMPROBAR PREFERENCIAS */
+						//recuerda que el card es como un metodo que barajea, por eso en esta clase usas ventana aunque tehgas otro en usuario :p
+						if (!existe.isPreferencias()) {
+							VentanaLogin.mostrar("preferencias");
+						} else {
+							VentanaLogin.mostrar("noticias");
+						}
+					} else if (existe.getCargo().equals("admin")) {
+						VentanaLogin.mostrar("administrador");
+					}
+					// para que no te lies
 					btn_iniciarSesion.setEnabled(false);
-				} else if (UsuariosDAO.comprobarUsrTXT(usr, pass) == 2) {
-					//panelUsuario.setVisible(true);
-					//setVisible(false);
-					VentanaLogin.mostrar("usuario");
-					btn_iniciarSesion.setEnabled(false);
+					btn_baja.setVisible(true);
 				} else {
 					String msg = "[error] Usuario no encontrado";
 					JOptionPane.showMessageDialog(null, msg, "", 1);
@@ -99,11 +123,28 @@ public class PanelInicioSesion extends JPanel {
 			}
 		});
 
+		btn_baja = new JButton("Cerrar sesion");
+		btn_baja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (existe != null) {
+					/* CERRAR SESION */
+					existe.setLoggeado(false);
+
+					btn_iniciarSesion.setEnabled(true);
+					btn_baja.setVisible(false);
+				}
+			}
+		});
+		btn_baja.setBounds(457, 433, 220, 29);
+		add(btn_baja);
+		btn_baja.setVisible(false);
+
 		btn_exit = new JButton("x");
 		btn_exit.setBorder(null);
 		btn_exit.setBounds(1141, 6, 53, 26);
 
 		btn_exit.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				// 0->aceptar, 1->no, 2->cancelar
 				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
@@ -114,5 +155,6 @@ public class PanelInicioSesion extends JPanel {
 			}
 		});
 		add(btn_exit);
+
 	}
 }

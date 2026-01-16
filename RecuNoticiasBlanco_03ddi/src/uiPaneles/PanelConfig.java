@@ -52,11 +52,9 @@ public class PanelConfig extends JPanel {
 		add(btn_baja);
 		btn_baja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
-				JOptionPane.showMessageDialog(null, msg, "", 1);
 				//panelBaja.setVisible(true);
 				//setVisible(false);
-				//PanelAdmin.mostrar("baja");
+				PanelAdmin.mostrar2("baja");
 			}
 		});
 
@@ -78,7 +76,7 @@ public class PanelConfig extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
 				JOptionPane.showMessageDialog(null, msg, "", 1);
-				//PanelAdmin.mostrar("hora");
+				//PanelAdmin.mostrar2("hora");
 			}
 		});
 

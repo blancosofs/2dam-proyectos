@@ -72,7 +72,7 @@ public class VentanaCarga extends JFrame {
 								return;
 							} 
 						}
-						if (contador == 100) { //todo guay y lo  lanza
+						if (contador == 101) { //todo guay y lo  lanza
 							barra.stop();
 							miVentanaLogin.setVisible(true);
 							dispose();

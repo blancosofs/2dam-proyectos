@@ -3,14 +3,20 @@ package uiPaneles;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import common.ControlErrores;
+import dao.UsuariosDAO;
+import domain.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 
 public class PanelBaja extends JPanel {
 
@@ -23,6 +29,8 @@ public class PanelBaja extends JPanel {
 	private JButton btn_baja;
 	private JButton btn_volver;
 	private JButton btn_exit;
+
+	private JTextArea textArea;
 
 	public PanelBaja() {
 		setLayout(null);
@@ -38,11 +46,11 @@ public class PanelBaja extends JPanel {
 		add(editorPane);
 
 		lbl_nombre = new JLabel("Nombre:");
-		lbl_nombre.setBounds(223, 324, 61, 16);
+		lbl_nombre.setBounds(223, 521, 61, 16);
 		add(lbl_nombre);
 
 		textField = new JTextField();
-		textField.setBounds(323, 307, 660, 50);
+		textField.setBounds(323, 504, 660, 50);
 		add(textField);
 		textField.setColumns(10);
 
@@ -54,12 +62,42 @@ public class PanelBaja extends JPanel {
 		btn_baja.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
-				JOptionPane.showMessageDialog(null, msg, "", 1);
-				//UsuariosDAO.bajaUsuario(nombreBaja);
+
+				String newNombre = textField.getText();
+
+				if ((newNombre) != null) {
+
+					if (!ControlErrores.comprobarNombre(newNombre)) {
+						String msg = "[error] Campos invalidos. "
+								+ "Siga la siguiente estructura sin []: \n user[numero de preferencia(del 1-9)]";
+						JOptionPane.showMessageDialog(null, msg, "", 1);
+
+					} else {
+
+						if (ControlErrores.comprobarAltaUsuariosNombre(newNombre)) {
+							String msg = "[error] Usuario no existente";
+							JOptionPane.showMessageDialog(null, msg, "", 1);
+
+						} else {
+							if (!ControlErrores.comprobarAltaUsuarios()) {
+								String msg = "[error] Numero de usuarios superado. La aplicacion solo soporta 10";
+								JOptionPane.showMessageDialog(null, msg, "", 1);
+
+							} else {
+								UsuariosDAO.bajaUsuario(nombreBaja);
+								String msg = "[info] Usuario dado de baja con exito";
+								JOptionPane.showMessageDialog(null, msg, "", 1);
+							}
+
+						}
+					}
+				} else {
+					String msg = "[error] Algun campo esta vacio";
+					JOptionPane.showMessageDialog(null, msg, "", 1);
+				}
 			}
 		});
-		
+
 		btn_volver = new JButton("<--");
 		btn_volver.setBounds(740, 584, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
@@ -68,7 +106,7 @@ public class PanelBaja extends JPanel {
 			}
 		});
 		add(btn_volver);
-		
+
 		btn_exit = new JButton("x");
 		btn_exit.setBorder(null);
 		btn_exit.setBounds(1141, 6, 53, 26);
@@ -84,5 +122,19 @@ public class PanelBaja extends JPanel {
 		});
 		add(btn_exit);
 
+		textArea = new JTextArea(listarUsuario());
+		textArea.setBounds(223, 257, 760, 211);
+		add(textArea);
+
 	}
+
+	public String listarUsuario() {
+		List<Usuario> userLeer = UsuariosDAO.extraerUsuarioObjeto();
+		StringBuilder sb = new StringBuilder();
+		for (Usuario u : userLeer) {
+			sb.append(u).append("\n");
+		}
+		return sb.toString();
+	}
+
 }

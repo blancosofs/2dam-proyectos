@@ -82,6 +82,7 @@ public class PanelAlta extends JPanel {
 		btn_alta.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				String newNombre = textField.getText();
 				String newPass = textField_pwd.getText();
 				String newEmail = textField_email.getText();

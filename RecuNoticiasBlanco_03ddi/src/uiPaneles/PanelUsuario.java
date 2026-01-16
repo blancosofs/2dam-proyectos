@@ -4,7 +4,6 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
-import dao.PreferenciasDAO;
 
 public class PanelUsuario extends JPanel {
 
@@ -24,31 +23,37 @@ public class PanelUsuario extends JPanel {
 
 		// el panel contenedor va a ser CardLayout
 		tarjetas3 = new JPanel(new CardLayout());
+		tarjetas3.setBounds(0, 0, 1200, 800); 
 		add(tarjetas3); // este va al panel, no al frame por eso add
 
 		PanelUsuarioNoticias panelUsuarioNoticias = new PanelUsuarioNoticias();
 		panelUsuarioNoticias.setBounds(0, 0, 1200, 800);
-		//add(panelUsuarioNoticias);
-		//panelUsuarioNoticias.setVisible(false);
 		tarjetas3.add(panelUsuarioNoticias, "noticias");
 		
 		
 		PanelUsuarioPreferencias panelUsuarioNuevo = new PanelUsuarioPreferencias(panelUsuarioNoticias);
 		panelUsuarioNuevo.setBounds(0, 0, 1200, 800);
-		//add(panelUsuarioNuevo);
-		//panelUsuarioNuevo.setVisible(false);
 		tarjetas3.add(panelUsuarioNuevo, "preferencias");
 		
-		// EDITAAAAR
-		if (PreferenciasDAO.comprobarPersonalizacion()) {
-			// panelUsuarioNoticias.setVisible(true);
-			// setVisible(false);
+		/*COMPROBAR PREFERENCIAS
+		
+		//con esto te usas lo de antes sin subir todo a estatico :D, se te vaa null pointer :/
+		Usuario usuarioComparar = null;
+		List<Usuario> userLeer = UsuariosDAO.extraerUsuarioObjeto();
+		
+		for (Usuario u : userLeer) {
+		    if (u.isLoggeado()) {
+		    	usuarioComparar = u;
+		    }
+		}
+		if (!usuarioComparar.isPreferencias()) { //false que tengas preferencias
 			mostrar3("preferencias");
 		} else {
-			// panelUsuarioNuevo.setVisible(true);
-			// setVisible(false);
 			mostrar3("noticias");
 		}
+		*/
+		
 	}
+
 
 }

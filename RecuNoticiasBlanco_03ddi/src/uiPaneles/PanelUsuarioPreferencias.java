@@ -8,8 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 
-import dao.PreferenciasDAO;
+
 import domain.Usuario;
+import ui.VentanaLogin;
 
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
@@ -52,6 +53,8 @@ public class PanelUsuarioPreferencias extends JPanel {
 	private JCheckBox chckbx_A3;
 
 	private JButton btn_exit;
+	
+	private JButton btn_volver;
 
 	public PanelUsuarioPreferencias(PanelUsuarioNoticias panelUsuarioNoticias) {
 		int[] seleccionPreferencias = new int[18];
@@ -230,14 +233,15 @@ public class PanelUsuarioPreferencias extends JPanel {
 				if (chckbx_A3.isSelected()) {
 					seleccionPreferencias[17] = 1;
 				}
-
-				//guardar preferencias
-				Usuario u = new Usuario();
-				u.setPreferencias(true);
 				
-				PreferenciasDAO.escribirPreferencias(seleccionPreferencias);
-				panelUsuarioNoticias.setVisible(true);
-				setVisible(false);
+				/*GUARDAR PREFERENCIAS*/
+				
+				//voy a tener que cambiar el usuario y meterle un array de int para poder guardarme esto en el txt. Despues seria comprobar que el array es != de null y si lo es
+				//seteo el booleano de preferencias (llo de ventana se queda igual)
+				//
+				
+				//con eso aqui necesito otro metodo que lea y sepa que noticias quieres y que se las pueda pasar a otra clase al mismo nivel que es noticias para qeu depe ndeindo de eso pueda mostra noticias
+				
 			}
 		});
 
@@ -256,6 +260,15 @@ public class PanelUsuarioPreferencias extends JPanel {
 			}
 		});
 		add(btn_exit);
+		
+		btn_volver = new JButton("<--");
+		btn_volver.setBounds(548, 694, 117, 29);
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaLogin.mostrar("inicio de sesion");
+			}
+		});
+		add(btn_volver);
 
 	}
 }

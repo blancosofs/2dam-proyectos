@@ -54,6 +54,7 @@ public class ControlErrores {
 		return true;
 	}
 
+	//coontador de usuarios soportados por app
 	public static boolean comprobarAltaUsuarios() {
 		try {
 			int contador = 0;
@@ -73,6 +74,7 @@ public class ControlErrores {
 		return true;
 	}
 
+	//contador existencia usuarios por nombre
 	public static boolean comprobarAltaUsuariosNombre(String nombre) {
 		try {
 
@@ -83,13 +85,11 @@ public class ControlErrores {
 
 					String[] cadena = linea.substring(1).split("::");
 
-					// String id = cadena[0];
-					String usuario = cadena[1];
-					// String password = cadena[2];
-					// String email = cadena[3];
+					String usuario = cadena[0];
+					// String password = cadena[1];
+					// String email = cadena[2];
 
 					if (usuario.equals(nombre)) {
-
 						return false;
 					}
 				}

@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import dao.HistoricoDAO;
 import service.NoticiasService;
+import ui.VentanaLogin;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -51,6 +52,15 @@ public class PanelUsuarioNoticias extends JPanel{
 				JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
+		
+		btn_volver = new JButton("<--");
+		btn_volver.setBounds(486, 679, 117, 29);
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaLogin.mostrar("inicio de sesion");
+			}
+		});
+		add(btn_volver);
 		
 	}
 }
