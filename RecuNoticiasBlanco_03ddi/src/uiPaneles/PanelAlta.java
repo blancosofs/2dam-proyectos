@@ -1,5 +1,6 @@
 package uiPaneles;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +35,7 @@ public class PanelAlta extends JPanel {
 
 	public PanelAlta() {
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0,800, 600);
 
 		editorPane = new JEditorPane();
 		editorPane.setFont(new Font("Argelina", Font.BOLD, 20));
@@ -42,42 +43,45 @@ public class PanelAlta extends JPanel {
 		editorPane.setText(
 				"<center><h1>Bienvenido al panel de alta de usuarios <br> <h2>Introduzca los siguientes datos");
 		editorPane.setEditable(false);
-		editorPane.setBounds(223, 140, 760, 90);
+		editorPane.setBounds(85, 100, 630, 110);
 		add(editorPane);
 
 		lbl_nombre = new JLabel("Nombre:");
-		lbl_nombre.setBounds(223, 324, 61, 16);
+		lbl_nombre.setFont(new Font("Argelina", Font.PLAIN, 16));
+		lbl_nombre.setBounds(92, 260, 155, 35);
 		add(lbl_nombre);
 
 		textField = new JTextField();
-		textField.setBounds(323, 307, 660, 50);
+		textField.setBounds(290, 260, 425, 35);
 		add(textField);
 		textField.setColumns(10);
 
 		// ------------------------------------
 
 		lbl_pwd = new JLabel("Contraseña:");
-		lbl_pwd.setBounds(223, 420, 88, 16);
+		lbl_pwd.setFont(new Font("Argelina", Font.PLAIN, 16));
+		lbl_pwd.setBounds(92, 320, 155, 35);
 		add(lbl_pwd);
 
 		textField_pwd = new JTextField();
 		textField_pwd.setColumns(10);
-		textField_pwd.setBounds(323, 403, 660, 50);
+		textField_pwd.setBounds(290, 320, 425, 35);
 		add(textField_pwd);
 
 		// ------------------------------------
 
 		lbl_email = new JLabel("Email:");
-		lbl_email.setBounds(223, 514, 61, 16);
+		lbl_email.setFont(new Font("Argelina", Font.PLAIN, 16));
+		lbl_email.setBounds(92, 380, 155, 35);
 		add(lbl_email);
 
 		textField_email = new JTextField();
 		textField_email.setColumns(10);
-		textField_email.setBounds(323, 497, 660, 50);
+		textField_email.setBounds(290, 380, 425, 35);
 		add(textField_email);
 
 		btn_alta = new JButton("Alta");
-		btn_alta.setBounds(866, 584, 117, 29);
+		btn_alta.setBounds(615, 480, 100, 35);
 		add(btn_alta);
 		btn_alta.addActionListener(new ActionListener() {
 			@Override
@@ -119,7 +123,7 @@ public class PanelAlta extends JPanel {
 		});
 
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(699, 584, 117, 29);
+		btn_volver.setBounds(85, 480, 100, 35);
 		btn_volver.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -137,9 +141,9 @@ public class PanelAlta extends JPanel {
 		add(btn_volver);
 
 		btn_exit = new JButton("x");
+		btn_exit.setBackground(new Color(255, 0, 0));
 		btn_exit.setBorder(null);
-		btn_exit.setBounds(1141, 6, 53, 26);
-
+		btn_exit.setBounds(750,25,25,25);
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",

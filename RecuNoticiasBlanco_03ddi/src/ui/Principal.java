@@ -23,13 +23,13 @@ public class Principal {
 			public void run() {
 				try {
 					VentanaLogin miVentanaLogin = new VentanaLogin();
-					miVentanaLogin.setSize(1200, 800);
+					miVentanaLogin.setSize(800, 600);
 					miVentanaLogin.setResizable(false);
 					miVentanaLogin.setLocationRelativeTo(null);
 					miVentanaLogin.setVisible(false);
 					
 					VentanaCarga miVentanaCarga = new VentanaCarga(miVentanaLogin);
-					miVentanaCarga.setSize(660, 330);
+					miVentanaCarga.setSize(600, 400);
 					miVentanaCarga.setUndecorated(true);
 					miVentanaCarga.setResizable(false);
 					miVentanaCarga.setLocationRelativeTo(null);

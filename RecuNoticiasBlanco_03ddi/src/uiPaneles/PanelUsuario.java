@@ -19,7 +19,7 @@ public class PanelUsuario extends JPanel {
 
 	public PanelUsuario() {
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0,800, 600);
 
 		// el panel contenedor va a ser CardLayout
 		tarjetas3 = new JPanel(new CardLayout());

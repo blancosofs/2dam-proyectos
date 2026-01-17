@@ -60,7 +60,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 		int[] seleccionPreferencias = new int[18];
 
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 800, 600);
 
 		editorPane = new JEditorPane();
 		editorPane.setFont(new Font("Argelina", Font.BOLD, 20));
@@ -68,7 +68,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 		editorPane.setText(
 				"<center><h1>Bienvenido al panel de personalizacion <br> <h2>Seleccione sus preferencias (max 18 minimo 1)");
 		editorPane.setEditable(false);
-		editorPane.setBounds(221, 35, 760, 90);
+		editorPane.setBounds(141, 35, 524, 94);
 		add(editorPane);
 
 		lbl_deportes = new JLabel("DEPORTES");
@@ -90,91 +90,91 @@ public class PanelUsuarioPreferencias extends JPanel {
 
 		lbl_economia = new JLabel("ECONOMIA");
 		lbl_economia.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_economia.setBounds(250, 173, 97, 14);
+		lbl_economia.setBounds(341, 173, 97, 14);
 		add(lbl_economia);
 
 		chckbx_E1 = new JCheckBox("Economista");
-		chckbx_E1.setBounds(250, 212, 97, 23);
+		chckbx_E1.setBounds(341, 212, 97, 23);
 		add(chckbx_E1);
 
 		chckbx_E2 = new JCheckBox("Expansion");
-		chckbx_E2.setBounds(248, 249, 97, 23);
+		chckbx_E2.setBounds(341, 249, 97, 23);
 		add(chckbx_E2);
 
 		chckbx_E3 = new JCheckBox("El digital");
-		chckbx_E3.setBounds(250, 288, 97, 23);
+		chckbx_E3.setBounds(341, 288, 97, 23);
 		add(chckbx_E3);
 
 		lbl_nacional = new JLabel("NACIONAL");
 		lbl_nacional.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_nacional.setBounds(448, 173, 97, 14);
+		lbl_nacional.setBounds(602, 173, 97, 14);
 		add(lbl_nacional);
 
 		chckbx_N1 = new JCheckBox("Rtve");
-		chckbx_N1.setBounds(448, 212, 97, 23);
+		chckbx_N1.setBounds(602, 212, 97, 23);
 		add(chckbx_N1);
 
 		chckbx_N2 = new JCheckBox("The objetive");
-		chckbx_N2.setBounds(448, 249, 97, 23);
+		chckbx_N2.setBounds(602, 249, 97, 23);
 		add(chckbx_N2);
 
 		chckbx_N3 = new JCheckBox("El mundo");
-		chckbx_N3.setBounds(448, 288, 97, 23);
+		chckbx_N3.setBounds(602, 288, 97, 23);
 		add(chckbx_N3);
 
 		lbl_internacional = new JLabel("INTERNACIONAL");
 		lbl_internacional.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_internacional.setBounds(640, 173, 126, 14);
+		lbl_internacional.setBounds(50, 365, 126, 14);
 		add(lbl_internacional);
 
 		chckbx_I1 = new JCheckBox("Europapress");
-		chckbx_I1.setBounds(640, 212, 97, 23);
+		chckbx_I1.setBounds(48, 404, 97, 23);
 		add(chckbx_I1);
 
 		chckbx_I2 = new JCheckBox("20 minutos");
-		chckbx_I2.setBounds(638, 249, 97, 23);
+		chckbx_I2.setBounds(48, 441, 97, 23);
 		add(chckbx_I2);
 
 		chckbx_I3 = new JCheckBox("La razon");
-		chckbx_I3.setBounds(640, 288, 97, 23);
+		chckbx_I3.setBounds(48, 480, 97, 23);
 		add(chckbx_I3);
 
 		lbl_musica = new JLabel("MUSICA");
 		lbl_musica.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_musica.setBounds(868, 173, 97, 14);
+		lbl_musica.setBounds(341, 365, 97, 14);
 		add(lbl_musica);
 
 		chckbx_M1 = new JCheckBox("Rockfm");
-		chckbx_M1.setBounds(868, 212, 97, 23);
+		chckbx_M1.setBounds(341, 404, 97, 23);
 		add(chckbx_M1);
 
 		chckbx_M2 = new JCheckBox("Radiole");
-		chckbx_M2.setBounds(868, 249, 97, 23);
+		chckbx_M2.setBounds(341, 441, 97, 23);
 		add(chckbx_M2);
 
 		chckbx_M3 = new JCheckBox("El pais");
-		chckbx_M3.setBounds(868, 288, 97, 23);
+		chckbx_M3.setBounds(341, 480, 97, 23);
 		add(chckbx_M3);
 
 		lbl_aleatorio = new JLabel("ALEATORIO");
 		lbl_aleatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl_aleatorio.setBounds(1070, 173, 97, 14);
+		lbl_aleatorio.setBounds(602, 365, 97, 14);
 		add(lbl_aleatorio);
 
 		chckbx_A1 = new JCheckBox("Cbr");
-		chckbx_A1.setBounds(1070, 212, 97, 23);
+		chckbx_A1.setBounds(602, 404, 97, 23);
 		add(chckbx_A1);
 
 		chckbx_A2 = new JCheckBox("Lecturalia");
-		chckbx_A2.setBounds(1068, 249, 97, 23);
+		chckbx_A2.setBounds(602, 441, 97, 23);
 		add(chckbx_A2);
 
 		chckbx_A3 = new JCheckBox("9 to 5");
-		chckbx_A3.setBounds(1070, 288, 97, 23);
+		chckbx_A3.setBounds(602, 480, 97, 23);
 		add(chckbx_A3);
 
 		button = new JButton("Guardar");
-		button.setBounds(559, 526, 89, 23);
+		button.setBounds(654, 536, 104, 26);
 		add(button);
 		button.addActionListener(new ActionListener() {
 			@Override
@@ -246,9 +246,9 @@ public class PanelUsuarioPreferencias extends JPanel {
 		});
 
 		btn_exit = new JButton("x");
+		btn_exit.setBackground(new Color(255, 0, 0));
 		btn_exit.setBorder(null);
-		btn_exit.setBackground(new Color(255, 21, 0));
-		btn_exit.setBounds(1141, 6, 53, 26);
+		btn_exit.setBounds(750,25,25,25);
 
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -262,7 +262,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 		add(btn_exit);
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(548, 694, 117, 29);
+		btn_volver.setBounds(44, 535, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaLogin.mostrar("inicio de sesion");

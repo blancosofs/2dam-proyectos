@@ -1,5 +1,8 @@
 package uiPaneles;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +28,7 @@ public class PanelConfig extends JPanel {
 
 	public PanelConfig() {
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 800, 600);
 
 		editorPane_h1Config = new JEditorPane();
 		editorPane_h1Config.setFont(new Font("Argelina", Font.BOLD, 20));
@@ -33,11 +36,12 @@ public class PanelConfig extends JPanel {
 		editorPane_h1Config.setText(
 				"<center><h1>Bienvenido al panel de configuracion <br> <h2>Seleccione una de las siguientes opciones");
 		editorPane_h1Config.setEditable(false);
-		editorPane_h1Config.setBounds(223, 140, 760, 90);
+		editorPane_h1Config.setBounds(85, 100, 630, 110);
 		add(editorPane_h1Config);
 
 		btn_alta = new JButton("ALTA");
-		btn_alta.setBounds(368, 369, 117, 29);
+		btn_alta.setFont(new Font("Argelina", Font.PLAIN, 11));
+		btn_alta.setBounds(92, 263, 155, 35);
 		add(btn_alta);
 		btn_alta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -48,7 +52,8 @@ public class PanelConfig extends JPanel {
 		});
 
 		btn_baja = new JButton("BAJA");
-		btn_baja.setBounds(368, 410, 117, 29);
+		btn_baja.setFont(new Font("Argelina", Font.PLAIN, 11));
+		btn_baja.setBounds(92, 326, 155, 35);
 		add(btn_baja);
 		btn_baja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -59,7 +64,8 @@ public class PanelConfig extends JPanel {
 		});
 
 		btn_test = new JButton("TEST");
-		btn_test.setBounds(531, 388, 117, 29);
+		btn_test.setFont(new Font("Argelina", Font.PLAIN, 11));
+		btn_test.setBounds(330, 290, 155, 35);
 		add(btn_test);
 		btn_test.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -70,7 +76,8 @@ public class PanelConfig extends JPanel {
 		});
 
 		btn_hora = new JButton("HORA");
-		btn_hora.setBounds(674, 388, 117, 29);
+		btn_hora.setFont(new Font("Argelina", Font.PLAIN, 11));
+		btn_hora.setBounds(560, 290, 155, 35);
 		add(btn_hora);
 		btn_hora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,9 +88,10 @@ public class PanelConfig extends JPanel {
 		});
 
 		btn_exit = new JButton("x");
+		btn_exit.setBackground(new Color(255, 0, 0));
 		btn_exit.setBorder(null);
-		btn_exit.setBounds(1141, 6, 53, 26);
-
+		btn_exit.setBounds(750,25,25,25);
+		
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int confirmacion = JOptionPane.showConfirmDialog(null, "Esta seguro?", "Cerrar aplicacion",
@@ -93,10 +101,11 @@ public class PanelConfig extends JPanel {
 				}
 			}
 		});
+
 		add(btn_exit);
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(531, 505, 117, 29);
+		btn_volver.setBounds(292, 470, 231, 35);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaLogin.mostrar("inicio de sesion");

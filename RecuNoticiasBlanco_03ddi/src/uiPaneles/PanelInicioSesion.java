@@ -18,12 +18,16 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
 public class PanelInicioSesion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField_usuario;
 
-	private JEditorPane editorPane_login;
+	private JEditorPane dtrpnbienvenidoASu;
 
 	private JLabel lbl_usuario;
 	private JLabel lbl_pwd;
@@ -39,36 +43,38 @@ public class PanelInicioSesion extends JPanel {
 
 	public PanelInicioSesion() {
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 800, 600);
 
-		editorPane_login = new JEditorPane();
-		editorPane_login.setFont(new Font("Argelina", Font.BOLD, 20));
-		editorPane_login.setEditable(false);
-		editorPane_login.setBounds(39, 27, 1102, 90);
-		add(editorPane_login);
-		editorPane_login.setContentType("text/html");
-		editorPane_login.setText(
+		dtrpnbienvenidoASu = new JEditorPane();
+		dtrpnbienvenidoASu.setFont(new Font("Argelina", Font.BOLD, 20));
+		dtrpnbienvenidoASu.setEditable(false);
+		dtrpnbienvenidoASu.setBounds(85, 100, 630, 110);
+		add(dtrpnbienvenidoASu);
+		dtrpnbienvenidoASu.setContentType("text/html");
+		dtrpnbienvenidoASu.setText(
 				"<center> <h1>Bienvenido a su app de noticias <br> <h2>Porfavor, indroduzca usuario y contraseña");
 
 		lbl_usuario = new JLabel("USUARIO:");
-		lbl_usuario.setBounds(215, 234, 61, 16);
+		lbl_usuario.setFont(new Font("Argelina", Font.PLAIN, 16));
+		lbl_usuario.setBounds(92, 263, 155, 34);
 		add(lbl_usuario);
 
 		textField_usuario = new JTextField();
-		textField_usuario.setBounds(350, 229, 414, 26);
+		textField_usuario.setBounds(228, 263, 394, 34);
 		add(textField_usuario);
 		textField_usuario.setColumns(10);
 
 		lbl_pwd = new JLabel("CONTRASEÑA:");
-		lbl_pwd.setBounds(215, 284, 101, 16);
+		lbl_pwd.setFont(new Font("Argelina", Font.PLAIN, 16));
+		lbl_pwd.setBounds(92, 326, 155, 34);
 		add(lbl_pwd);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(350, 279, 414, 26);
+		passwordField.setBounds(228, 326, 394, 34);
 		add(passwordField);
 
 		btn_ver = new JButton("👀");
-		btn_ver.setBounds(788, 279, 117, 29);
+		btn_ver.setBounds(650, 326, 65, 34);
 		add(btn_ver);
 		btn_ver.addActionListener(new ActionListener() {
 			@Override
@@ -79,7 +85,7 @@ public class PanelInicioSesion extends JPanel {
 		});
 
 		btn_iniciarSesion = new JButton("Iniciar Sesion");
-		btn_iniciarSesion.setBounds(457, 363, 220, 29);
+		btn_iniciarSesion.setBounds(292, 444, 231, 31);
 		add(btn_iniciarSesion);
 		btn_iniciarSesion.addActionListener(new ActionListener() {
 			@Override
@@ -135,14 +141,15 @@ public class PanelInicioSesion extends JPanel {
 				}
 			}
 		});
-		btn_baja.setBounds(457, 433, 220, 29);
+		btn_baja.setBounds(292, 508, 231, 31);
 		add(btn_baja);
 		btn_baja.setVisible(false);
 
 		btn_exit = new JButton("x");
+		btn_exit.setBackground(new Color(255, 0, 0));
 		btn_exit.setBorder(null);
-		btn_exit.setBounds(1141, 6, 53, 26);
-
+		btn_exit.setBounds(750,25,25,25);
+		
 		btn_exit.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -154,7 +161,7 @@ public class PanelInicioSesion extends JPanel {
 				}
 			}
 		});
-		add(btn_exit);
 
+		add(btn_exit);
 	}
 }

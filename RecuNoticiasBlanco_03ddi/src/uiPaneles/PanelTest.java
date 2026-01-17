@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 
 import service.NoticiasService;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,10 +21,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 
 public class PanelTest extends JPanel {
 	private static final long serialVersionUID = 1L;
-
+	private JEditorPane editorPane;
+	
 	private TextArea textArea;
 
 	private JButton btnNextTest;
@@ -33,17 +37,27 @@ public class PanelTest extends JPanel {
 	public PanelTest() {
 
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 800, 600);
+
+		editorPane = new JEditorPane();
+		editorPane.setFont(new Font("Argelina", Font.BOLD, 20));
+		editorPane.setContentType("text/html");
+		editorPane.setText(
+				"<center><h1>Bienvenido al panel de test");
+		editorPane.setEditable(false);
+		editorPane.setBounds(85, 100, 630, 70);
+		add(editorPane);
+
 
 		textArea = new TextArea();
-		textArea.setBounds(50, 73, 956, 486);
+		textArea.setBounds(43, 196, 713, 295);
 		textArea.setEditable(false);
 		textArea.append("---\nTus noticias son:\n---\n");
 		textArea.append(NoticiasService.exNoticias());
 		add(textArea);
 
-		btnNextTest = new JButton("enviar");
-		btnNextTest.setBounds(539, 652, 92, 29);
+		btnNextTest = new JButton("Enviar");
+		btnNextTest.setBounds(656, 520, 100, 35);
 		btnNextTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				final String toEmail = "sofiablanco.cal@gmail.com";
@@ -73,7 +87,7 @@ public class PanelTest extends JPanel {
 		add(btnNextTest);
 
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(529, 738, 117, 29);
+		btn_volver.setBounds(43, 520, 100, 35);
 		btn_volver.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -83,8 +97,9 @@ public class PanelTest extends JPanel {
 		add(btn_volver);
 
 		btn_exit = new JButton("x");
+		btn_exit.setBackground(new Color(255, 0, 0));
 		btn_exit.setBorder(null);
-		btn_exit.setBounds(1141, 6, 53, 26);
+		btn_exit.setBounds(750,25,25,25);
 
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

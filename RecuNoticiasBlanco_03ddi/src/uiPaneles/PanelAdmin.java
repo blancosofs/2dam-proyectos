@@ -18,11 +18,11 @@ public class PanelAdmin extends JPanel {
 
 	public PanelAdmin() {
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 800, 600);
 
 		// el panel contenedor va a ser CardLayout
 		tarjetas2 = new JPanel(new CardLayout());
-		tarjetas2.setBounds(0, 0, 1200, 800); //IMPORTANTE QUE SI NO TE REVIENTA (le quitas el del individual pero todo tiene que medir igual o no abre)
+		tarjetas2.setBounds(0, 0, 800, 600); //IMPORTANTE QUE SI NO TE REVIENTA (le quitas el del individual pero todo tiene que medir igual o no abre)
 		add(tarjetas2); // este va al panel, no al frame por eso add
 
 		PanelAlta panelAlta = new PanelAlta();

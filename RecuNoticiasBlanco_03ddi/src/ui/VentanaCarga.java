@@ -33,7 +33,7 @@ public class VentanaCarga extends JFrame {
 			dispose();
 			System.exit(0);
 		} else {
-			setSize(660, 330);
+			setSize(600, 400);
 			setResizable(false);
 			setLocationRelativeTo(null);
 			getContentPane().setLayout(null);
@@ -51,7 +51,7 @@ public class VentanaCarga extends JFrame {
 				setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
 
 				JProgressBar progressBar = new JProgressBar();
-				progressBar.setBounds(45, 280, 560, 40);
+				progressBar.setBounds(40, 320, 520, 40);
 				progressBar.setStringPainted(true);
 				progressBar.setOpaque(true);
 				getContentPane().add(progressBar);
@@ -102,10 +102,10 @@ public class VentanaCarga extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				g.drawImage(foto, 0, 0, 660, 330, null);
+				g.drawImage(foto, 0, 0, 600, 400, null);
 			}
 		};
-		panelConFondo.setBounds(0, 0, 660, 330);
+		panelConFondo.setBounds(0, 0, 600, 400);
 
 		return panelConFondo;
 	}

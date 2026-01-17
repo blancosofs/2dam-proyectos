@@ -1,5 +1,6 @@
 package uiPaneles;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +35,7 @@ public class PanelBaja extends JPanel {
 
 	public PanelBaja() {
 		setLayout(null);
-		setBounds(0, 0, 1200, 800);
+		setBounds(0, 0, 800, 600);
 
 		editorPane = new JEditorPane();
 		editorPane.setFont(new Font("Argelina", Font.BOLD, 20));
@@ -42,22 +43,23 @@ public class PanelBaja extends JPanel {
 		editorPane.setText(
 				"<center><h1>Bienvenido al panel de baja de usuarios <br> <h2>Introduzca los siguientes datos");
 		editorPane.setEditable(false);
-		editorPane.setBounds(223, 140, 760, 90);
+		editorPane.setBounds(85, 100, 630, 110);
 		add(editorPane);
 
 		lbl_nombre = new JLabel("Nombre:");
-		lbl_nombre.setBounds(223, 521, 61, 16);
+		lbl_nombre.setFont(new Font("Argelina", Font.PLAIN, 16));
+		lbl_nombre.setBounds(88, 376, 155, 35);
 		add(lbl_nombre);
 
 		textField = new JTextField();
-		textField.setBounds(323, 504, 660, 50);
+		textField.setBounds(223, 371, 492, 50);
 		add(textField);
 		textField.setColumns(10);
 
 		String nombreBaja = textField.getText();
 
 		btn_baja = new JButton("Baja");
-		btn_baja.setBounds(866, 584, 117, 29);
+		btn_baja.setBounds(615, 470, 100, 35);
 		add(btn_baja);
 		btn_baja.addActionListener(new ActionListener() {
 			@Override
@@ -99,7 +101,7 @@ public class PanelBaja extends JPanel {
 		});
 
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(740, 584, 117, 29);
+		btn_volver.setBounds(85, 470, 100, 35);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PanelAdmin.mostrar2("config");
@@ -108,8 +110,9 @@ public class PanelBaja extends JPanel {
 		add(btn_volver);
 
 		btn_exit = new JButton("x");
+		btn_exit.setBackground(new Color(255, 0, 0));
 		btn_exit.setBorder(null);
-		btn_exit.setBounds(1141, 6, 53, 26);
+		btn_exit.setBounds(750,25,25,25);
 
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -123,7 +126,7 @@ public class PanelBaja extends JPanel {
 		add(btn_exit);
 
 		textArea = new JTextArea(listarUsuario());
-		textArea.setBounds(223, 257, 760, 211);
+		textArea.setBounds(85, 234, 630, 98);
 		add(textArea);
 
 	}

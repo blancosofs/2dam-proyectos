@@ -13,8 +13,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import common.ControlErrores;
+
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -35,11 +40,17 @@ public class VentanaLogin extends JFrame {
     }
 
 	public VentanaLogin() {
-		
-		setSize(1200, 800);
+		//setUndecorated(true); //en algun lado tienes que pregunte, acurdate de borrarlo. mejor haz operaciones pque que lio
+		setSize(800, 600);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		// setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
+		if (!ControlErrores.comprobarIcono() || !ControlErrores.comprobarFondo()) {
+			String msg = "[error] Error en la carga de icono, sentimos las molestias!";
+			JOptionPane.showMessageDialog(null, msg, "", 1);
+		} else {
+			// icono
+			setIconImage(Toolkit.getDefaultToolkit().getImage("imagen/icono.png"));
+		}
 
 		/* QUE TE PREGUNTE EN CERRAR */
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -61,11 +72,12 @@ public class VentanaLogin extends JFrame {
 
 		menuBar = new JMenuBar();
 		menuBar.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		menuBar.setBounds(0, 0, 1200, 15);
-
+		menuBar.setBounds(EXIT_ON_CLOSE, ABORT, WIDTH, HEIGHT);
+		
 		mnNewMenu = new JMenu("Acerca de ..");
 		menuBar.add(mnNewMenu);
-
+		
+		
 		mntm_ver = new JMenuItem("Version 2.0");
 		mnNewMenu.add(mntm_ver);
 
@@ -73,21 +85,21 @@ public class VentanaLogin extends JFrame {
 		mnNewMenu.add(mntm_des);
 
 		PanelAdmin panelAdmin = new PanelAdmin();
-		panelAdmin.setBounds(0, 0, 1200, 800);
+		panelAdmin.setBounds(0, 0, 800, 600);
 		// getContentPane().add(panelAdmin);
 		// panelAdmin.setVisible(false);
 		tarjetas.add(panelAdmin, "administrador"); // sin nombre no puedes hacer show
 
 		PanelUsuario panelUsuario = new PanelUsuario();
-		panelUsuario.setBounds(0, 0, 1200, 800);
+		panelUsuario.setBounds(0, 0, 800, 600);
 		// getContentPane().add(panelUsuario);
 		// panelUsuario.setVisible(false);
 		tarjetas.add(panelUsuario, "usuario");
 
 		PanelInicioSesion miPanelInicioSesion = new PanelInicioSesion();
-		miPanelInicioSesion.setBounds(0, 0, 1200, 800);
+		miPanelInicioSesion.setBounds(0, 0, 800, 600);
 		// getContentPane().add(miPanelInicioSesion);
-		miPanelInicioSesion.add(menuBar);
+		setJMenuBar(menuBar); //para que se vea en todo
 		tarjetas.add(miPanelInicioSesion, "inicio de sesion");
 		mostrar("inicio de sesion");
 	}
