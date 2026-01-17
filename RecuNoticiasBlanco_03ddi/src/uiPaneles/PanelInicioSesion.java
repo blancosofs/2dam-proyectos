@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -39,8 +40,12 @@ public class PanelInicioSesion extends JPanel {
 	private JButton btn_iniciarSesion;
 	private JButton btn_baja;
 
-	private Usuario existe = null;
+	// no puedes pasarlo por constructor con card layout :/
+	public static Usuario existe = null;
 
+	// se solapan preferencias y noticias pque lo compruebas en inicio y muestras sin anyadir sos
+   // public static boolean preferencias = false; // no estas
+	
 	public PanelInicioSesion() {
 		setLayout(null);
 		setBounds(0, 0, 800, 600);
@@ -111,10 +116,14 @@ public class PanelInicioSesion extends JPanel {
 						VentanaLogin.mostrar("usuario");
 						/* COMPROBAR PREFERENCIAS */
 						//recuerda que el card es como un metodo que barajea, por eso en esta clase usas ventana aunque tehgas otro en usuario :p
-						if (!existe.isPreferencias()) {
-							VentanaLogin.mostrar("preferencias");
+						if (!existe.isPreferencias()) { 
+							//System.out.println("[llegas?]");
+							//System.out.println(existe);
+							PanelUsuario.crearPreferencias(existe);
+							//VentanaLogin.mostrar("preferencias");
 						} else {
-							VentanaLogin.mostrar("noticias");
+							PanelUsuario.crearNoticias(existe);
+							//VentanaLogin.mostrar("noticias");
 						}
 					} else if (existe.getCargo().equals("admin")) {
 						VentanaLogin.mostrar("administrador");

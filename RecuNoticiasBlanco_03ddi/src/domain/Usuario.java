@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Arrays;
+
 public class Usuario {
 	String nombre;
 	String pass;
@@ -9,9 +11,12 @@ public class Usuario {
 	boolean loggeado;
 	boolean preferencias;
 	
-	public Usuario() {}
+	int[] noticiasTXT;
 	
-	public Usuario(String nombre, String pass, String email, String cargo, boolean loggeado, boolean preferencias) {
+	public Usuario() {}
+
+	public Usuario(String nombre, String pass, String email, String cargo, boolean loggeado, boolean preferencias,
+			int[] noticiasTXT) {
 		super();
 		this.nombre = nombre;
 		this.pass = pass;
@@ -19,6 +24,7 @@ public class Usuario {
 		this.cargo = cargo;
 		this.loggeado = loggeado;
 		this.preferencias = preferencias;
+		this.noticiasTXT = noticiasTXT;
 	}
 
 	public String getNombre() {
@@ -69,11 +75,18 @@ public class Usuario {
 		this.preferencias = preferencias;
 	}
 
+	public int[] getNoticiasTXT() {
+		return noticiasTXT;
+	}
+
+	public void setNoticiasTXT(int[] noticiasTXT) {
+		this.noticiasTXT = noticiasTXT;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", pass=" + pass + ", email=" + email + ", cargo=" + cargo + ", loggeado="
-				+ loggeado + ", preferencias=" + preferencias + "]";
+				+ loggeado + ", preferencias=" + preferencias + ", noticiasTXT=" + Arrays.toString(noticiasTXT) + "]";
 	}
-	
 	
 }

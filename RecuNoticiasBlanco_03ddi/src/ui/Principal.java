@@ -2,17 +2,22 @@ package ui;
 
 import java.awt.EventQueue;
 
+import javax.swing.JOptionPane;
+
 public class Principal {
 	public static void main(String[] args) {
 		
 		/*
 		 * @ author: Sofia Blanco Calsina
 		 * 
-		 * Bienvenidoa a mi aplicacion de noticias!
+		 * Bienvenido a mi aplicacion de noticias!!
 		 * 
 		 * [AVISO] La applicacion tarda un ratito en cargar, porfavor tenga paciencia
 		 * 
 		 * [info] Credenciales usuario prueba: user1 pwd1
+		 * [info] Credenciales usuario prueba: user2 pwd2
+		 * [info] Credenciales usuario prueba: user3 pwd3
+		 * 
 		 * [info] Credenciales admin prueba: admin1 pwda1
 		 * 
 		 * Inicie la aplicacion y disfrute de las noticias de ultima hora :))
@@ -36,7 +41,9 @@ public class Principal {
 					miVentanaCarga.setVisible(true);
 						
 				} catch (Exception e) {
-					e.printStackTrace();
+					String msg = "[error] Error en la carga de la aplicaion, sentimos las molestias!";
+					JOptionPane.showMessageDialog(null, msg, "", 1);
+					System.exit(0);
 				}
 			}
 		});

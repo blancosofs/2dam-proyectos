@@ -1,7 +1,8 @@
 package service;
 
-import java.io.IOException;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -17,27 +18,33 @@ public class NoticiasService {
 		List<Noticias> fuentes = NoticiasDAO.extraerNoticiasObjeto();
 		StringBuilder sb = new StringBuilder();
 		try {
-			for (Noticias n : fuentes) {
+			try {
+				for (Noticias n : fuentes) {
 
-				String web = (n.getUrl());
-				Document doc = Jsoup.connect(web).get();
+					String web = (n.getUrl());
+					Document doc = Jsoup.connect(web).get();
 
-				// problema
-				  Elements elementosComprobar = doc.select(n.getCss());
-		            if (!elementosComprobar.isEmpty()) {
-		                Element palabra = elementosComprobar.get(0);
-		                String resultado = palabra.text().toUpperCase();
-		                
-		                if (resultado != null && !resultado.isEmpty()) {
-		                    sb.append(n.getNombre()).append("\n")
-		                      .append(resultado)
-		                      .append("\n\n-----------------\n\n");
-		                }
-		            }
+					// problema
+					Elements elementosComprobar = doc.select(n.getCss());
+					if (!elementosComprobar.isEmpty()) {
+						Element palabra = elementosComprobar.get(0);
+						String resultado = palabra.text().toUpperCase();
 
+						if (resultado != null && !resultado.isEmpty()) {
+							sb.append(n.getNombre()).append("\n").append(resultado).append("\n\n-----------------\n\n");
+						}
+					}
+				}
+			} catch (Exception e) {
+				String msg = "[error] Error en la carga de noticias (revisa el internet), sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
+				System.exit(0);
 			}
-		} catch (IOException io) {
-			io.printStackTrace();
+
+		} catch (Exception e) {
+			String msg = "[error] Error , sentimos las molestias!";
+			JOptionPane.showMessageDialog(null, msg, "", 1);
+			System.exit(0);
 		}
 		return sb.toString();
 	}

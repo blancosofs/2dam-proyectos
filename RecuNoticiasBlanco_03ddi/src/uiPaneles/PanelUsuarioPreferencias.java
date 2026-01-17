@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 
-
+import dao.UsuariosDAO;
 import domain.Usuario;
 import ui.VentanaLogin;
 
@@ -56,7 +56,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 	
 	private JButton btn_volver;
 
-	public PanelUsuarioPreferencias(PanelUsuarioNoticias panelUsuarioNoticias) {
+	public PanelUsuarioPreferencias() {
 		int[] seleccionPreferencias = new int[18];
 
 		setLayout(null);
@@ -174,11 +174,16 @@ public class PanelUsuarioPreferencias extends JPanel {
 		add(chckbx_A3);
 
 		button = new JButton("Guardar");
-		button.setBounds(654, 536, 104, 26);
+		button.setBounds(453, 515, 104, 26);
 		add(button);
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String msg = "[AVISO] Va a tardar un ratito! Porfavor no cierre la app, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
+				
+				/*PASAR A ARRAY*/
+				
 				if (chckbx_D1.isSelected()) {
 					seleccionPreferencias[0] = 1;
 				}
@@ -234,13 +239,16 @@ public class PanelUsuarioPreferencias extends JPanel {
 					seleccionPreferencias[17] = 1;
 				}
 				
+				Usuario usuarioPreferencias = PanelInicioSesion.existe;
+				
+				usuarioPreferencias.setNoticiasTXT(seleccionPreferencias);
+				usuarioPreferencias.setPreferencias(true);
+				
 				/*GUARDAR PREFERENCIAS*/
+				UsuariosDAO.guardarPreferencias(usuarioPreferencias, seleccionPreferencias);
 				
-				//voy a tener que cambiar el usuario y meterle un array de int para poder guardarme esto en el txt. Despues seria comprobar que el array es != de null y si lo es
-				//seteo el booleano de preferencias (llo de ventana se queda igual)
-				//
+				PanelUsuario.crearNoticias(usuarioPreferencias);
 				
-				//con eso aqui necesito otro metodo que lea y sepa que noticias quieres y que se las pueda pasar a otra clase al mismo nivel que es noticias para qeu depe ndeindo de eso pueda mostra noticias
 				
 			}
 		});
@@ -262,7 +270,7 @@ public class PanelUsuarioPreferencias extends JPanel {
 		add(btn_exit);
 		
 		btn_volver = new JButton("<--");
-		btn_volver.setBounds(44, 535, 117, 29);
+		btn_volver.setBounds(179, 514, 117, 29);
 		btn_volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaLogin.mostrar("inicio de sesion");

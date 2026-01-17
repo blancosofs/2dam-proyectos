@@ -3,6 +3,7 @@ package uiPaneles;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import dao.NoticiasDAO;
 import service.NoticiasService;
 
 import java.awt.Color;
@@ -60,7 +61,10 @@ public class PanelTest extends JPanel {
 		btnNextTest.setBounds(656, 520, 100, 35);
 		btnNextTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final String toEmail = "sofiablanco.cal@gmail.com";
+				String msg = "[AVISO] Va a tardar un ratito! Porfavor no cierre la app, sentimos las molestias!";
+				JOptionPane.showMessageDialog(null, msg, "", 1);
+				
+				final String toEmail = NoticiasDAO.emailTester();
 
 				final String fromEmail = "sofiablanco.cal@gmail.com";
 				final String password = "fvtr pbjr czbk jylm";

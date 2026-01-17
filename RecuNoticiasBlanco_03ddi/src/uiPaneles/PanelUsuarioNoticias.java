@@ -43,11 +43,10 @@ public class PanelUsuarioNoticias extends JPanel{
 		editorPane.setBounds(85, 100, 630, 70);
 		add(editorPane);
 		
-		textArea = new TextArea();
+		textArea = new TextArea(NoticiasService.exNoticias());
 		textArea.setBounds(38, 196, 716, 304);
 		textArea.setEditable(false);
 		textArea.append("\n---\nTus noticias son:\n---\n");
-		textArea.append(NoticiasService.exNoticias());
 		add(textArea);
 		
 		btn_exit = new JButton("x");
@@ -72,9 +71,11 @@ public class PanelUsuarioNoticias extends JPanel{
 		btn_guardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HistoricoDAO.escribirEnHistorico();
-				String msg = "[info] Noticias guardadadas con exito en el txt";
+				String msg = "[No disponible] Nos encontramos en desarrollo, sentimos las molestias!";
 				JOptionPane.showMessageDialog(null, msg, "", 1);
+				//HistoricoDAO.escribirEnHistorico();
+				//String msg = "[info] Noticias guardadadas con exito en el txt";
+				//JOptionPane.showMessageDialog(null, msg, "", 1);
 			}
 		});
 		
