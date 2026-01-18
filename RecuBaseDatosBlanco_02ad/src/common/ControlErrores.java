@@ -10,16 +10,16 @@ public class ControlErrores {
 	// control E/S
 	public static String controlErroresCargo(Scanner sc) {
 		boolean error = true;
-	    String dato = "";
-	    do {
-	        dato = sc.nextLine().trim().toLowerCase();
-	        if (dato.equals("jefe") || dato.equals("cajero")) {
-	            error = false;
-	        } else {
-	            System.err.println("[error] Cargo inválido (cajero / jefe)");
-	        }
-	    } while (error);
-	    return dato;
+		String dato = "";
+		do {
+			dato = sc.nextLine().trim().toLowerCase();
+			if (dato.equals("jefe") || dato.equals("cajero")) {
+				error = false;
+			} else {
+				System.err.println("[error] Cargo inválido (cajero / jefe)");
+			}
+		} while (error);
+		return dato;
 	}
 
 	public static int controlErroresInt(Scanner sc) {
@@ -30,7 +30,7 @@ public class ControlErrores {
 				dato = sc.nextInt();
 				if (dato >= 0) {
 					error = false;
-				}else {
+				} else {
 					System.err.println("ERROR. Tiene que ser un numero mayor a 0");
 				}
 			} else {
@@ -58,16 +58,16 @@ public class ControlErrores {
 
 	public static String controlErroresPago(Scanner sc) {
 		boolean error = true;
-	    String dato = "";
-	    do {
-	        dato = sc.nextLine().trim().toLowerCase();
-	        if (dato.equals("efectivo") || dato.equals("tarjeta")|| dato.equals("paypal")) {
-	            error = false;
-	        } else {
-	            System.err.println("[error] Pago inválido (efectivo / tarjeta / paypal)");
-	        }
-	    } while (error);
-	    return dato;
+		String dato = "";
+		do {
+			dato = sc.nextLine().trim().toLowerCase();
+			if (dato.equals("efectivo") || dato.equals("tarjeta") || dato.equals("paypal")) {
+				error = false;
+			} else {
+				System.err.println("[error] Pago inválido (efectivo / tarjeta / paypal)");
+			}
+		} while (error);
+		return dato;
 	}
 
 	/* COMPROBAR: */
@@ -154,7 +154,7 @@ public class ControlErrores {
 			while (resultado.next()) {
 				int nFilas = resultado.getInt(1); // primera columna
 				if (nFilas <= 0) { // condicion para que vaya vacio!
-					//System.out.println("STAND[llegas]");
+					// System.out.println("STAND[llegas]");
 					return vacio = true;
 				} else {
 					System.out.println("[info] Total de filas en stand: " + nFilas);
@@ -168,7 +168,7 @@ public class ControlErrores {
 	}
 
 	public static boolean comprobarStockVacio(Connection conexion) {
-		//System.out.println("2[llegas]");
+		// System.out.println("2[llegas]");
 		boolean vacio = true; // vacio
 		try {
 			String consulta = "SELECT COUNT(*) FROM stock ";
@@ -179,10 +179,32 @@ public class ControlErrores {
 			while (resultado.next()) {
 				int nFilas = resultado.getInt(1); // primera columna
 				if (nFilas <= 0) { // condicion para que vaya vacio!
-					//System.out.println("3[llegas]");
+					// System.out.println("3[llegas]");
 					return vacio = true;
 				} else {
 					System.out.println("[info] Total de filas en stock: " + nFilas);
+					return vacio = false;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vacio;
+	}
+
+	public static boolean comprobarVentaVacio(Connection conexion) {
+		boolean vacio = true; // vacio
+		try {
+			String consulta = "SELECT COUNT(*) FROM venta ";
+			PreparedStatement sentencia = conexion.prepareStatement(consulta);
+			ResultSet resultado = sentencia.executeQuery();
+
+			while (resultado.next()) {
+				int nFilas = resultado.getInt(1);
+				if (nFilas <= 0) {
+					return vacio = true;
+				} else {
+					System.out.println("[info] Total de filas en venta: " + nFilas);
 					return vacio = false;
 				}
 			}
@@ -276,30 +298,15 @@ public class ControlErrores {
 		}
 	}
 
-	//esto va segun los id de stand (1-1, 2-1, 3-2, 4-3, 5-4)
+	// esto va segun los id de stand (1-1, 2-1, 3-2, 4-3, 5-4)
 	public static void insertarStockVacio(Connection conexion) {
 		try {
 			String insert = "INSERT INTO stock (STAND_idStand, STAND_ZONA_idzona, JUGUETE_idJuguete, CANTIDAD) VALUES \n"
-					+ "(1, 1, 1, '5'),\n"
-					+ "(1, 1, 2, '3'),\n"
-					+ "(1, 1, 3, '3'),\n"
-					+ "(1, 1, 4, '10'),\n"
-					+ "(2, 1, 5, '2'),\n"
-					+ "(2, 1, 6, '8'),\n"
-					+ "(2, 1, 7, '15'),\n"
-					+ "(2, 1, 8, '4'),\n"
-					+ "(3, 2, 9, '6'),\n"
-					+ "(3, 2, 10, '12'),\n"
-					+ "(3, 2, 11, '5'),\n"
-					+ "(3, 2, 12, '7'),\n"
-					+ "(4, 3, 13, '19'),\n"
-					+ "(4, 3, 14, '5'),\n"
-					+ "(4, 3, 15, '5'),\n"
-					+ "(4, 3, 16, '15'),\n"
-					+ "(5, 4, 17, '10'),\n"
-					+ "(5, 4, 18, '9'),\n"
-					+ "(5, 4, 19, '1'),\n"
-					+ "(5, 4, 20, '10');";
+					+ "(1, 1, 1, '5'),\n" + "(1, 1, 2, '3'),\n" + "(1, 1, 3, '3'),\n" + "(1, 1, 4, '10'),\n"
+					+ "(2, 1, 5, '2'),\n" + "(2, 1, 6, '8'),\n" + "(2, 1, 7, '15'),\n" + "(2, 1, 8, '4'),\n"
+					+ "(3, 2, 9, '6'),\n" + "(3, 2, 10, '12'),\n" + "(3, 2, 11, '5'),\n" + "(3, 2, 12, '7'),\n"
+					+ "(4, 3, 13, '19'),\n" + "(4, 3, 14, '5'),\n" + "(4, 3, 15, '5'),\n" + "(4, 3, 16, '15'),\n"
+					+ "(5, 4, 17, '10'),\n" + "(5, 4, 18, '9'),\n" + "(5, 4, 19, '1'),\n" + "(5, 4, 20, '10');";
 			PreparedStatement sentencia = conexion.prepareStatement(insert);
 
 			int lineas = sentencia.executeUpdate();
@@ -309,5 +316,26 @@ public class ControlErrores {
 			e.printStackTrace();
 		}
 	}
+
+	public static void insertarVentaVacio(Connection conexion) {
+		try {
+			String insert = "INSERT INTO venta (idventa, Fecha, Monto, tipo_pago, EMPLEADO_idEMPLEADO, stock_STAND_idStand, stock_STAND_ZONA_idzona, stock_JUGUETE_idJuguete) "
+					+ "values (DEFAULT,'2026-01-18',1.5,'efectivo',1,1,1,1),"
+					+ "(DEFAULT,'2026-01-18',10.2,'tarjeta',2,2,1,5),"
+					+ "(DEFAULT,'2026-01-18',88.8,'paypal',3,5,4,20),"
+					+ "(DEFAULT,'2026-01-18',52.2,'tarjeta',1,1,1,4)," + "(DEFAULT,'2026-01-18',5.0,'tarjeta',2,1,1,2),"
+					+ "(DEFAULT,'2026-01-18',72.8,'paypal',4,4,3,13);";
+			PreparedStatement sentencia = conexion.prepareStatement(insert);
+
+			int lineas = sentencia.executeUpdate();
+			System.out.println("[info] Filas insertadas en venta: " + lineas);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 
 }

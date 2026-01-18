@@ -13,6 +13,7 @@ import dao.VentaDAO;
 import domain.Cambio;
 import domain.Empleado;
 import domain.Juguete;
+import domain.Stock;
 import domain.Venta;
 
 public class MenuVentas {
@@ -42,25 +43,23 @@ public class MenuVentas {
 				// mostrar
 				ArrayList<Juguete> juguetesMostrar = JuguetesDAO.leerObjetoJuguete(conexion);
 				for (Juguete j : juguetesMostrar) {
-					System.out.println("Juguete [id=" + j.getId() + ", nombre=" + j.getNombre() + ", descripcion=" + j.getDescripcion() + ", precio=" + j.getPrecio()
-							+ ", cantidad_stock=" + j.getCantidad_stock() + "]");
+					System.out.println("Juguete [id=" + j.getId() + ", nombre=" + j.getNombre() + ", descripcion="
+							+ j.getDescripcion() + ", precio=" + j.getPrecio() + ", cantidad_stock="
+							+ j.getCantidad_stock() + "]");
 				}
+
 				System.out.println("\nIntroduzca el juguete a comprar");
 				int idJugueteB = ControlErrores.controlErroresInt(sc);
 
 				boolean posibleVenta = JuguetesDAO.buscarJuguete(conexion, idJugueteB);
 
-				/*COMPROBAR ID*/
+				/* COMPROBAR ID */
 				if (!posibleVenta) {
 					System.err.println("[error] Venta no posible. No existe el juguete");
 				} else {
-					//System.out.println("\nIntroduzca la fecha de venta");
-					//System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
-					//System.out.println("Fecha de venta (yyyy-MM-dd): ");
-					//String fechaTexto = sc.nextLine();
-					//LocalDate fechaSQL = LocalDate.parse(fechaTexto);
+
 					LocalDate fechaSQL = LocalDate.now();
-					
+
 					// mostrar
 					ArrayList<Empleado> empleadosMostrar = EmpleadoDAO.leerObjetoEmpleado(conexion);
 
@@ -68,28 +67,35 @@ public class MenuVentas {
 						System.out.println("Empleado [id=" + e.getId() + ", nombre=" + e.getNombre() + ", cargo="
 								+ e.getCargo() + ", fechaIngreso=" + e.getFechaIngreso() + "]");
 					}
+
 					System.out.println("\nIntroduzca el id del empleado que realizara la venta");
 					int idEmpleadoV = ControlErrores.controlErroresInt(sc);
 
 					boolean empleadoExistente = EmpleadoDAO.buscarEmpleado(conexion, idEmpleadoV);
+
 					/* COMPROBAR EMPLEADO */
 					if (!empleadoExistente) {
 						System.err.println("[error] Venta no posible. No existe el empleado");
 					} else {
 						// mostrar
-						VentaDAO.mostrarStock1(conexion,idJugueteB);
-						System.out.println("\nIntroduzca el stand desde donde va a comprar");
-						int idStandV = ControlErrores.controlErroresInt(sc);
-						int idZonaV = JuguetesDAO.stock_idZonaBuscar(conexion, idStandV);
-						
-						//mostrar
-						VentaDAO.mostrarStock(conexion,idStandV,idJugueteB);
+						// VentaDAO.mostrarStock1(conexion, idJugueteB);
+						// System.out.println("\nIntroduzca el stand desde donde va a comprar");
+
+						Stock s = VentaDAO.extraerObjetoStock_ParaStand(conexion, idJugueteB);
+
+						/* COMPROBAR STAND Y STOCK */
+						int idStandV = s.getSTAND_idStand();
+						// la zona esta atada al stand , id de stand (1-1, 2-1, 3-2, 4-3, 5-4)
+						int idZonaV = s.getSTAND_ZONA_idzona();
+
+						// mostrar
+						VentaDAO.mostrarStock(conexion, idStandV, idJugueteB);
 						System.out.println("\nIntroduzca la cantidad a comprar");
 						int cantidad = ControlErrores.controlErroresInt(sc);
 
 						int stockActual = JuguetesDAO.comprobarStock(conexion, idStandV, idZonaV, idJugueteB);
 
-						/*COMPROBAR STOCK*/
+						/* COMPROBAR STOCK */
 						if (stockActual < cantidad) {
 							System.err.println("[error] No hay suficiente stock " + stockActual);
 						} else {
@@ -101,12 +107,14 @@ public class MenuVentas {
 
 							VentaDAO.insertarVenta(conexion, fechaSQL, monto, tipoPago, idEmpleadoV, idStandV, idZonaV,
 									idJugueteB, cantidad);
-							
+
 							ArrayList<Venta> ventaMostrar = VentaDAO.mostrar(conexion);
 
 							for (Venta v : ventaMostrar) {
-								System.out.println("Venta [id=" + v.getId() + ", fecha=" + v.getFecha() + ", monto=" + v.getMonto() + ", tipoPago=" + v.getTipoPago() + ", id_empleado="
-										+ v.getId_empleado() + ", id_stand=" + v.getId_stand() + ", id_zona=" + v.getId_zona() + ", id_juguete=" + v.getId_juguete() + "]");
+								System.out.println("Venta [id=" + v.getId() + ", fecha=" + v.getFecha() + ", monto="
+										+ v.getMonto() + ", tipoPago=" + v.getTipoPago() + ", id_empleado="
+										+ v.getId_empleado() + ", id_stand=" + v.getId_stand() + ", id_zona="
+										+ v.getId_zona() + ", id_juguete=" + v.getId_juguete() + "]");
 							}
 						}
 					}
@@ -117,77 +125,107 @@ public class MenuVentas {
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 				System.out.println("2. Realizar una devolucion/cambio ");
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-				//mostrar
+				// mostrar
 				ArrayList<Venta> ventaMostrar2 = VentaDAO.mostrar(conexion);
 
 				for (Venta v : ventaMostrar2) {
-					System.out.println("Venta [id=" + v.getId() + ", fecha=" + v.getFecha() + ", monto=" + v.getMonto() + ", tipoPago=" + v.getTipoPago() + ", id_empleado="
-							+ v.getId_empleado() + ", id_stand=" + v.getId_stand() + ", id_zona=" + v.getId_zona() + ", id_juguete=" + v.getId_juguete() + "]");
+					System.out.println("Venta [id=" + v.getId() + ", fecha=" + v.getFecha() + ", monto=" + v.getMonto()
+							+ ", tipoPago=" + v.getTipoPago() + ", id_empleado=" + v.getId_empleado() + ", id_stand="
+							+ v.getId_stand() + ", id_zona=" + v.getId_zona() + ", id_juguete=" + v.getId_juguete()
+							+ "]");
 				}
-				
+
 				System.out.println("\nIntroduzca el id de la venta a cambiar");
 				int idVentaC = ControlErrores.controlErroresInt(sc);
 
 				boolean existeVenta = VentaDAO.buscarVenta(conexion, idVentaC);
-			
-				/*COMPROBAR ID*/
+
+				/* COMPROBAR ID */
 				if (!existeVenta) {
 					System.err.println("[error] Cambio no posible. No existe el id de venta seleccionado");
 				} else {
-					/*COMPROBAR MOTIVO*/
+
+					/* COMPROBAR MOTIVO */
 					System.out.println("Introduzca el motivo de la devolucion");
 					String motivo = sc.nextLine();
-					
-					/*COMPROBAR FECHA*/
-					System.out.println("Introduzca la fecha de cambio");
-					System.out.println("[IMPORTANTE] PORFAVOR INTRODUCIR ANYO(4 DIGITOS) GUION(-) MES(2 DIGITOS) GUION(-) DIA(2 DIGITOS)");
-					System.out.println("Fecha de venta (yyyy-MM-dd): ");
-					String fechaTexto2 = sc.nextLine();
-					LocalDate fechaSQL2 = LocalDate.parse(fechaTexto2);
-					
-					/*COMPROBAR EMPLEADO*/
-					System.out.println("\nIntroduzca el id del empleado que realizo la venta\n");
+
+					/* FECHA */
+					LocalDate fechaSQL2 = LocalDate.now();
+
+					// los og vienen de venta y lo nuevo es lo que configuras
+					Venta vCambio = VentaDAO.extraerObjetoVenta(conexion, idVentaC);
+
+					/* STOCK Y STAND */
+					int idStandCV = vCambio.getId_stand();
+					int idZonaCV = vCambio.getId_zona();
+					int idJugueteCV = vCambio.getId_juguete();
+
+					/* COMPROBAR STAND Y STOCK */
+					int idStandC = idStandCV;
+					// la zona esta atada al stand , id de stand (1-1, 2-1, 3-2, 4-3, 5-4)
+					int idZonaC = 0;
+
+					if (idStandC == 1 || idStandC == 2) {
+						idZonaC = 1;
+					} else if (idStandC == 3) {
+						idZonaC = 2;
+					} else if (idStandC == 4) {
+						idZonaC = 3;
+					} else if (idStandC == 5) {
+						idZonaC = 4;
+					}
+
+					int idJugueteC = vCambio.getId_juguete();
+
+					/* COMPROBAR EMPLEADO */
+					System.out.println("\nIntroduzca el id del empleado que realizara el cambio\n");
 					int idEmpleadoC = ControlErrores.controlErroresInt(sc);
 					Boolean bandera = VentaDAO.buscarEmpleado(conexion, idEmpleadoC);
+
 					if (!bandera) {
 						System.err.println("[error] Empleado no encontrado");
-					}else {
-						
-						VentaDAO.insertarCambio(conexion, motivo, fechaSQL2, idEmpleadoC);
+					} else {
 
-						//mostrar
+						VentaDAO.insertarCambio(conexion, motivo, fechaSQL2, idStandCV, idZonaCV, idJugueteCV, idStandC,
+								idZonaC, idJugueteC, idEmpleadoC);
+
+						/* COMPROBAR STOCK */
+
+						// mostrar
 						ArrayList<Cambio> cambiosMostrar = VentaDAO.mostrarCambio(conexion);
 
 						for (Cambio c : cambiosMostrar) {
-							System.out.println("Cambio [idCambio=" + c.getIdCambio() + ", motivo=" + c.getMotivo() + ", fecha=" + c.getFecha()
-									+ ", STOCK_STAND_idStand_Original=" + c.getSTOCK_STAND_idStand_Original()
-									+ ", STOCK_STAND_ZONA_idzona_Original=" + c.getSTOCK_STAND_ZONA_idzona_Original()
-									+ ", STOCK_JUGUETE_idJuguete_Original=" + c.getSTOCK_JUGUETE_idJuguete_Original()
-									+ ", STOCK_STAND_idStand_Nuevo=" + c.getSTOCK_STAND_idStand_Nuevo() + ", STOCK_STAND_ZONA_idzona_Nuevo="
-									+ c.getSTOCK_STAND_ZONA_idzona_Nuevo() + ", STOCK_JUGUETE_idJuguete_Nuevo=" + c.getSTOCK_JUGUETE_idJuguete_Nuevo()
-									+ ", EMPLEADO_idEMPLEADO=" + c.getEMPLEADO_idEMPLEADO() + "]");
+							System.out.println("Cambio [idCambio=" + c.getIdCambio() + ", motivo=" + c.getMotivo()
+									+ ", fecha=" + c.getFecha() + ", STOCK_STAND_idStand_Original="
+									+ c.getSTOCK_STAND_idStand_Original() + ", STOCK_STAND_ZONA_idzona_Original="
+									+ c.getSTOCK_STAND_ZONA_idzona_Original() + ", STOCK_JUGUETE_idJuguete_Original="
+									+ c.getSTOCK_JUGUETE_idJuguete_Original() + ", STOCK_STAND_idStand_Nuevo="
+									+ c.getSTOCK_STAND_idStand_Nuevo() + ", STOCK_STAND_ZONA_idzona_Nuevo="
+									+ c.getSTOCK_STAND_ZONA_idzona_Nuevo() + ", STOCK_JUGUETE_idJuguete_Nuevo="
+									+ c.getSTOCK_JUGUETE_idJuguete_Nuevo() + ", EMPLEADO_idEMPLEADO="
+									+ c.getEMPLEADO_idEMPLEADO() + "]");
 						}
-						
+
 					}
-					
+
 				}
-	
+
 				break;
-				
+
 			case 3:
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
 				System.out.println("3. Producto mas vendido ");
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
 				VentaDAO.productoMasVendido(conexion);
-				
+
 				break;
-				
+
 			case 4:
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 				System.out.println("4. Empleados que mas venden ");
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
 				VentaDAO.empleadosMasVenden(conexion);
-				
+
 				break;
 			case 5:
 				System.out.println("5.Mostrar");
