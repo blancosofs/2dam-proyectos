@@ -8,6 +8,20 @@ import java.util.regex.Pattern;
 import PF.MainBea;
 
 public class ControlErrores {
+	
+	public static String controlErroresRespuesta(Scanner sc) {
+		boolean error = true;
+		String dato = "";
+		do {
+			dato = sc.nextLine().trim().toLowerCase();
+			if (dato.equals("s") || dato.equals("n")) {
+				error = false;
+			} else {
+				System.err.println("[error] Respuesta inválida (s / n)");
+			}
+		} while (error);
+		return dato;
+	}
 
 	public static boolean validarCodigoEmpleado(int id) {
 		Pattern pattern = Pattern.compile("^[0-9]{1,4}$");
@@ -37,6 +51,22 @@ public class ControlErrores {
 			return false;
 		}
 	}
+	
+	public static int controlErroresInt2(Scanner sc) {
+	    boolean error = true;
+	    int dato = 0;
+
+	    do {
+	        if (sc.hasNextInt()) {
+	            dato = sc.nextInt();
+	            error = false;
+	        } else {
+	            System.err.println("ERROR. Tiene que ser un numero(int)");
+	        }
+	    } while (error);
+
+	    return dato;
+	}
 
 	public static int controlErroresInt(Scanner sc) {
 		boolean error = true;
@@ -44,9 +74,32 @@ public class ControlErrores {
 		do {
 			if (sc.hasNextInt()) {
 				dato = sc.nextInt();
-				error = false;
+				if (dato >= 0) {
+					error = false;
+				} else {
+					System.err.println("ERROR. Tiene que ser un numero mayor a 0");
+				}
 			} else {
-				System.err.println("ERROR. Tiene que ser int");
+				System.err.println("ERROR. Tiene que ser un numero (int)");
+			}
+			sc.nextLine();
+		} while (error);
+		return dato;
+	}
+	
+	public static float controlErroresFloat(Scanner sc) {
+		boolean error = true;
+		float dato = 0;
+		do {
+			if (sc.hasNextFloat()) {
+				dato = sc.nextFloat();
+				if (dato >= 0) {
+					error = false;
+				} else {
+					System.err.println("ERROR. Tiene que ser un numero mayor a 0");
+				}
+			} else {
+				System.err.println("ERROR. Tiene que ser un numero (float)");
 			}
 			sc.nextLine();
 		} while (error);

@@ -1,18 +1,35 @@
 package domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Ticket {
+   
+	public static int contador = 1;
 	
+	int numTicket;
+
+	int codigoEmpleado;
+
+	String nombreEmpleado;
+
+	LocalDate fechaVenta;
+
+	ArrayList<VentaPlanta> ventaPlanta; // porque compras varias plantas, por eso array list y no clase de una
+
+	float totalVenta;
+
+	boolean devolucion;
+
 	public Ticket() {
 		// si no empiezas se va a nullpointer
-	    this.ventaPlanta = new ArrayList<>();
+		this.ventaPlanta = new ArrayList<>();
 	}
 
-	public Ticket(int numTicket, int codigoEmpleado, String nombreEmpleado, String fechaVenta,
+	public Ticket(int codigoEmpleado, String nombreEmpleado, LocalDate fechaVenta,
 			ArrayList<VentaPlanta> ventaPlanta, float totalVenta, boolean devolucion) {
 		super();
-		this.numTicket = numTicket;
+		this.numTicket = contador++;
 		this.codigoEmpleado = codigoEmpleado;
 		this.nombreEmpleado = nombreEmpleado;
 		this.fechaVenta = fechaVenta;
@@ -20,19 +37,6 @@ public class Ticket {
 		this.totalVenta = totalVenta;
 		this.devolucion = devolucion;
 	}
-
-	int numTicket;
-	
-	int codigoEmpleado;
-	String nombreEmpleado;
-	
-	String fechaVenta;
-
-	ArrayList<VentaPlanta> ventaPlanta; //porque compras varias plantas, por eso array list y no clase de una
-
-	float totalVenta;
-
-	boolean devolucion;
 
 	public int getNumTicket() {
 		return numTicket;
@@ -58,11 +62,11 @@ public class Ticket {
 		this.nombreEmpleado = nombreEmpleado;
 	}
 
-	public String getFechaVenta() {
+	public LocalDate getFechaVenta() {
 		return fechaVenta;
 	}
 
-	public void setFechaVenta(String fechaVenta) {
+	public void setFechaVenta(LocalDate fechaVenta) {
 		this.fechaVenta = fechaVenta;
 	}
 
@@ -96,7 +100,5 @@ public class Ticket {
 				+ nombreEmpleado + ", fechaVenta=" + fechaVenta + ", ventaPlanta=" + ventaPlanta + ", totalVenta="
 				+ totalVenta + ", devolucion=" + devolucion + "]";
 	}
-	
-	
 
 }

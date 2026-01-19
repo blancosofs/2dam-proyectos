@@ -120,4 +120,10 @@
 <foto>jazmin.jpg</foto>
 <descripcion>Planta trepadora de flores fragantes.</descripcion>
 </planta>
+<planta>
+<codigo>21</codigo>
+<nombre>n1</nombre>
+<foto>1</foto>
+<descripcion>1.</descripcion>
+</planta>
 </plantas>

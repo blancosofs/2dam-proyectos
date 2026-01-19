@@ -1,6 +1,8 @@
 package domain;
 
 public class Planta {
+	public static int contadorPlanta = 21;
+	
 	int codigo;
 	String nombre;
 	String foto;
@@ -11,6 +13,16 @@ public class Planta {
 
 	//para crear algo de 0 por si acaso
 	public Planta() {};
+	//completoAnyadir
+		public Planta(String nombre, String foto, String descripcion, Float precio, int stock) {
+			super();
+			this.codigo = contadorPlanta++;
+			this.nombre = nombre;
+			this.foto = foto;
+			this.descripcion = descripcion;
+			this.precio = precio;
+			this.stock = stock;
+		}
 	
 	//completo
 	public Planta(int codigo, String nombre, String foto, String descripcion, Float precio, int stock) {

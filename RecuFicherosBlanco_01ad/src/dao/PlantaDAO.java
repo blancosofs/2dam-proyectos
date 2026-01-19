@@ -2,6 +2,7 @@ package dao;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
@@ -51,9 +52,7 @@ public class PlantaDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return arrayXMLplanta;
-
 	}
 
 	// 12bytes (4(codigoInt)+4(precioFloat)+4(stockInt))
@@ -96,33 +95,6 @@ public class PlantaDAO {
 		return arrayCompletoPlanta;
 	}
 
-	public static int leerDATstockPorCodigo(int codigoVenta) {
-		int stockActual = -1; // no esta ;p
-		try {
-			// es fija la ruta esta y ya hacces comprobacciones
-			File ficheroDAT = new File("PLANTAS/plantas.dat");
-			// abro en lectura
-			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "r");
-			raf.seek(0);
-
-			while (raf.getFilePointer() < raf.length()) {// te lees todos aunque puedes saltar directamente de 8 a 8
-				int codigoRAF = raf.readInt();
-				float precioRAF = raf.readFloat();
-				int stockRAF = raf.readInt();
-
-				if (codigoRAF == codigoVenta) {
-					stockActual = stockRAF;
-				}
-
-			}
-			raf.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return stockActual;
-	}
-
-	// ~~~~` 5.4
 	public static void modificarStock(int codigoVenta, int cantidadVenta) {
 		try {
 			// es fija la ruta esta y ya hacces comprobacciones
@@ -157,35 +129,160 @@ public class PlantaDAO {
 		}
 	}
 
-	// 8.1.1
-	public static void escribirPlantaDAT(Planta p) {
+	public static void nuevaPlantaDAT(File ficheroDAT, Planta plantaG ) {
 		try {
-			File ficheroDAT = new File("PLANTAS/plantas.dat");
+			// abro en lectura
 			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "rw");
+			raf.seek(raf.length()); // al final del fichero
+			raf.writeInt(plantaG.getCodigo());
+	        raf.writeFloat(plantaG.getPrecio());
+	        raf.writeInt(plantaG.getStock());
 
-			raf.seek(raf.length()); // irte al final
-
-			raf.writeInt(p.getCodigo());
-			raf.writeFloat(p.getPrecio());
-			raf.writeInt(p.getStock());
 
 			raf.close();
-			System.out.println("plantita ok");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-	public static void escribirPlantaBajaDAT(int codigo, int stock) {
-		try {
-			File fichero = new File("PLANTAS/plantasBaja.dat");
-			FileWriter fw = new FileWriter(fichero, true);
-			fw.write(codigo + ":" + stock + "\n");
-			fw.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
+	public static void nuevaPlantaXML(File ficheroXML, Planta plantaG ) {
+			try {
+				ficheroXML.createNewFile();
+				FileWriter escritura = new FileWriter(ficheroXML);
+				escritura.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+				escritura.write("<plantas>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>1</codigo>\n");
+				escritura.write("<nombre>Cactus</nombre>\n");
+				escritura.write("<foto>cactus.jpg</foto>\n");
+				escritura.write("<descripcion>Planta suculenta del desierto.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>2</codigo>\n");
+				escritura.write("<nombre>Geranio</nombre>\n");
+				escritura.write("<foto>geranio.jpg</foto>\n");
+				escritura.write("<descripcion>Flor común de jardín con colores vivos.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>3</codigo>\n");
+				escritura.write("<nombre>Helecho</nombre>\n");
+				escritura.write("<foto>helecho.jpg</foto>\n");
+				escritura.write("<descripcion>Planta de sombra con hojas verdes largas.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>4</codigo>\n");
+				escritura.write("<nombre>Rosa</nombre>\n");
+				escritura.write("<foto>rosa.jpg</foto>\n");
+				escritura.write("<descripcion>Flor ornamental con espinas.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>5</codigo>\n");
+				escritura.write("<nombre>Lavanda</nombre>\n");
+				escritura.write("<foto>lavanda.jpg</foto>\n");
+				escritura.write("<descripcion>Planta aromática de color violeta.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>6</codigo>\n");
+				escritura.write("<nombre>Aloe Vera</nombre>\n");
+				escritura.write("<foto>aloe_vera.jpg</foto>\n");
+				escritura.write("<descripcion>Planta medicinal con hojas carnosas.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>7</codigo>\n");
+				escritura.write("<nombre>Menta</nombre>\n");
+				escritura.write("<foto>menta.jpg</foto>\n");
+				escritura.write("<descripcion>Planta aromática usada en infusiones.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>8</codigo>\n");
+				escritura.write("<nombre>Bambú</nombre>\n");
+				escritura.write("<foto>bambu.jpg</foto>\n");
+				escritura.write("<descripcion>Planta de tallo alto y hueco, de rápido crecimiento.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>9</codigo>\n");
+				escritura.write("<nombre>Orquídea</nombre>\n");
+				escritura.write("<foto>orquidea.jpg</foto>\n");
+				escritura.write("<descripcion>Flor exótica de gran valor ornamental.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>10</codigo>\n");
+				escritura.write("<nombre>Hortensia</nombre>\n");
+				escritura.write("<foto>hortensia.jpg</foto>\n");
+				escritura.write("<descripcion>Planta de flores grandes y coloridas.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>11</codigo>\n");
+				escritura.write("<nombre>Palmera</nombre>\n");
+				escritura.write("<foto>palmera.jpg</foto>\n");
+				escritura.write("<descripcion>Árbol tropical con hojas largas en forma de abanico.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>12</codigo>\n");
+				escritura.write("<nombre>Clavel</nombre>\n");
+				escritura.write("<foto>clavel.jpg</foto>\n");
+				escritura.write("<descripcion>Flor de colores vivos y aroma agradable.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>13</codigo>\n");
+				escritura.write("<nombre>Jacinto</nombre>\n");
+				escritura.write("<foto>jacinto.jpg</foto>\n");
+				escritura.write("<descripcion>Planta bulbosa de flores perfumadas.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>14</codigo>\n");
+				escritura.write("<nombre>Petunia</nombre>\n");
+				escritura.write("<foto>petunia.jpg</foto>\n");
+				escritura.write("<descripcion>Flor de jardín muy colorida.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>15</codigo>\n");
+				escritura.write("<nombre>Begonia</nombre>\n");
+				escritura.write("<foto>begonia.jpg</foto>\n");
+				escritura.write("<descripcion>Planta ornamental con hojas decorativas.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>16</codigo>\n");
+				escritura.write("<nombre>Poto</nombre>\n");
+				escritura.write("<foto>poto.jpg</foto>\n");
+				escritura.write("<descripcion>Planta colgante de interior muy resistente.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>17</codigo>\n");
+				escritura.write("<nombre>Crisantemo</nombre>\n");
+				escritura.write("<foto>crisantemo.jpg</foto>\n");
+				escritura.write("<descripcion>Flor típica de otoño en muchos colores.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>18</codigo>\n");
+				escritura.write("<nombre>Romero</nombre>\n");
+				escritura.write("<foto>romero.jpg</foto>\n");
+				escritura.write("<descripcion>Planta aromática usada en la cocina mediterránea.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>19</codigo>\n");
+				escritura.write("<nombre>Ficus</nombre>\n");
+				escritura.write("<foto>ficus.jpg</foto>\n");
+				escritura.write("<descripcion>Árbol o arbusto de interior muy popular.</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>20</codigo>\n");
+				escritura.write("<nombre>Jazmín</nombre>\n");
+				escritura.write("<foto>jazmin.jpg</foto>\n");
+				escritura.write("<descripcion>Planta trepadora de flores fragantes.</descripcion>\n");
+				escritura.write("</planta>\n");
+				//nueva
+				escritura.write("<planta>\n");
+				escritura.write("<codigo>"+plantaG.getCodigo()+"</codigo>\n");
+				escritura.write("<nombre>"+plantaG.getNombre()+"</nombre>\n");
+				escritura.write("<foto>"+plantaG.getFoto()+"</foto>\n");
+				escritura.write("<descripcion>"+plantaG.getDescripcion()+".</descripcion>\n");
+				escritura.write("</planta>\n");
+				escritura.write("</plantas>\n");
+				escritura.close();
+			} catch (IOException io) {
+				io.printStackTrace();
+			}
 	}
 
 }

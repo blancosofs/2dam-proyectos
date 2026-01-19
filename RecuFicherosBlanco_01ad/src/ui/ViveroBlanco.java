@@ -57,7 +57,7 @@ public class ViveroBlanco {
 				pwd = sc.next();
 				bandera = true;
 			} catch (Exception e) {
-				System.err.println("ERROR. Numeros naturales porfi");
+				System.err.println("ERROR. Numeros naturales porfavor");
 				sc.nextLine();
 				bandera = false;
 			}
@@ -84,7 +84,7 @@ public class ViveroBlanco {
 						}
 						if (empleadoIterator.getCargo().equals("gestor")) {
 							MenuGestor.mostrarMenuGestor(empleadoRegistrado, arrayCatalogoPlantas,
-									arrayCatalogoEmpleado);
+									arrayCatalogoEmpleado,ficheroXML,ficheroDAT);
 						}
 					}
 				}
