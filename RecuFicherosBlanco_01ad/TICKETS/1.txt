@@ -4,6 +4,6 @@ Empleado que ha atendido:2712
 Nombre del empleado:Elisa
 
 CodigoProducto         Cantidad           PrecioUnitario 
-10                      2                    76.65
+1                      2                    274.96
 ———————————————————————————//—————————————————————————————
-	Total:  €153.3
+	Total:  €549.92

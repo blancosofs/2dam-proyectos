@@ -122,8 +122,8 @@
 </planta>
 <planta>
 <codigo>21</codigo>
-<nombre>n1</nombre>
-<foto>1</foto>
-<descripcion>1.</descripcion>
+<nombre>planta</nombre>
+<foto>desc</foto>
+<descripcion>desc.</descripcion>
 </planta>
 </plantas>
