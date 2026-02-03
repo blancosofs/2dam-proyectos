@@ -113,12 +113,13 @@ public class MenuVendedor {
 				
 				//ticket para poder trabajarlo
 				Ticket td = TicketDAO.extrarObjetoTicket(numTicketDevolver);
-				System.out.println("[llegas?]");
+				System.out.println("[llegas? EXTRAER TICKET]");
 				System.out.println(td);
 				
 				if (td != null) {//q no reviente
 					
 				//sumar el stock, tienes por ahi el modificar stock
+				
 				
 				//marcar el ticket en negativo y con la linea devuelto al final
 				TicketDAO.escribirDevuelto(td);

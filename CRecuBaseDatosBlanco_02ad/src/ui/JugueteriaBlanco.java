@@ -14,8 +14,8 @@ public class JugueteriaBlanco {
 		/* verificacion y carga de datos */
 		String url = "jdbc:mysql://localhost:3306/jugueteriaBlancoC";
 		String usuario = "root";
-		String password = "sopita666";
-		//String password = "cfgs";
+		//String password = "sopita666";
+		String password = "cfgs";
 
 		try {
 			/*

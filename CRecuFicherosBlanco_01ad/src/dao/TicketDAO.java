@@ -66,23 +66,40 @@ public class TicketDAO {
 			float totalVenta = 0;
 			LocalDate fechaVenta = LocalDate.now();
 
+			int codigoProducto = 0;
+			int cantidad = 0;
+			int precioUnitario = 0;
+
 			String linea = null;
-			String[] cadena = null;
+			
+			String cadena[] = null; // esto es lo que te da error y se va a nullpointer
 
 			while ((linea = bufferedReader.readLine()) != null) {
-				if (linea.startsWith("Empleado que ha atendido:")) {
-					String codigoEmpleadoS = cadena[0];
-					codigoEmpleado = Integer.parseInt(codigoEmpleadoS);
-				} else if (linea.startsWith("Nombre del empleado:")) {
-					nombreEmpleado = cadena[1];
-				} else if (linea.startsWith("CodigoProducto         Cantidad           PrecioUnitario")) {
-					
-				} else if (linea.startsWith("\tTotal:  €")) {
-					String total = cadena[5];
-					totalVenta = Float.parseFloat(total);
-				}
 
-				ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, false);
+				if (linea.startsWith("Empleado que ha atendido:")) {
+					cadena = linea.substring(25,4);
+					String codE = cadena;
+					codigoEmpleado = Integer.parseInt(codE);
+				} else if (linea.startsWith("Nombre del empleado:")) {
+					String nomE = linea.substring(20);
+					
+				} else if (linea.startsWith(":")) {
+					//String[] cadena2 = linea.substring(0, 6).split(":");
+					//String codigoProductoS = cadena2[0];
+					//codigoProducto = Integer.parseInt(codigoProductoS);
+
+					//String cantidadS = cadena2[1];
+					//cantidad = Integer.parseInt(cantidadS);
+
+					//String precioUnitarioS = cadena2[2];
+					//precioUnitario = Integer.parseInt(precioUnitarioS);
+
+				} else if (linea.startsWith("\tTotal:  €")) {
+					//String total = cadena[5];
+					//totalVenta = Float.parseFloat(total);
+				}
+	
+				ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, true);
 			}
 
 		} catch (Exception i) {
