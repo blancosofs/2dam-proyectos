@@ -28,8 +28,8 @@ public class TicketDAO {
 			fw.write("Nombre del empleado:" + t.getNombreEmpleado() + "\n\n");
 			fw.write("CodigoProducto         Cantidad           PrecioUnitario \n");
 			for (VentaPlanta v : t.getVentaPlanta()) {
-				fw.write(v.getCodigoProducto() + "                      " + v.getCantidad() + "                    "
-						+ v.getPrecioUnidad() + "\n");
+				fw.write(":" + v.getCodigoProducto() + "                      " + ":" + v.getCantidad()
+						+ "                    " + ":" + v.getPrecioUnidad() + "\n");
 			}
 			//
 			fw.write("———————————————————————————//—————————————————————————————\n");
@@ -60,21 +60,30 @@ public class TicketDAO {
 			BufferedReader bufferedReader = new BufferedReader(fileReader); // FileReader al BufferedReader
 
 			ArrayList<VentaPlanta> vp = new ArrayList<>();
+
 			int codigoEmpleado = 0;
 			String nombreEmpleado = "";
 			float totalVenta = 0;
 			LocalDate fechaVenta = LocalDate.now();
 
 			String linea = null;
-			String[] partes = linea.split(":");
-			
-			while ((linea = bufferedReader.readLine()) != null) {
-				if (linea.equals("Empleado que ha atendido")) {
-					
-				}
-			}
+			String[] cadena = null;
 
-			ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, false);
+			while ((linea = bufferedReader.readLine()) != null) {
+				if (linea.startsWith("Empleado que ha atendido:")) {
+					String codigoEmpleadoS = cadena[0];
+					codigoEmpleado = Integer.parseInt(codigoEmpleadoS);
+				} else if (linea.startsWith("Nombre del empleado:")) {
+					nombreEmpleado = cadena[1];
+				} else if (linea.startsWith("CodigoProducto         Cantidad           PrecioUnitario")) {
+					
+				} else if (linea.startsWith("\tTotal:  €")) {
+					String total = cadena[5];
+					totalVenta = Float.parseFloat(total);
+				}
+
+				ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, false);
+			}
 
 		} catch (Exception i) {
 			i.printStackTrace();

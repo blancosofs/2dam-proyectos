@@ -114,6 +114,7 @@ public class MenuVendedor {
 				//ticket para poder trabajarlo
 				Ticket td = TicketDAO.extrarObjetoTicket(numTicketDevolver);
 				System.out.println("[llegas?]");
+				System.out.println(td);
 				
 				if (td != null) {//q no reviente
 					

@@ -6,14 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import common.ControlErrores;
-import dao.PlantaDAO;
-import dao.TicketDAO;
-import domain.Empleado;
-import domain.Ticket;
-import domain.VentaPlanta;
 
 public class GestorVendedorService {
 
