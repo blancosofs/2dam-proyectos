@@ -142,9 +142,10 @@ public class MenuGestor {
 				System.out.println("[info] Funcion no implementada");
 				break;
 			case 7:
-				System.out.println("\n~~ ESTADISTICAS TICKET"
-						+ " ~~");
-				System.out.println("[info] Funcion no implementada");
+				System.out.println("\n~~ ESTADISTICAS TICKET ~~");
+				
+				
+				//System.out.println("[info] Funcion no implementada");
 				break;
 			case 0:
 				System.err.println("Saliendo del menu de gestores...");
