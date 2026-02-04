@@ -69,6 +69,10 @@ public class MenuVendedor {
 
 							PlantaDAO.modificarStock(codigoVenta, cantidadVenta);
 							p.setStock(p.getStock() - cantidadVenta);
+							
+							if (p.getStock() == 0) {
+								PlantaDAO.pasarBajaPlanta(p);
+							}
 
 							System.out.println("Resumen de compra:");
 
@@ -105,40 +109,46 @@ public class MenuVendedor {
 				break;
 			case 3:
 				System.out.println("\n~~ DEVOLUCION PLANTAS ~~");
-				
-				//buscar por numero de ticket
+
+				// buscar por numero de ticket
 				GestorVendedorService.listarTickets();
 				System.out.println("Introduzca el num de ticket a devolver:");
 				int numTicketDevolver = ControlErrores.controlErroresInt(sc);
-				
-				//ticket para poder trabajarlo
+
+				// ticket para poder trabajarlo
 				Ticket td = TicketDAO.extrarObjetoTicket(numTicketDevolver);
-				System.out.println("[llegas? EXTRAER TICKET]");
+				System.out.println();
 				System.out.println(td);
-				
-				if (td != null) {//q no reviente
-					
-				//sumar el stock, tienes por ahi el modificar stock
-				
-				
-				//marcar el ticket en negativo y con la linea devuelto al final
-				TicketDAO.escribirDevuelto(td);
-				
-				//llevar a devoluciones
-				GestorVendedorService.moverTickets(numTicketDevolver);
-				
-				//automaticamente una planta se da de baja si el stock es cero y no se puede realizar ninguna compra sobre ella 
-	
-				System.out.println("[info] Devolucion terminada");
-	
-				}else {
+
+				if (td != null) {// q no reviente
+
+					// sumar el stock, tienes por ahi el modificar stock. Como lo haces directo en en fichero no se ve en ejecucion tienes que darle otra vez al programa
+					for (VentaPlanta v : td.getVentaPlanta()) {
+						int codigoProducto = v.getCodigoProducto();
+						int cantidadDevolver = v.getCantidad();
+
+						PlantaDAO.modificarStockDevolver(codigoProducto, cantidadDevolver);
+					}
+
+					// marcar el ticket en negativo y con la linea devuelto al final
+					TicketDAO.escribirDevuelto(td);
+
+					// llevar a devoluciones
+					GestorVendedorService.moverTickets(numTicketDevolver);
+
+					// automaticamente una planta se da de baja si el stock es cero y no se puede
+					// realizar ninguna compra sobre ella
+
+					System.out.println("[info] Devolucion terminada");
+
+				} else {
 					System.out.println("[error] Ticket vacio");
 				}
-				
+
 				break;
 			case 4:
 				System.out.println("\n~~ BUSCAR POR N TICKET ~~");
-				
+
 				GestorVendedorService.listarTickets();
 				System.out.println("Introduzca el num de ticket a buscar:");
 				int numTicketBuscar = ControlErrores.controlErroresInt(sc);

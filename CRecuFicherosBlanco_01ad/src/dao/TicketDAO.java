@@ -66,41 +66,60 @@ public class TicketDAO {
 			float totalVenta = 0;
 			LocalDate fechaVenta = LocalDate.now();
 
-			int codigoProducto = 0;
-			int cantidad = 0;
-			int precioUnitario = 0;
-
 			String linea = null;
-			
-			String cadena[] = null; // esto es lo que te da error y se va a nullpointer
+
+			// String cadena[] = null; // esto es lo que te da error y se va a nullpointer
+			StringBuilder sb = new StringBuilder();
 
 			while ((linea = bufferedReader.readLine()) != null) {
 
 				if (linea.startsWith("Empleado que ha atendido:")) {
-					cadena = linea.substring(25,4);
-					String codE = cadena;
-					codigoEmpleado = Integer.parseInt(codE);
+					sb.append(linea.substring(25)).append("==");
+
 				} else if (linea.startsWith("Nombre del empleado:")) {
-					String nomE = linea.substring(20);
-					
+
+					sb.append(linea.substring(20)).append("==");
+
 				} else if (linea.startsWith(":")) {
-					//String[] cadena2 = linea.substring(0, 6).split(":");
-					//String codigoProductoS = cadena2[0];
-					//codigoProducto = Integer.parseInt(codigoProductoS);
+					String linea2 = linea.trim();
+					
+					String[] cadena2 = linea2.split(":");
+					
+					int codigoProducto = Integer.parseInt(cadena2[1].trim());
+					int cantidad = Integer.parseInt(cadena2[2].trim());
+					float precioUnitario = Float.parseFloat(cadena2[3].trim());
+					// String[] cadena2 = linea.substring(0, 6).split(":");
+					// String codigoProductoS = cadena2[0];
+					// codigoProducto = Integer.parseInt(codigoProductoS);
+					
+					VentaPlanta vpExtraer = new VentaPlanta(codigoProducto, precioUnitario, cantidad);
 
-					//String cantidadS = cadena2[1];
-					//cantidad = Integer.parseInt(cantidadS);
+					// String cantidadS = cadena2[1];
+					// cantidad = Integer.parseInt(cantidadS);
 
-					//String precioUnitarioS = cadena2[2];
-					//precioUnitario = Integer.parseInt(precioUnitarioS);
+					// String precioUnitarioS = cadena2[2];
+					// precioUnitario = Integer.parseInt(precioUnitarioS);
+					
+					vp.add(vpExtraer);
 
 				} else if (linea.startsWith("\tTotal:  €")) {
-					//String total = cadena[5];
-					//totalVenta = Float.parseFloat(total);
+					sb.append(linea.substring(10)).append("==");
+					// String total = cadena[5];
+					// totalVenta = Float.parseFloat(total);
 				}
-	
-				ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, true);
 			}
+			String cadena[] = sb.toString().split("==");
+
+			String ce = cadena[0];
+			codigoEmpleado = Integer.parseInt(ce);
+
+			nombreEmpleado = cadena[1];
+			
+			String tot = cadena [2];
+			totalVenta = Float.parseFloat(tot);
+
+			ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, true);
+			bufferedReader.close();
 
 		} catch (Exception i) {
 			i.printStackTrace();
@@ -128,7 +147,7 @@ public class TicketDAO {
 			}
 			//
 			fw.write("———————————————————————————//—————————————————————————————\n");
-			fw.write("\tTotal:  €" + t.getTotalVenta() + "\n");
+			fw.write("\tTotal:  -€" + t.getTotalVenta() + "\n");
 			fw.write("\t\n\nDEVUELTO\n");
 
 			fw.close();

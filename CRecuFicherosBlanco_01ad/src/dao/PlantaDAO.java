@@ -128,6 +128,52 @@ public class PlantaDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void modificarStockDevolver(int codigoVenta, int cantidadVenta) {
+		try {
+			// es fija la ruta esta y ya hacces comprobacciones
+			File ficheroDAT = new File("PLANTAS/plantas.dat");
+			// abro en lectura
+			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "rw");
+			raf.seek(0);
+
+			while (raf.getFilePointer() + 12 <= raf.length()) {// te lees todos sin irte
+				long volver = raf.getFilePointer(); // donde te quedas en el registro
+
+				int codigoRAF = raf.readInt();
+				float precioRAF = raf.readFloat();
+				int stockRAF = raf.readInt();
+
+				if (codigoRAF == codigoVenta) {
+					// NO VA, NULLPOINTER :raf.seek(raf.getFilePointer()-4); //vuelvete a stock, si
+					// pones de una raf.seek(4) no va
+					int nuevoStock = stockRAF + cantidadVenta;
+
+					// para irte al siguiente
+					raf.seek(volver + 8);
+					raf.writeInt(nuevoStock);
+					System.out.println("Stock actualizado");
+					break;
+				}
+
+			}
+			raf.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void pasarBajaPlanta(Planta p) {
+		File datBaja = new File("PLANTAS/plantasBaja.dat");
+	    File xmlBaja = new File("PLANTAS/plantasBaja.xml");
+	    
+	    //esto ya lo tienes
+	    nuevaPlantaDAT(datBaja, p);
+	    nuevaPlantaXML(xmlBaja, p);
+	    
+	    System.out.println("[info] planta movida ");
+	}
+	
 
 	public static void nuevaPlantaDAT(File ficheroDAT, Planta plantaG ) {
 		try {

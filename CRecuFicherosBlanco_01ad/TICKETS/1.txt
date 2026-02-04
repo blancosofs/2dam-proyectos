@@ -1,9 +1,0 @@
-Número Ticket:1
-—————————————————————————//———————————————————————————————
-Empleado que ha atendido:2712
-Nombre del empleado:Elisa
-
-CodigoProducto         Cantidad           PrecioUnitario 
-:20                      :6                    :412.41
-———————————————————————————//—————————————————————————————
-	Total:  €2474.46
