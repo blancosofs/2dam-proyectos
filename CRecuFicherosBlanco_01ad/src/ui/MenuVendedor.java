@@ -127,7 +127,7 @@ public class MenuVendedor {
 						int codigoProducto = v.getCodigoProducto();
 						int cantidadDevolver = v.getCantidad();
 
-						PlantaDAO.modificarStockDevolver(codigoProducto, cantidadDevolver);
+						PlantaDAO.modificarStockDevolver(numTicketDevolver, cantidadDevolver);
 					}
 
 					// marcar el ticket en negativo y con la linea devuelto al final

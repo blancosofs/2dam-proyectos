@@ -8,6 +8,7 @@ import common.ControlErrores;
 import dao.PlantaDAO;
 import domain.Empleado;
 import domain.Planta;
+import service.GestorVendedorService;
 
 public class MenuGestor {
 
@@ -45,9 +46,15 @@ public class MenuGestor {
 
 				System.out.println("Introduzca el precio unitario:");
 				float precio = ControlErrores.controlErroresFloat(sc);
+				if (precio < 1) {
+					System.out.println("[error] Precio inferior al mínimo");
+				}
 
 				System.out.println("Introduzca el stock disponible:");
 				int stock = ControlErrores.controlErroresInt(sc);
+				if (stock < 1) {
+					System.out.println("[error] Precio inferior al mínimo");
+				}
 
 				Planta plantaG = new Planta(nombre, foto, descripcion, precio, stock);
 
@@ -56,18 +63,70 @@ public class MenuGestor {
 				// a ficheros
 				PlantaDAO.nuevaPlantaXML(ficheroXML, plantaG);
 				PlantaDAO.nuevaPlantaDAT(ficheroDAT, plantaG);
-				
+
 				System.out.println("[info] Planta dada de alta con exito");
 
 				break;
 			case 2:
 				System.out.println("\n~~ BAJA PLANTAS ~~");
-				System.out.println("[info] Funcion no implementada");
+
+				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
+
+				System.out.println("Introduzca el codigo de la planta a dar de baja:");
+				int codigoBaja = ControlErrores.controlErroresInt(sc);
+
+				if (!GestorVendedorService.validarCodigo(arrayCatalogoPlantas, codigoBaja)) {
+					System.out.println("[error] planta no encontrada");
+				} else {
+					Planta pb = GestorVendedorService.extraerObjetoPlanta(arrayCatalogoPlantas, codigoBaja);
+					PlantaDAO.pasarBajaPlanta(pb);
+					arrayCatalogoPlantas.remove(pb);
+				}
+
+				// System.out.println("[info] Funcion no implementada");
 				break;
 			case 3:
 				System.out.println("\n~~ MODIFICAR PLANTAS ~~");
-				System.out.println("[info] Funcion no implementada");
+				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
 
+				System.out.println("Introduzca el codigo de la planta a modificar:");
+				int codigoModificar = ControlErrores.controlErroresInt(sc);
+				
+				if (!GestorVendedorService.validarCodigo(arrayCatalogoPlantas, codigoModificar)) {
+					System.out.println("[error] planta no encontrada");
+				} else {
+					System.out.println("Introduzca el nombre de la nueva planta:");
+					String nombreM = sc.next();
+
+					System.out.println("Introduzca una descripcion de la foto:");
+					String fotoM = sc.next();
+
+					System.out.println("Introduzca una descripcion de la planta:");
+					String descripcionM = sc.next();
+
+					System.out.println("Introduzca el precio unitario:");
+					float precioM = ControlErrores.controlErroresFloat(sc);
+					if (precioM < 1) {
+						System.out.println("[error] Precio inferior al mínimo");
+					}
+
+					System.out.println("Introduzca el stock disponible:");
+					int stockM = ControlErrores.controlErroresInt(sc);
+					if (stockM < 1) {
+						System.out.println("[error] Precio inferior al mínimo");
+					}
+
+					Planta plantaM = new Planta(nombreM, fotoM, descripcionM, precioM, stockM);
+					// en ejecucion
+					arrayCatalogoPlantas.add(plantaM);
+					// a ficheros
+					PlantaDAO.nuevaPlantaXML(ficheroXML, plantaM);
+					PlantaDAO.nuevaPlantaDAT(ficheroDAT, plantaM);
+
+					System.out.println("[info] Planta dada de modificada con exito");
+				}
+				
+				//System.out.println("[info] Funcion no implementada");
 				break;
 			case 4:
 				System.out.println("\n~~ ALTA EMPLEADOS ~~");
@@ -83,7 +142,8 @@ public class MenuGestor {
 				System.out.println("[info] Funcion no implementada");
 				break;
 			case 7:
-				System.out.println("\n~~ ESTADISTICAS ~~");
+				System.out.println("\n~~ ESTADISTICAS TICKET"
+						+ " ~~");
 				System.out.println("[info] Funcion no implementada");
 				break;
 			case 0:
