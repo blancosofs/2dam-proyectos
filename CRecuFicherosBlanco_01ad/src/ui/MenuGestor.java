@@ -22,12 +22,12 @@ public class MenuGestor {
 			System.out.println();
 			System.out.println("## SELECCIONE LA TAREA A REALIZAR ##");
 			System.out.println("1. Dar de alta plantas         ");
-			System.out.println(" . Dar de baja plantas         ");
-			System.out.println(" . Modificar campos de plantas ");
+			System.out.println("2. Dar de baja plantas         ");
+			System.out.println("3. Modificar campos de plantas ");
 			System.out.println(" . Dar alta empleados          ");
 			System.out.println(" . Dar baja empleados          ");
 			System.out.println(" . Recuperar baja empleado     ");
-			System.out.println(" . Estadisticas                ");
+			System.out.println("4. Estadisticas                ");
 			System.out.println("0. Volver");
 			opc = ControlErrores.controlErroresInt2(sc);
 
@@ -91,10 +91,12 @@ public class MenuGestor {
 
 				System.out.println("Introduzca el codigo de la planta a modificar:");
 				int codigoModificar = ControlErrores.controlErroresInt(sc);
-				
+
 				if (!GestorVendedorService.validarCodigo(arrayCatalogoPlantas, codigoModificar)) {
 					System.out.println("[error] planta no encontrada");
 				} else {
+					Planta plantaM = GestorVendedorService.extraerObjetoPlanta(arrayCatalogoPlantas, codigoModificar);
+
 					System.out.println("Introduzca el nombre de la nueva planta:");
 					String nombreM = sc.next();
 
@@ -116,17 +118,12 @@ public class MenuGestor {
 						System.out.println("[error] Precio inferior al mínimo");
 					}
 
-					Planta plantaM = new Planta(nombreM, fotoM, descripcionM, precioM, stockM);
-					// en ejecucion
-					arrayCatalogoPlantas.add(plantaM);
-					// a ficheros
-					PlantaDAO.nuevaPlantaXML(ficheroXML, plantaM);
-					PlantaDAO.nuevaPlantaDAT(ficheroDAT, plantaM);
-
-					System.out.println("[info] Planta dada de modificada con exito");
+					PlantaDAO.guardarXML(ficheroXML, arrayCatalogoPlantas);
+					PlantaDAO.guardarDAT(ficheroDAT, arrayCatalogoPlantas);
+					System.out.println("[info] Planta modificada con exito");
 				}
-				
-				//System.out.println("[info] Funcion no implementada");
+
+				// System.out.println("[info] Funcion no implementada");
 				break;
 			case 4:
 				System.out.println("\n~~ ALTA EMPLEADOS ~~");
@@ -143,9 +140,8 @@ public class MenuGestor {
 				break;
 			case 7:
 				System.out.println("\n~~ ESTADISTICAS TICKET ~~");
-				
-				
-				//System.out.println("[info] Funcion no implementada");
+
+				// System.out.println("[info] Funcion no implementada");
 				break;
 			case 0:
 				System.err.println("Saliendo del menu de gestores...");

@@ -191,6 +191,8 @@ public class PlantaDAO {
 		}
 	}
 	
+	
+	
 	public static void nuevaPlantaXML(File ficheroXML, Planta plantaG ) {
 			try {
 				ficheroXML.createNewFile();
