@@ -118,8 +118,8 @@ public class MenuGestor {
 						System.out.println("[error] Precio inferior al mínimo");
 					}
 
-					PlantaDAO.guardarXML(ficheroXML, arrayCatalogoPlantas);
-					PlantaDAO.guardarDAT(ficheroDAT, arrayCatalogoPlantas);
+					PlantaDAO.guardarXML(ficheroXML, plantaM);
+					PlantaDAO.guardarDAT(ficheroDAT, plantaM);
 					System.out.println("[info] Planta modificada con exito");
 				}
 

@@ -191,8 +191,40 @@ public class PlantaDAO {
 		}
 	}
 	
+	public static void guardarDAT(File ficheroDAT, Planta plantaG ) {
+		try {
+			// abro en lectura
+			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "rw");
+			raf.seek(raf.length()); // al final del fichero
+			raf.writeInt(plantaG.getCodigo());
+	        raf.writeFloat(plantaG.getPrecio());
+	        raf.writeInt(plantaG.getStock());
+			raf.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void guardarXML(File ficheroXML, Planta plantaG ) {
+		try {
+			ficheroXML.createNewFile();
+			FileWriter escritura = new FileWriter(ficheroXML);
+			escritura.write("<planta>\n");
+			escritura.write("<codigo>"+plantaG.getCodigo()+"</codigo>\n");
+			escritura.write("<nombre>"+plantaG.getNombre()+"</nombre>\n");
+			escritura.write("<foto>"+plantaG.getFoto()+"</foto>\n");
+			escritura.write("<descripcion>"+plantaG.getDescripcion()+".</descripcion>\n");
+			escritura.write("</planta>\n");
+			escritura.write("</plantas>\n");
+			escritura.close();
+		} catch (IOException io) {
+			io.printStackTrace();
+		}
+	}
 	
 	
+	
+	//haciendo todo de nuevo pque muere si no
 	public static void nuevaPlantaXML(File ficheroXML, Planta plantaG ) {
 			try {
 				ficheroXML.createNewFile();
