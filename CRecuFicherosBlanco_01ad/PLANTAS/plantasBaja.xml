@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <plantas>
 <planta>
 <codigo>1</codigo>
@@ -122,8 +121,8 @@
 </planta>
 <planta>
 <codigo>21</codigo>
-<nombre>n1</nombre>
-<foto>d1</foto>
-<descripcion>dd1.</descripcion>
+<nombre>nombre</nombre>
+<foto>desc</foto>
+<descripcion>descripcion..</descripcion>
 </planta>
 </plantas>

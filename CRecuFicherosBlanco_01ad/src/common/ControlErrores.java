@@ -52,6 +52,7 @@ public class ControlErrores {
 		}
 	}
 	
+	
 	public static int controlErroresInt2(Scanner sc) {
 	    boolean error = true;
 	    int dato = 0;
@@ -114,6 +115,18 @@ public class ControlErrores {
 			return true;
 		} else {
 			System.err.println("ERROR. NUM NATURAL 0-9 ENTRE 1Y4 DIGITOS. numTicket a Devolver invalido :( ");
+			return false;
+		}
+	}
+	
+	public static boolean validarTexto(String texto) {
+		Pattern pattern = Pattern.compile("^[a-zA-z]+$");
+		Matcher matcher = pattern.matcher(texto);
+		if (matcher.find()) { 
+			System.out.println("Texto valido :) ");
+			return true;
+		} else {
+			System.err.println("ERROR. CARACTERES MAYUSCULAS Y MINUSCULAS DEL ABACEDARIO. Texto invalido :( ");
 			return false;
 		}
 	}

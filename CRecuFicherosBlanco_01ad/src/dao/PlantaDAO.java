@@ -95,6 +95,8 @@ public class PlantaDAO {
 		return arrayCompletoPlanta;
 	}
 
+	//como lo estas modificando en el fichero y no en tiempo de ejecucion cuando haces una venta y visualizas el catalogo no se actualiza. 
+	//Tienes que cerrar el programa y volver a iniciar para que te lea el .dat y puedas ver el stock modificado
 	public static void modificarStock(int codigoVenta, int cantidadVenta) {
 		try {
 			// es fija la ruta esta y ya hacces comprobacciones
@@ -167,11 +169,9 @@ public class PlantaDAO {
 		File datBaja = new File("PLANTAS/plantasBaja.dat");
 	    File xmlBaja = new File("PLANTAS/plantasBaja.xml");
 	    
-	    //esto ya lo tienes
-	    nuevaPlantaDAT(datBaja, p);
-	    nuevaPlantaXML(xmlBaja, p);
 	    
-	    System.out.println("[info] planta movida ");
+	    
+	    System.out.println("[info] planta movida a bajas ");
 	}
 	
 
@@ -191,45 +191,13 @@ public class PlantaDAO {
 		}
 	}
 	
-	public static void guardarDAT(File ficheroDAT, Planta plantaG ) {
-		try {
-			// abro en lectura
-			RandomAccessFile raf = new RandomAccessFile(ficheroDAT, "rw");
-			raf.seek(raf.length()); // al final del fichero
-			raf.writeInt(plantaG.getCodigo());
-	        raf.writeFloat(plantaG.getPrecio());
-	        raf.writeInt(plantaG.getStock());
-			raf.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void guardarXML(File ficheroXML, Planta plantaG ) {
-		try {
-			ficheroXML.createNewFile();
-			FileWriter escritura = new FileWriter(ficheroXML);
-			escritura.write("<planta>\n");
-			escritura.write("<codigo>"+plantaG.getCodigo()+"</codigo>\n");
-			escritura.write("<nombre>"+plantaG.getNombre()+"</nombre>\n");
-			escritura.write("<foto>"+plantaG.getFoto()+"</foto>\n");
-			escritura.write("<descripcion>"+plantaG.getDescripcion()+".</descripcion>\n");
-			escritura.write("</planta>\n");
-			escritura.write("</plantas>\n");
-			escritura.close();
-		} catch (IOException io) {
-			io.printStackTrace();
-		}
-	}
-	
-	
-	
-	//haciendo todo de nuevo pque muere si no
+	//haciendo todo de nuevo pque muere si no, se te queda solo la nueva 
 	public static void nuevaPlantaXML(File ficheroXML, Planta plantaG ) {
 			try {
+
 				ficheroXML.createNewFile();
 				FileWriter escritura = new FileWriter(ficheroXML);
-				escritura.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+				//reescribir
 				escritura.write("<plantas>\n");
 				escritura.write("<planta>\n");
 				escritura.write("<codigo>1</codigo>\n");
@@ -358,6 +326,7 @@ public class PlantaDAO {
 				escritura.write("<foto>"+plantaG.getFoto()+"</foto>\n");
 				escritura.write("<descripcion>"+plantaG.getDescripcion()+".</descripcion>\n");
 				escritura.write("</planta>\n");
+				//para cerrar
 				escritura.write("</plantas>\n");
 				escritura.close();
 			} catch (IOException io) {

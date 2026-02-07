@@ -83,8 +83,9 @@ public class ViveroBlanco {
 							MenuVendedor.mostrarMenuVendedor(empleadoRegistrado, arrayCatalogoPlantas);
 						}
 						if (empleadoIterator.getCargo().equals("gestor")) {
+							File ficheroEmpleados = new File("EMPLEADOS/empleado.dat");
 							MenuGestor.mostrarMenuGestor(empleadoRegistrado, arrayCatalogoPlantas,
-									arrayCatalogoEmpleado,ficheroXML,ficheroDAT);
+									arrayCatalogoEmpleado,ficheroXML,ficheroDAT,ficheroEmpleados);
 						}
 					}
 				}
