@@ -48,7 +48,10 @@ public class MenuVendedor {
 
 				boolean seguirVentaBoolean = true;
 
+				int i = 0;
+
 				do {
+
 					System.out.println("Introduzca el codigo de planta que desee comprar:");
 					int codigoVenta = ControlErrores.controlErroresInt(sc);
 
@@ -56,6 +59,15 @@ public class MenuVendedor {
 						System.out.println("[error] planta no encontrada");
 					} else {
 						Planta p = GestorVendedorService.extraerObjetoPlanta(arrayCatalogoPlantas, codigoVenta);
+						if (i != 0) {
+							// recorre la venta, la planta y sacas el id. Compruebas que no se repite
+							for (Planta planta : arrayCatalogoPlantas) {
+								if (planta.getCodigo() == p.getCodigo() && p.getCodigo() == codigoVenta) {
+									System.out.println("[error] no puedes comprara la misma planta");
+									seguirVentaBoolean = false;
+								}
+							}
+						}
 
 						System.out.println("Introduzca la cantidad de plantas que desee comprar:");
 						int cantidadVenta = ControlErrores.controlErroresInt(sc);
@@ -67,12 +79,13 @@ public class MenuVendedor {
 							VentaPlanta vp = new VentaPlanta(codigoVenta, p.getPrecio(), cantidadVenta);
 							arrayVentas.add(vp);
 
-							PlantaDAO.modificarStock(codigoVenta, cantidadVenta);
 							p.setStock(p.getStock() - cantidadVenta);
-							
+
 							if (p.getStock() == 0) {
 								PlantaDAO.pasarBajaPlanta(p);
+								break;
 							}
+							PlantaDAO.modificarStock(codigoVenta, cantidadVenta);
 
 							System.out.println("Resumen de compra:");
 
@@ -100,11 +113,14 @@ public class MenuVendedor {
 
 								System.out.println("[info] Venta terminada");
 								seguirVentaBoolean = false;
+							} else {
+								i++;
 							}
 						}
 					}
 
 				} while (seguirVentaBoolean);
+				
 
 				break;
 			case 3:
@@ -122,7 +138,8 @@ public class MenuVendedor {
 
 				if (td != null) {// q no reviente
 
-					// sumar el stock, tienes por ahi el modificar stock. Como lo haces directo en en fichero no se ve en ejecucion tienes que darle otra vez al programa
+					// sumar el stock, tienes por ahi el modificar stock. Como lo haces directo en
+					// en fichero no se ve en ejecucion tienes que darle otra vez al programa
 					for (VentaPlanta v : td.getVentaPlanta()) {
 						int codigoProducto = v.getCodigoProducto();
 						int cantidadDevolver = v.getCantidad();
@@ -131,10 +148,10 @@ public class MenuVendedor {
 					}
 
 					// marcar el ticket en negativo y con la linea devuelto al final
-					TicketDAO.escribirDevuelto(td);
+					TicketDAO.escribirDevuelto2(td, numTicketDevolver);
 
 					// llevar a devoluciones
-					GestorVendedorService.moverTickets(numTicketDevolver);
+					// GestorVendedorService.moverTickets(numTicketDevolver);
 
 					// automaticamente una planta se da de baja si el stock es cero y no se puede
 					// realizar ninguna compra sobre ella

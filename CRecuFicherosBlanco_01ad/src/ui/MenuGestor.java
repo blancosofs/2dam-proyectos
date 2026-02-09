@@ -149,6 +149,7 @@ public class MenuGestor {
 				// System.out.println("[info] Funcion no implementada");
 				break;
 			case 4:
+				System.out.println("[info] No funciona");
 				System.out.println("\n~~ ALTA EMPLEADOS ~~");
 
 				System.out.println("Introduzca la identificacion del nuevo empleado (CUATRO DIGITOS INT):");
@@ -162,10 +163,10 @@ public class MenuGestor {
 				System.out.println("Introduzca el nombre del nuevo empleado:");
 				String nombreEmpleado = sc.next();
 
-				if (!ControlErrores.validarTexto(nombreEmpleado)) {
+				/*if (!ControlErrores.validarTexto(nombreEmpleado)) {
 					System.out.println("Vuelva a intentar dar de alta al empleado deseado (error en el nombre)");
 					break;
-				}
+				}*/
 
 				System.out.println("Introduzca la contrasenya del nuevo empleado (Hola[cualquier numero] -> tiene que ser 1 min 1 mayus y entre 5-7 caracteres):");
 				String pwdEmpleado = sc.next();
@@ -182,12 +183,12 @@ public class MenuGestor {
 				Empleado empleadoA = new Empleado(codigoEmpleado, nombreEmpleado, pwdEmpleado, cargoEmpleado);
 				arrayCatalogoEmpleados.add(empleadoA);
 				// a ficheros
-				EmpleadoDAO.nuevoEmpleado(empleadoA);
+				//EmpleadoDAO.nuevoEmpleado(empleadoA);
 
 				System.out.println("[info] Empleado dado de alta con exito");
 
 				// Catalogo
-				GestorGestorService.visualizarCatalogo(arrayCatalogoEmpleados);
+				//GestorGestorService.visualizarCatalogo(arrayCatalogoEmpleados);
 
 				break;
 			case 5:
@@ -201,6 +202,7 @@ public class MenuGestor {
 				break;
 
 			case 7:
+				System.out.println("[info] No implementado");
 				System.out.println("\n~~ ESTADISTICAS TICKET ~~");
 
 				break;

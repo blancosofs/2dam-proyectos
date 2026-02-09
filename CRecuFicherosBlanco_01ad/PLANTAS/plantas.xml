@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <plantas>
 <planta>
 <codigo>1</codigo>
@@ -118,11 +119,5 @@
 <nombre>Jazmín</nombre>
 <foto>jazmin.jpg</foto>
 <descripcion>Planta trepadora de flores fragantes.</descripcion>
-</planta>
-<planta>
-<codigo>21</codigo>
-<nombre>nombre</nombre>
-<foto>desc</foto>
-<descripcion>descripcion.</descripcion>
 </planta>
 </plantas>

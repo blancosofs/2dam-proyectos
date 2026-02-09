@@ -82,16 +82,16 @@ public class TicketDAO {
 
 				} else if (linea.startsWith(":")) {
 					String linea2 = linea.trim();
-					
+
 					String[] cadena2 = linea2.split(":");
-					
+
 					int codigoProducto = Integer.parseInt(cadena2[1].trim());
 					int cantidad = Integer.parseInt(cadena2[2].trim());
 					float precioUnitario = Float.parseFloat(cadena2[3].trim());
 					// String[] cadena2 = linea.substring(0, 6).split(":");
 					// String codigoProductoS = cadena2[0];
 					// codigoProducto = Integer.parseInt(codigoProductoS);
-					
+
 					VentaPlanta vpExtraer = new VentaPlanta(codigoProducto, precioUnitario, cantidad);
 
 					// String cantidadS = cadena2[1];
@@ -99,7 +99,7 @@ public class TicketDAO {
 
 					// String precioUnitarioS = cadena2[2];
 					// precioUnitario = Integer.parseInt(precioUnitarioS);
-					
+
 					vp.add(vpExtraer);
 
 				} else if (linea.startsWith("\tTotal:  €")) {
@@ -114,8 +114,8 @@ public class TicketDAO {
 			codigoEmpleado = Integer.parseInt(ce);
 
 			nombreEmpleado = cadena[1];
-			
-			String tot = cadena [2];
+
+			String tot = cadena[2];
 			totalVenta = Float.parseFloat(tot);
 
 			ticket = new Ticket(codigoEmpleado, nombreEmpleado, fechaVenta, vp, totalVenta, true);
@@ -155,6 +155,46 @@ public class TicketDAO {
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
+	}
+
+	public static void escribirDevuelto2(Ticket t, int numTicketBuscar) {
+		File carpeta = new File("DEVOLUCIONES");
+		File ficheroTXTbuscar = new File("TICKETS", numTicketBuscar + ".txt");
+
+		try {
+
+			if (!ficheroTXTbuscar.exists() || !ficheroTXTbuscar.isFile()) {
+				System.out.println("[error] Ticket " + numTicketBuscar + " no encontrado");
+			} else {
+				File destino = new File(carpeta, ficheroTXTbuscar.getName());
+				if (ficheroTXTbuscar.renameTo(destino)) {
+					System.out.println("[info] funciona cambiar a devoluciones");
+					
+					FileWriter fw = new FileWriter(destino);
+					fw.write("Número Ticket:" + t.getNumTicket() + "\n");
+					fw.write("—————————————————————————//———————————————————————————————\n");
+					fw.write("Empleado que ha atendido:" + t.getCodigoEmpleado() + "\n");
+					fw.write("Nombre del empleado:" + t.getNombreEmpleado() + "\n\n");
+					fw.write("CodigoProducto         Cantidad           PrecioUnitario \n");
+					for (VentaPlanta v : t.getVentaPlanta()) {
+						fw.write("-" + v.getCodigoProducto() + "                      " + "-" + v.getCantidad()
+								+ "                    " + "-" + v.getPrecioUnidad() + "\n");
+					}
+					//
+					fw.write("———————————————————————————//—————————————————————————————\n");
+					fw.write("\tTotal:  -€" + t.getTotalVenta() + "\n");
+					fw.write("\t\n\nDEVUELTO\n");
+
+					fw.close();
+				} else {
+					System.out.println("[error] mover");
+				}
+			}
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+
 	}
 
 }
