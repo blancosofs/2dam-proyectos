@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import common.ControlErrores;
-import dao.EmpleadoDAO;
 import dao.PlantaDAO;
 import domain.Empleado;
 import domain.Planta;
-import service.GestorGestorService;
 import service.GestorVendedorService;
 
 public class MenuGestor {
@@ -24,12 +22,12 @@ public class MenuGestor {
 			System.out.println();
 			System.out.println("## SELECCIONE LA TAREA A REALIZAR ##");
 			System.out.println("1. Dar de alta plantas         ");
-			System.out.println(" . Dar de baja plantas         ");
+			System.out.println("2. Dar de baja plantas         ");
 			System.out.println("3. Modificar campos de plantas ");
 			System.out.println("4. Dar alta empleados          ");
 			System.out.println(" . Dar baja empleados          ");
 			System.out.println(" . Recuperar baja empleado     ");
-			System.out.println("7. Estadisticas                ");
+			System.out.println(" . Estadisticas                ");
 			System.out.println("0. Volver");
 			opc = ControlErrores.controlErroresInt2(sc);
 
@@ -72,13 +70,15 @@ public class MenuGestor {
 				Planta plantaG = new Planta(nombre, foto, descripcion, precio, stock);
 				arrayCatalogoPlantas.add(plantaG);
 				// a ficheros
+				//PlantaDAO.nuevaPlantaXML2(ficheroXML, plantaG, arrayCatalogoPlantas);
+				//PlantaDAO.nuevaPlantaDAT(ficheroDAT, plantaG);
 				PlantaDAO.nuevaPlantaXML(ficheroXML, plantaG);
 				PlantaDAO.nuevaPlantaDAT(ficheroDAT, plantaG);
 
 				System.out.println("[info] Planta dada de alta con exito");
 
 				// catalogo
-				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
+				GestorVendedorService.vCatalogo();
 
 				break;
 			case 2:
