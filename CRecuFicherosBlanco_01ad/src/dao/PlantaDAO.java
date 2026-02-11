@@ -169,8 +169,6 @@ public class PlantaDAO {
 		File datBaja = new File("PLANTAS/plantasBaja.dat");
 	    File xmlBaja = new File("PLANTAS/plantasBaja.xml");
 	    
-	    
-	    
 	    System.out.println("[info] planta movida a bajas ");
 	}
 	

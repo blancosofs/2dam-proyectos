@@ -204,6 +204,7 @@ public class MenuGestor {
 			case 7:
 				System.out.println("[info] No implementado");
 				System.out.println("\n~~ ESTADISTICAS TICKET ~~");
+				
 
 				break;
 			case 0:

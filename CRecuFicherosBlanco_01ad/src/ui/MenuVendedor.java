@@ -34,7 +34,8 @@ public class MenuVendedor {
 				System.out.println("\n~~ CATALOGO DE PLANTAS DISPONIBLES ~~");
 				System.out.println(
 						"---------------------------------------------------------------------------------------------------------------------------");
-				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
+				GestorVendedorService.vCatalogo();
+				//GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
 				System.out.println(
 						"---------------------------------------------------------------------------------------------------------------------------\n");
 				break;
@@ -44,14 +45,17 @@ public class MenuVendedor {
 				ArrayList<VentaPlanta> arrayVentas = new ArrayList<VentaPlanta>();
 
 				System.out.println("Vamos a proceder a la venta de una planta por codigo");
-				GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
+				GestorVendedorService.vCatalogo();
+				//GestorVendedorService.visualizarCatalogo(arrayCatalogoPlantas);
 
 				boolean seguirVentaBoolean = true;
-
-				int i = 0;
+				boolean repetido = false;
+				float precioTotal = 0;
 
 				do {
-
+					
+					repetido = false;
+					
 					System.out.println("Introduzca el codigo de planta que desee comprar:");
 					int codigoVenta = ControlErrores.controlErroresInt(sc);
 
@@ -59,15 +63,6 @@ public class MenuVendedor {
 						System.out.println("[error] planta no encontrada");
 					} else {
 						Planta p = GestorVendedorService.extraerObjetoPlanta(arrayCatalogoPlantas, codigoVenta);
-						if (i != 0) {
-							// recorre la venta, la planta y sacas el id. Compruebas que no se repite
-							for (Planta planta : arrayCatalogoPlantas) {
-								if (planta.getCodigo() == p.getCodigo() && p.getCodigo() == codigoVenta) {
-									System.out.println("[error] no puedes comprara la misma planta");
-									seguirVentaBoolean = false;
-								}
-							}
-						}
 
 						System.out.println("Introduzca la cantidad de plantas que desee comprar:");
 						int cantidadVenta = ControlErrores.controlErroresInt(sc);
@@ -76,27 +71,42 @@ public class MenuVendedor {
 							System.out.println("[error] stock insuficiente");
 						} else {
 
+							for (VentaPlanta v : arrayVentas) {
+								if (v.getCodigoProducto() == codigoVenta) {
+									repetido = true;
+									break;
+								}
+							}
+
+							if (repetido) {
+								System.out.println("[info] No puedes comprar la misma planta dos veces ");
+								continue;
+							}
 							VentaPlanta vp = new VentaPlanta(codigoVenta, p.getPrecio(), cantidadVenta);
 							arrayVentas.add(vp);
 
 							p.setStock(p.getStock() - cantidadVenta);
 
-							if (p.getStock() == 0) {
-								PlantaDAO.pasarBajaPlanta(p);
-								break;
-							}
 							PlantaDAO.modificarStock(codigoVenta, cantidadVenta);
 
 							System.out.println("Resumen de compra:");
 
-							float precioTotal = (p.getPrecio() * cantidadVenta);
+							
+							float totalPorVenta = (p.getPrecio() * cantidadVenta);
+							precioTotal +=totalPorVenta;
+							
 							System.out.println("Planta COMPRAR [codigo=" + p.getCodigo() + ", cantidad=" + cantidadVenta
-									+ ", precio total=" + precioTotal + "]");
+									+ ", precio total=" + totalPorVenta + "]");
+							
+							if (p.getStock()==0) {
+								PlantaDAO.pasarBajaPlanta(p);
+							}
 
 							System.out.println("Seguir comprando? (s/n)");
 							String respuesta = ControlErrores.controlErroresRespuesta(sc);
 
 							if (respuesta.equalsIgnoreCase("n")) {
+								
 								/* TICKET */
 								Empleado e = empleadoRegistrado;
 
@@ -113,14 +123,12 @@ public class MenuVendedor {
 
 								System.out.println("[info] Venta terminada");
 								seguirVentaBoolean = false;
-							} else {
-								i++;
 							}
 						}
+
 					}
 
 				} while (seguirVentaBoolean);
-				
 
 				break;
 			case 3:

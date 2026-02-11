@@ -7,10 +7,27 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import dao.PlantaDAO;
+
 
 public class GestorVendedorService {
 
 	public static void visualizarCatalogo(ArrayList<Planta> arrayCatalogoPlantas) {
+		for (Planta planta : arrayCatalogoPlantas) {
+			System.out.println(planta);
+		}
+	}
+	
+	public static void vCatalogo() {
+		// cargar
+		File ficheroXML = new File("PLANTAS/plantas.xml");
+		ArrayList<Planta> arrayXMLplanta = new ArrayList<>();
+		arrayXMLplanta = PlantaDAO.leerXMLplanta(ficheroXML, arrayXMLplanta); // lista sin precio ni stock
+
+		File ficheroDAT = new File("PLANTAS/plantas.dat");
+		ArrayList<Planta> arrayCatalogoPlantas = new ArrayList<>();
+		arrayCatalogoPlantas = PlantaDAO.leerDATplanta(ficheroDAT, arrayXMLplanta); // ya tienes las plantitas
+		
 		for (Planta planta : arrayCatalogoPlantas) {
 			System.out.println(planta);
 		}
