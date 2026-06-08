@@ -1,6 +1,6 @@
 # 📂 Proyectos 2º DAM
 
-## 🛠️ Tecnologías y Conceptos Aplicados
+##  Tecnologías y Conceptos Aplicados
 
 * **Lenguaje Principal:** Java (100%)
 * **Bases de Datos:** MySQL (Relacional) y db4o (No Relacional)
@@ -9,7 +9,7 @@
 
 ---
 
-## 📚 Módulos y Prácticas
+##  Módulos y Prácticas
 
 ### 1. Acceso a Datos (AD)
 Proyectos centrados en la persistencia de la información, abarcando ficheros y diferentes modelos de bases de datos.
@@ -50,6 +50,6 @@ Gestión de hilos, concurrencia y procesos.
 
 ---
 
-## 📝 Notas Adicionales
+##  Notas Adicionales
 
 * **Documentación Personal:** La documentación detallada y apuntes de estos desarrollos se encuentran gestionados en Obsidian (`boveda-proyectos`).
