@@ -1,5 +1,9 @@
 # 📂 Proyectos 2º DAM
 
+Los proyectos están enfocados principalmente en el ecosistema Java, cubriendo desde el manejo de ficheros y bases de datos hasta interfaces gráficas y concurrencia.
+
+---
+
 ##  Tecnologías y Conceptos Aplicados
 
 * **Lenguaje Principal:** Java (100%)
@@ -12,8 +16,6 @@
 ##  Módulos y Prácticas
 
 ### 1. Acceso a Datos (AD)
-Proyectos centrados en la persistencia de la información, abarcando ficheros y diferentes modelos de bases de datos.
-
 * **Gestión de un Vivero**
     * *Descripción:* Aplicación para gestionar un vivero centrada en el manejo, lectura y escritura de archivos XML y TXT nativamente desde Java.
     * *Evolución / Versiones:*
@@ -52,4 +54,4 @@ Gestión de hilos, concurrencia y procesos.
 
 ##  Notas Adicionales
 
-* **Documentación Personal:** La documentación detallada y apuntes de estos desarrollos se encuentran gestionados en Obsidian (`boveda-proyectos`).
+* **Documentación Personal:** Apuntes de estos desarrollos se encuentran gestionados en Obsidian (`boveda-proyectos`).
