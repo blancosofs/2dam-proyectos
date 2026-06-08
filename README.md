@@ -1,33 +1,61 @@
-## PRACTICAS FINALES / PROYECTOS
+# 📂 Proyectos 2º DAM
 
-**Acceso a datos - ad** 
-<br>*Aplicacion de gestion de un vivero.
-<br>Se realizan las operaciones de gestion centrandose en el manjeo de archivos xml y txt manejados desde codigo en java*
-<br>--> FicherosPracticaFinal_01aadd : v.0.1-Noviembre 
-<br>--> RecuFicherosBlanco_01ad : v.0.2-Diciembre
-<br>--> CRecuFicherosBlanco_01ad : v.0.3-Febrero
+¡Hola! Soy **Sofía Blanco Calsina** (@blancosofs). 
 
-*Aplicacion de gestion de una juguetería.
-<br>Se realizan las operaciones de gestion centrandose en el manjeo de una base de datosd desde codigo en java*
-<br>--> ConnectDBPracticaFinal_02aadd : v.0.1-Noviembre 
-<br>--> RecuFBaseDatosBlanco_02ad : v.0.2-Diciembre
-<br>--> CRecuFBaseDatosBlanco_02ad : v.0.3-Febrero
+Este repositorio contiene la recopilación de mis prácticas finales y proyectos desarrollados durante el segundo año del ciclo de **Desarrollo de Aplicaciones Multiplataforma (DAM)**. Los proyectos están enfocados principalmente en el ecosistema Java, cubriendo desde el manejo de ficheros y bases de datos hasta interfaces gráficas y concurrencia.
 
-*Exploracion de base de datos no relacional*
-<br>--> db40 : v.1.0-Enero 
+---
 
-**Desarrollo de interfaces - ddi**
-<br>*Aplicacion de noticiero en java-swing.
-<br>Se notifican las noticias escogidas desde la aplicacion y por email*
-<br>--> NoticiasPracticaFinal_03ddi : v.0.1-Noviembre 
-<br>--> RecuNoticiasBlanco_03ddi : v.0.2-Enero
+## 🛠️ Tecnologías y Conceptos Aplicados
 
-**Programacion servicios y procesos**
-<br>*Juego de competicion entre cifras y letras.
-<br>Se realiza con hilos una competicion de carcateres*
-<br>--> cifrasLetras
+* **Lenguaje Principal:** Java (100%)
+* **Bases de Datos:** MySQL (Relacional) y db4o (No Relacional)
+* **Interfaces Gráficas:** Java Swing
+* **Otros:** Multihilo (Threads), Conectividad SQL (JDBC), Gestión de XML/TXT
 
-**Obsidian**
---> boveda-proyectos
+---
 
+## 📚 Módulos y Prácticas
 
+### 1. Acceso a Datos (AD)
+Proyectos centrados en la persistencia de la información, abarcando ficheros y diferentes modelos de bases de datos.
+
+* **Gestión de un Vivero**
+    * *Descripción:* Aplicación para gestionar un vivero centrada en el manejo, lectura y escritura de archivos XML y TXT nativamente desde Java.
+    * *Evolución / Versiones:*
+        * `FicherosPracticaFinal_01aadd` (v.0.1 - Noviembre)
+        * `RecuFicherosBlanco_01ad` (v.0.2 - Diciembre)
+        * `CRecuFicherosBlanco_01ad` (v.0.3 - Febrero)
+
+* **Gestión de una Juguetería**
+    * *Descripción:* Aplicación con conexión a una base de datos relacional para gestionar el inventario y operaciones de la tienda.
+    * *Evolución / Versiones:*
+        * `ConnectDBPracticaFinal_02aadd` (v.0.1 - Noviembre)
+        * `RecuFBaseDatosBlanco_02ad` (v.0.2 - Diciembre)
+        * `CRecuFBaseDatosBlanco_02ad` (v.0.3 - Febrero)
+
+* **Exploración de Base de Datos No Relacional**
+    * *Descripción:* Práctica orientada a objetos usando la base de datos `db4o`.
+    * *Versión:* `db40` (v.1.0 - Enero)
+
+### 2. Desarrollo de Interfaces (DI)
+Diseño y programación de interfaces de usuario para aplicaciones de escritorio.
+
+* **Aplicación de Noticiero**
+    * *Descripción:* Lector y gestor de noticias desarrollado con **Java Swing**. Incluye un sistema de notificaciones de las noticias seleccionadas tanto en la propia aplicación como por correo electrónico.
+    * *Evolución / Versiones:*
+        * `NoticiasPracticaFinal_03ddi` (v.0.1 - Noviembre)
+        * `RecuNoticiasBlanco_03ddi` (v.0.2 - Enero)
+
+### 3. Programación de Servicios y Procesos (PSP)
+Gestión de hilos, concurrencia y procesos.
+
+* **Juego: Cifras y Letras**
+    * *Descripción:* Implementación de un juego de competición de caracteres utilizando **hilos (threads)** en Java para gestionar el progreso simultáneo.
+    * *Versión:* `cifrasLetras`
+
+---
+
+## 📝 Notas Adicionales
+
+* **Documentación Personal:** La documentación detallada y apuntes de estos desarrollos se encuentran gestionados en Obsidian (`boveda-proyectos`).
