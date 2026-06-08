@@ -1,11 +1,5 @@
 # 📂 Proyectos 2º DAM
 
-¡Hola! Soy **Sofía Blanco Calsina** (@blancosofs). 
-
-Este repositorio contiene la recopilación de mis prácticas finales y proyectos desarrollados durante el segundo año del ciclo de **Desarrollo de Aplicaciones Multiplataforma (DAM)**. Los proyectos están enfocados principalmente en el ecosistema Java, cubriendo desde el manejo de ficheros y bases de datos hasta interfaces gráficas y concurrencia.
-
----
-
 ## 🛠️ Tecnologías y Conceptos Aplicados
 
 * **Lenguaje Principal:** Java (100%)
